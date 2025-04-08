@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:controller="app.MainWindow" xmlns:fx="http://javafx.com/fxml" stylesheets="MainWindow.css"
+    spacing="10" prefHeight="200" prefWidth="300">
+
+
+    <Button onAction="#onGreetClicked" text="Greet the World"  />
+
+    <fx:define>
+        <ToggleGroup fx:id="group" />
+    </fx:define>
+
+    <HBox>
+    <ToggleButton text="Hello" selected="true" ToggleGroup="$group" />
+    <ToggleButton text="Howdy" ToggleGroup="$group"  />
+    <ToggleButton text="Greetings" ToggleGroup="$group"  />
+    </HBox>
+
+    <HBox>
+    <ToggleButton text="Hello" selected="true" ToggleGroup="$group" />
+    <ToggleButton text="Howdy" ToggleGroup="$group"  />
+    <ToggleButton text="Greetings" ToggleGroup="$group"  />
+    </HBox>
+    
+
+</VBox>
