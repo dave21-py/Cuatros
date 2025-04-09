@@ -6,6 +6,8 @@
 <VBox fx:controller="app.MainWindow" xmlns:fx="http://javafx.com/fxml" stylesheets="MainWindow.css"
     spacing="10" prefHeight="400" prefWidth="250">
 
+    <Image fx:id="imageView" fitWidth="250" fitHeight="400"/>
+
     <BorderPane fx:id="borderPane">
         <center>
             <Button onAction="#onStart" text="Start"/>
