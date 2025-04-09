@@ -15,7 +15,7 @@
     <Button text="Leaderboard" prefWidth="200"/>
     </VBox>
 
-    <Region prefHeight="60"/>
+    <Region prefHeight="50"/>
 
     <VBox alignment="CENTER_LEFT" spacing="10">
     <Button text="Help" prefWidth="100"/>
