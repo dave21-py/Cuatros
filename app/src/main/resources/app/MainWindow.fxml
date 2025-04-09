@@ -2,28 +2,25 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
-<VBox fx:controller="app.MainWindow" xmlns:fx="http://javafx.com/fxml" stylesheets="MainWindow.css"
-    spacing="10" prefHeight="200" prefWidth="300">
+<?import javafx.scene.text.*?>
 
 
-    <Button onAction="#onGreetClicked" text="Greet the World"  />
+<VBox fx:controller="app.MainWindow" xmlns:fx="http://javafx.com/fxml" stylesheets="@MainWindow.css"
+    spacing="20" prefHeight="400" prefWidth="600" alignment="CENTER">
 
-    <fx:define>
-        <ToggleGroup fx:id="group" />
-    </fx:define>
+    <Text text="Cuatros" style="-fx-font-size: 48px; -fx-font-family: 'Arial';" />
 
-    <HBox>
-    <ToggleButton text="Hello" selected="true" ToggleGroup="$group" />
-    <ToggleButton text="Howdy" ToggleGroup="$group"  />
-    <ToggleButton text="Greetings" ToggleGroup="$group"  />
-    </HBox>
+    <VBox alignment="CENTER" spacing="10">
+    <Button text="PLAY ▶" prefWidth="200"/>
+    <Button text="Leaderboard" prefWidth="200"/>
+    </VBox>
 
-    <HBox>
-    <ToggleButton text="Hello" selected="true" ToggleGroup="$group" />
-    <ToggleButton text="Howdy" ToggleGroup="$group"  />
-    <ToggleButton text="Greetings" ToggleGroup="$group"  />
-    </HBox>
+    <Region prefHeight="60"/>
+
+    <VBox alignment="CENTER_LEFT" spacing="10">
+    <Button text="Help" prefWidth="100"/>
+    <Button text="About" prefWidth="100"/>
+    </VBox>
     
 
 </VBox>
