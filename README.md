@@ -32,7 +32,7 @@ Cuatros is a block puzzle game where players shift and rotate falling four-squar
 
 # Project Journal
 
-<a href="https://github.com/bjucps209/group-project-team-jd/wiki/Project-Journal"> Access each developer's time spent pushing code  </a>
+<a href="https://github.com/bjucps209/group-project-team-jd/wiki/Project-Journal"> Access each developer's time spent pushing code and testing </a>
 
 # README
 
