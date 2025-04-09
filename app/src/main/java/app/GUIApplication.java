@@ -15,7 +15,7 @@ public class GUIApplication extends Application{
         var scene = new Scene(loader.load());
 
         stage.setScene(scene);
-        stage.setTitle("CUATROS"); // Title of main window
+        stage.setTitle("Cuatros"); // Title of main window
         stage.show();
     }
 

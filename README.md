@@ -5,7 +5,7 @@
 width="400">
 </p>
 <h3>
-Made by <a href="https://github.com/dcorn713"> Daniel Cornelius</a>,<a href="https://github.com/jtam496"> John Tam</a> and <a href="https://github.com/dave21-py"> David Geddam</a>
+Made by <a href="https://github.com/dcorn713" target="_blank"> Daniel Cornelius</a>,<a href="https://github.com/jtam496" target="_blank"> John Tam</a> and <a href="https://github.com/dave21-py" target="_blank"> David Geddam</a>
 </h3>
 
 # Introduction
@@ -21,7 +21,8 @@ Cuatros is a block puzzle game where players shift and rotate falling four-squar
 - Help Screen: 1 point
 - Game Screen: 2 points
 - Game Play: 4 points
-- Additional features
+
+# Additional features
 - Optional Cheat Mode: 3 points
 - Optional Game Levels (Points): 3 points
 - Optional Pause: 2 points
@@ -29,18 +30,9 @@ Cuatros is a block puzzle game where players shift and rotate falling four-squar
 - Optional Save/Load: 3 points
 - Optional Leaderboard: 2 points
 
+# Project Journal
 
-
-
-
-
-
-
-
-
-
-
-
+<a href="https://github.com/bjucps209/group-project-team-jd/wiki/Project-Journal"> Access each developer's time spent pushing code  </a>
 
 # README
 
