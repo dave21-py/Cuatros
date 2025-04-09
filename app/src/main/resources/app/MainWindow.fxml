@@ -11,7 +11,7 @@
     <Text text="Cuatros" style="-fx-font-size: 48px; -fx-font-family: 'Arial';" />
 
     <VBox alignment="CENTER" spacing="10">
-    <Button text="PLAY ▶" prefWidth="200"/>
+    <Button text="PLAY ▶" prefWidth="200" onAction="#onPlayClicked"/>
     <Button text="Leaderboard" prefWidth="200"/>
     </VBox>
 
