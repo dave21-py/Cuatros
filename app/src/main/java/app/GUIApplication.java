@@ -18,5 +18,4 @@ public class GUIApplication extends Application{
         stage.setTitle("Cuatros"); // Title of main window
         stage.show();
     }
-
 }
