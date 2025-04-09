@@ -1,3 +1,47 @@
+# CUATROS
+
+<p align="center">
+<img src="20250408_2216_Geometric Game Letters_simple_compose_01jrc5c7b5ff1b4vnbn8a11h0t.png"
+width="400">
+</p>
+<h3>
+Made by <a href="https://github.com/dcorn713"> Daniel Cornelius</a>,<a href="https://github.com/jtam496"> John Tam</a> and <a href="https://github.com/dave21-py"> David Geddam</a>
+</h3>
+
+# Introduction
+
+Cuatros is a block puzzle game where players shift and rotate falling four-square shaped blocks to fill lines horizontally. As the lines of blocks are filled, the lines will be cleared, awarding the player points for each line cleared. As the game progresses, the blocks will fall at a higher rate and will require quicker decision making to survive. The game ends when the player's screen is filled to the top with no more space for another block to spawn. The score is calculated by how many blocks have been placed and the number of lines that have been cleared.
+
+# Story Points
+- Title Screen: 1 point
+- About Screen: 1 point
+- Scoring: 3 points
+- Difficulty Levels (Speed): 2 points
+- Sound Effects: 2 points
+- Help Screen: 1 point
+- Game Screen: 2 points
+- Game Play: 4 points
+- Additional features
+- Optional Cheat Mode: 3 points
+- Optional Game Levels (Points): 3 points
+- Optional Pause: 2 points
+- Optional Power-ups: 2 points
+- Optional Save/Load: 3 points
+- Optional Leaderboard: 2 points
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # README
 
 Please upload assignment files here. Run `./aclean` to remove unnecessary files. Be sure to include all **source code**, **tests**, **media**, and **report**.
