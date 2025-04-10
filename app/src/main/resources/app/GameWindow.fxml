@@ -9,21 +9,21 @@
 
     <VBox alignment="TOP_CENTER" spacing="40" prefWidth="160">
         <VBox alignment="CENTER" spacing="10">
-            <Label text="HOLD" style="-fx-font-size: 18px; -fx-font-family: 'Arial';" prefWidth="90" />
-            <Pane prefHeight="100" prefWidth="100" style="-fx-border-color: black;"/>
+            <Label text="HOLD" style="-fx-font-size: 18px; -fx-font-family: 'Arial;" styleClass="label-white" prefWidth="90" />
+            <Pane prefHeight="100" prefWidth="100" style="-fx-border-color: white;"/>
         </VBox>
         <VBox alignment="CENTER" spacing="10">
-            <Label text="SCORE" style="-fx-font-size: 18px; -fx-font-family: 'Arial';" prefWidth="90" />
-            <Pane prefHeight="100" prefWidth="100" style="-fx-border-color: black;"/>
+            <Label text="SCORE" style="-fx-font-size: 18px; -fx-font-family: 'Arial';" styleClass="label-white" prefWidth="90" />
+            <Pane prefHeight="100" prefWidth="100" style="-fx-border-color: white;"/>
         </VBox>
     </VBox>
 
-    <Pane prefHeight="400" prefWidth="300" style="-fx-border-color: black; -fx-border-background-color: grey;" />
+    <Pane prefHeight="400" prefWidth="300" style="-fx-border-color: white; -fx-border-background-color: grey;" />
 
     <VBox alignment="TOP_CENTER" spacing="40" prefWidth="160">
         <VBox alignment="CENTER" spacing="10">
-            <Label text="NEXT" style="-fx-font-size: 18px; -fx-font-family: 'Arial';" prefWidth="90" />
-            <Pane prefHeight="180" prefWidth="100" style="-fx-border-color: black;"/>
+            <Label text="NEXT" style="-fx-font-size: 18px; -fx-font-family: 'Arial';" styleClass="label-white" prefWidth="90" />
+            <Pane prefHeight="180" prefWidth="100" style="-fx-border-color: white;"/>
         </VBox>
         <Button text="⏸" prefWidth="60" prefHeight="60" style="-fx-font-size: 20px"/>
     </VBox>
