@@ -9,15 +9,15 @@
     spacing="20" prefHeight="400" prefWidth="600" alignment="CENTER">
 
     <VBox alignment="CENTER" spacing="10">
-    <Button text="PLAY ▶" prefWidth="200" onAction="#onPlayClicked"/>
-    <Button text="Leaderboard" prefWidth="200"/>
+    <Button styleClass="Button" text="PLAY ▶" prefWidth="200" onAction="#onPlayClicked"/>
+    <Button styleClass="Button" text="Leaderboard" prefWidth="200"/>
     </VBox>
 
     <Region prefHeight="50"/>
 
     <VBox alignment="CENTER_LEFT" spacing="10">
-    <Button text="Help" prefWidth="100"/>
-    <Button text="About" prefWidth="100"/>
+    <Button styleClass="Button" text="Help" prefWidth="100"/>
+    <Button styleClass="Button" text="About" prefWidth="100"/>
     </VBox>
 
 </VBox>
