@@ -1,7 +1,7 @@
 # CUATROS
 
 <p align="center">
-<img src="20250408_2216_Geometric Game Letters_simple_compose_01jrc5c7b5ff1b4vnbn8a11h0t.png"
+<img src="title.png"
 width="400">
 </p>
 <h3>
