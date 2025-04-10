@@ -8,8 +8,6 @@
 <VBox fx:id="vbox" fx:controller="app.MainWindow" xmlns:fx="http://javafx.com/fxml" stylesheets="@MainWindow.css"
     spacing="20" prefHeight="400" prefWidth="600" alignment="CENTER">
 
-    <Text text="Cuatros" style="-fx-font-size: 48px; -fx-font-family: 'Arial';" />
-
     <VBox alignment="CENTER" spacing="10">
     <Button text="PLAY ▶" prefWidth="200" onAction="#onPlayClicked"/>
     <Button text="Leaderboard" prefWidth="200"/>
