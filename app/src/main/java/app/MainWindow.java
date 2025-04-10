@@ -54,23 +54,11 @@ public class MainWindow {
             }
         }); 
         ImageView imageView = new ImageView();
-        Image image = new Image(getClass().getResource("20250408_2216_Geometric Game Letters_simple_compose_01jrc5c7b5ff1b4vnbn8a11h0t.png").toExternalForm());
+        Image image = new Image(getClass().getResource("title.png").toExternalForm());
         imageView.setImage(image);
         imageView.setFitHeight(300.0);
         imageView.setFitWidth(600.0);
         vbox.getChildren().add(0, imageView);
-        
-    }
-
-
-    @FXML
-    void onCalculateClicked() {
-
-    }
-
-    @FXML
-    void onCreateClicked() {
-
     }
 
     private void displayAlert(String text) {
