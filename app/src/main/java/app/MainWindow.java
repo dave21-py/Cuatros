@@ -11,6 +11,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
@@ -21,6 +24,8 @@ public class MainWindow {
 
     @FXML
     private ToggleGroup group;
+
+    @FXML private VBox vbox;
 
     @FXML
     void onPlayClicked(ActionEvent event) {
@@ -36,7 +41,7 @@ public class MainWindow {
     }
 
     @FXML
-    void initialize() {
+    public void initialize() {
         Media sound = new Media(getClass().getResource("hope.mp3").toExternalForm());
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
@@ -48,6 +53,13 @@ public class MainWindow {
                 mediaPlayer.play();
             }
         }); 
+        ImageView imageView = new ImageView();
+        Image image = new Image(getClass().getResource("20250408_2216_Geometric Game Letters_simple_compose_01jrc5c7b5ff1b4vnbn8a11h0t.png").toExternalForm());
+        imageView.setImage(image);
+        imageView.setFitHeight(400.0);
+        imageView.setFitWidth(600.0);
+        vbox.getChildren().add(imageView);
+        
     }
 
 
