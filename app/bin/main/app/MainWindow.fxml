@@ -2,16 +2,26 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox fx:controller="app.MainWindow" xmlns:fx="http://javafx.com/fxml" stylesheets="MainWindow.css"
-    spacing="10" prefHeight="400" prefWidth="250">
 
-    <Image fx:id="imageView" fitWidth="250" fitHeight="400"/>
+<VBox fx:controller="app.MainWindow" xmlns:fx="http://javafx.com/fxml" stylesheets="@MainWindow.css"
+    spacing="20" prefHeight="400" prefWidth="600" alignment="CENTER">
 
-    <BorderPane fx:id="borderPane">
-        <center>
-            <Button onAction="#onStart" text="Start"/>
-        </center>
-    </BorderPane>
+    <Text text="Cuatros" style="-fx-font-size: 48px; -fx-font-family: 'Arial';" />
+
+    <VBox alignment="CENTER" spacing="10">
+    <Button text="PLAY ▶" prefWidth="200"/>
+    <Button text="Leaderboard" prefWidth="200"/>
+    </VBox>
+
+    <Region prefHeight="50"/>
+
+    <VBox alignment="CENTER_LEFT" spacing="10">
+    <Button text="Help" prefWidth="100"/>
+    <Button text="About" prefWidth="100"/>
+    </VBox>
+    
 
 </VBox>
+    

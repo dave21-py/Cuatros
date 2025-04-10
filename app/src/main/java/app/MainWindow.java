@@ -11,7 +11,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 
 public class MainWindow {
@@ -30,6 +33,22 @@ public class MainWindow {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    void initialize() {
+        Media sound = new Media(getClass().getResource("hope.mp3").toExternalForm());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+
+        mediaPlayer.setOnEndOfMedia(new Runnable() {
+            @Override
+            public void run() {
+                mediaPlayer.seek(Duration.ZERO);
+                mediaPlayer.play();
+            }
+        }); 
+    }
+
 
     @FXML
     void onCalculateClicked() {
