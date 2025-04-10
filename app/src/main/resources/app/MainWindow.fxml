@@ -21,7 +21,6 @@
     <Button text="Help" prefWidth="100"/>
     <Button text="About" prefWidth="100"/>
     </VBox>
-    
 
 </VBox>
     

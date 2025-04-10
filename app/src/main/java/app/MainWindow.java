@@ -56,9 +56,9 @@ public class MainWindow {
         ImageView imageView = new ImageView();
         Image image = new Image(getClass().getResource("20250408_2216_Geometric Game Letters_simple_compose_01jrc5c7b5ff1b4vnbn8a11h0t.png").toExternalForm());
         imageView.setImage(image);
-        imageView.setFitHeight(400.0);
+        imageView.setFitHeight(300.0);
         imageView.setFitWidth(600.0);
-        vbox.getChildren().add(imageView);
+        vbox.getChildren().add(0, imageView);
         
     }
 
