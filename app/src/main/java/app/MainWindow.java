@@ -19,15 +19,16 @@ import javafx.util.Duration;
 
 public class MainWindow {
 
-    @FXML ToggleGroup group;
+    @FXML
+    private ToggleGroup group;
 
     @FXML
-    void onStart(ActionEvent event) {
+    void onPlayClicked(ActionEvent event) {
         try {
-            Parent parent = FXMLLoader.load(getClass().getResource("GameWindow.fxml"));
-            Scene scene = new Scene(parent);
+            Parent gameRoot = FXMLLoader.load(getClass().getResource("/app/GameWindow.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
+            stage.setScene(new Scene(gameRoot));
+            stage.setTitle("GameWindow");
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
