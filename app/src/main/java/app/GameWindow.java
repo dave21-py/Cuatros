@@ -30,4 +30,8 @@ public class GameWindow {
     public void onPauseClicked(ActionEvent event){
         
     }
+
+    void setImage() {
+        
+    }
 }
