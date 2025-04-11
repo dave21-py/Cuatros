@@ -18,7 +18,7 @@
         </VBox>
     </VBox>
 
-    <Pane prefHeight="400" prefWidth="300" style="-fx-border-color: white; -fx-border-background-color: grey;" />
+    <Pane prefHeight="400" prefWidth="300" style="-fx-border-color: white; -fx-border-background-color: grey;"/>
 
     <VBox alignment="TOP_CENTER" spacing="40" prefWidth="160">
         <VBox alignment="CENTER" spacing="10">

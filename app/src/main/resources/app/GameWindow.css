@@ -1,13 +1,9 @@
 .root {
     -fx-padding: 10; /* Add a small padding around the window */
-<<<<<<< HEAD
-    padding: 10; 
-=======
     padding: 10;
     -fx-background-color: black;
 }
 .label-white {
     -fx-text-fill: white;
 
->>>>>>> b64f469f7791df85375e6aeeb01e6e075c39bee9
 }

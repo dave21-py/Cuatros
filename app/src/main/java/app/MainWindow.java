@@ -61,8 +61,19 @@ public class MainWindow {
         vbox.getChildren().add(0, imageView);
     }
 
-    private void displayAlert(String text) {
-        var alert = new Alert(AlertType.INFORMATION, text);
+    @FXML
+    private void onAbout(ActionEvent event) throws IOException {
+        
+        var alert = new Alert(AlertType.INFORMATION, //
+        """
+        The game ends when the player's screen is filled to the top with no more space for another block to spawn. 
+        Cuatros is a block puzzle game where players shift and rotate falling four-square shaped blocks to fill lines horizontally. 
+        As the lines of blocks are filled, the lines will be cleared, awarding the player points for each line cleared. 
+        As the game progresses, the blocks will fall at a higher rate and will require quicker decision making to survive. 
+        The score is calculated by how many blocks have been placed and the number of lines that have been cleared.""" //
+        //
+        //
+        );
         alert.setHeaderText(null);
         alert.show();
     }
