@@ -4,6 +4,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
+
+
 <HBox fx:controller="app.GameWindow" xmlns:fx="http://javafx.com/fxml"  stylesheets="@GameWindow.css"
     spacing="40" prefHeight="600" prefWidth="800" alignment="CENTER">
 
@@ -18,9 +20,9 @@
         </VBox>
     </VBox>
 
-    <Pane prefHeight="500" prefWidth="320" style="-fx-border-color: white; -fx-border-background-color: grey;"/>
+    <Pane fx:id="gameArea" prefHeight="500" prefWidth="320" style="-fx-background-color: black; -fx-border-color: white;" />
 
-    <VBox alignment="TOP_CENTER" spacing="60" prefWidth="200">
+<VBox alignment="TOP_CENTER" spacing="60" prefWidth="200">
         <VBox alignment="CENTER" spacing="10">
             <Label text="NEXT" style="-fx-font-size: 20px; -fx-font-family: 'Arial';" styleClass="label-white" prefWidth="90" />
             <Pane prefHeight="250" prefWidth="120" style="-fx-border-color: white;"/>
