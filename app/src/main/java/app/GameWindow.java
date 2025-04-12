@@ -1,13 +1,22 @@
 package app;
 
+import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.stage.Stage;
 import javafx.util.Duration;
+import javafx.scene.control.Alert;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+
 
 
 public class GameWindow {
@@ -41,8 +50,29 @@ public class GameWindow {
     }
 
     @FXML 
-    public void onPauseClicked(ActionEvent event){
-        
+    public void onPauseClicked(ActionEvent event) throws IOException{
+        var alert = new Alert(Alert.AlertType.NONE, "GAME PAUSED");
+        alert.setHeaderText(null);
+        javafx.scene.control.ButtonType resumeButton   =  new javafx.scene.control.ButtonType("Resume");
+        javafx.scene.control.ButtonType menuButton = new javafx.scene.control.ButtonType("Menu");
+        alert.getButtonTypes().setAll(resumeButton, menuButton);
+        alert.showAndWait().ifPresent(buttonType ->{
+            if(buttonType == resumeButton){
+                System.out.println("Game Resumed");
+            } else if (buttonType == menuButton) {
+                try {
+            Parent mainRoot = FXMLLoader.load(getClass().getResource("/app/MainWindow.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(mainRoot, 800, 600));
+            stage.setTitle("Cuatros");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+                
+            }
+        });
     }
 
     void setImage() {

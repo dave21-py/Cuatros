@@ -28,7 +28,7 @@
             <Pane prefHeight="250" prefWidth="120" style="-fx-border-color: white;"/>
         </VBox>
         <VBox alignment="CENTER" spacing="10" VBox.vgrow="ALWAYS">
-        <Button text="⏸" prefWidth="60" prefHeight="60" style="-fx-font-size: 20px"/>
+        <Button text="⏸" prefWidth="60" prefHeight="60" style="-fx-font-size: 20px" onAction="#onPauseClicked"/>
     </VBox>
     </VBox>
 </HBox>
