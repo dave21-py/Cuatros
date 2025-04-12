@@ -30,10 +30,6 @@ Cuatros is a block puzzle game where players shift and rotate falling four-squar
 - Optional Save/Load: 3 points
 - Optional Leaderboard: 2 points
 
-# Project Journal
-
-<a href="https://github.com/bjucps209/group-project-team-jd/wiki/Project-Journal"> Access each developer's time spent pushing code and testing </a>
-
 # Expenses and Contributions
 
 
