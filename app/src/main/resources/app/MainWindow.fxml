@@ -15,7 +15,7 @@
 
     <Region prefHeight="50"/>
 
-    <VBox alignment="CENTER_LEFT" spacing="10">
+    <VBox alignment="CENTER_LEFT" spacing="10" >
     <Button styleClass="Button" text="Help" prefWidth="100"/>
     <Button styleClass="Button" onAction="#onAbout" text="About" prefWidth="100"/>
     </VBox>

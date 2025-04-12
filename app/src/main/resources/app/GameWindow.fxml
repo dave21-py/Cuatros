@@ -11,11 +11,11 @@
 
     <VBox alignment="TOP_CENTER" spacing="60" prefWidth="200">
         <VBox alignment="CENTER" spacing="10">
-            <Label text="HOLD" style="-fx-font-size: 20px; -fx-font-family: 'Arial';" styleClass="label-white" />
+            <Label text="HOLD" style="-fx-font-size: 21px; -fx-font-family: 'Arial';" styleClass="label-white" />
             <Pane prefHeight="120" prefWidth="120" style="-fx-border-color: white;"/>
         </VBox>
         <VBox alignment="CENTER" spacing="10" VBox.vgrow="ALWAYS">
-            <Label text="SCORE" style="-fx-font-size: 20px; -fx-font-family: 'Arial';" styleClass="label-white" prefWidth="90" />
+            <Label text="SCORE" style="-fx-font-size: 21px; -fx-font-family: 'Arial';" styleClass="label-white" prefWidth="90" />
             <Pane prefHeight="120" prefWidth="120" style="-fx-border-color: white;"/>
         </VBox>
     </VBox>
@@ -24,7 +24,7 @@
 
 <VBox alignment="TOP_CENTER" spacing="60" prefWidth="200">
         <VBox alignment="CENTER" spacing="10">
-            <Label text="NEXT" style="-fx-font-size: 20px; -fx-font-family: 'Arial';" styleClass="label-white" prefWidth="90" />
+            <Label text="NEXT" style="-fx-font-size: 21px; -fx-font-family: 'Arial';" styleClass="label-white" prefWidth="90" />
             <Pane prefHeight="250" prefWidth="120" style="-fx-border-color: white;"/>
         </VBox>
         <VBox alignment="CENTER" spacing="10" VBox.vgrow="ALWAYS">

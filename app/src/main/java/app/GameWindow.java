@@ -28,6 +28,7 @@ public class GameWindow {
                 mediaPlayer.play();
             }
         });
+        //Teris block
         ImageView tetrisBlock = new ImageView();
         Image blockImage = new Image(getClass().getResource("/app/tetris_shape.png").toExternalForm());
         tetrisBlock.setImage(blockImage);
