@@ -5,27 +5,28 @@
 <?import javafx.scene.text.*?>
 
 <HBox fx:controller="app.GameWindow" xmlns:fx="http://javafx.com/fxml"  stylesheets="@GameWindow.css"
-    spacing="20" prefHeight="400" prefWidth="600" alignment="CENTER_LEFT">
+    spacing="40" prefHeight="600" prefWidth="800" alignment="CENTER">
 
-    <VBox alignment="TOP_CENTER" spacing="40" prefWidth="160">
+    <VBox alignment="TOP_CENTER" spacing="60" prefWidth="200">
         <VBox alignment="CENTER" spacing="10">
-            <Label text="HOLD" style="-fx-font-size: 18px; -fx-font-family: 'Arial;" styleClass="label-white" prefWidth="90" />
-            <Pane prefHeight="100" prefWidth="100" style="-fx-border-color: white;"/>
+            <Label text="HOLD" style="-fx-font-size: 20px; -fx-font-family: 'Arial';" styleClass="label-white" />
+            <Pane prefHeight="120" prefWidth="120" style="-fx-border-color: white;"/>
         </VBox>
-        <VBox alignment="CENTER" spacing="10">
-            <Label text="SCORE" style="-fx-font-size: 18px; -fx-font-family: 'Arial';" styleClass="label-white" prefWidth="90" />
-            <Pane prefHeight="100" prefWidth="100" style="-fx-border-color: white;"/>
+        <VBox alignment="CENTER" spacing="10" VBox.vgrow="ALWAYS">
+            <Label text="SCORE" style="-fx-font-size: 20px; -fx-font-family: 'Arial';" styleClass="label-white" prefWidth="90" />
+            <Pane prefHeight="120" prefWidth="120" style="-fx-border-color: white;"/>
         </VBox>
     </VBox>
 
-    <Pane prefHeight="400" prefWidth="300" style="-fx-border-color: white; -fx-border-background-color: grey;"/>
+    <Pane prefHeight="500" prefWidth="320" style="-fx-border-color: white; -fx-border-background-color: grey;"/>
 
-    <VBox alignment="TOP_CENTER" spacing="40" prefWidth="160">
+    <VBox alignment="TOP_CENTER" spacing="60" prefWidth="200">
         <VBox alignment="CENTER" spacing="10">
-            <Label text="NEXT" style="-fx-font-size: 18px; -fx-font-family: 'Arial';" styleClass="label-white" prefWidth="90" />
-            <Pane prefHeight="180" prefWidth="100" style="-fx-border-color: white;"/>
+            <Label text="NEXT" style="-fx-font-size: 20px; -fx-font-family: 'Arial';" styleClass="label-white" prefWidth="90" />
+            <Pane prefHeight="250" prefWidth="120" style="-fx-border-color: white;"/>
         </VBox>
+        <VBox alignment="CENTER" spacing="10" VBox.vgrow="ALWAYS">
         <Button text="⏸" prefWidth="60" prefHeight="60" style="-fx-font-size: 20px"/>
     </VBox>
-
+    </VBox>
 </HBox>

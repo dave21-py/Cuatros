@@ -6,4 +6,7 @@
 
 .Button {
     -fx-background-color: yellow;
+    -fx-background-radius: 10;
+    -fx-cursor: hand;
+
 }

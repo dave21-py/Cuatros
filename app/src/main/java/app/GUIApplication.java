@@ -12,7 +12,7 @@ public class GUIApplication extends Application{
       
         var resource = getClass().getResource("MainWindow.fxml");
         var loader = new FXMLLoader(resource);
-        var scene = new Scene(loader.load());
+        var scene = new Scene(loader.load(), 800, 600);
 
         stage.setScene(scene);
         stage.setTitle("Cuatros"); // Title of main window

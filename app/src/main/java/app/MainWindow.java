@@ -32,7 +32,7 @@ public class MainWindow {
         try {
             Parent gameRoot = FXMLLoader.load(getClass().getResource("/app/GameWindow.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(gameRoot));
+            stage.setScene(new Scene(gameRoot, 800, 600));
             stage.setTitle("GameWindow");
             stage.show();
         } catch (IOException e) {
