@@ -2,11 +2,21 @@
     -fx-padding: 10; /* Add a small padding around the window */
     padding: 10;     /* duplicated for compatibility */
     -fx-background-color: #080705;
-}
+} 
 
 .Button {
-    -fx-background-color: yellow;
-    -fx-background-radius: 10;
+    -fx-background-color: black;
+    -fx-text-fill: white;
+    -fx-font-size: 20px;
+    -fx-background-radius: 20;
     -fx-cursor: hand;
-
 }
+.Button:hover{
+    -fx-background-color: linear-gradient(to right,
+    cyan, blue, orange, yellow, greenyellow, indigo, red);
+
+    -fx-text-fill: black;
+}
+
+
+
