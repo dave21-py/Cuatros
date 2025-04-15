@@ -7,3 +7,31 @@
     -fx-text-fill: white;
 
 }
+.hold{
+    -fx-background-color: black;
+    -fx-background-radius: 20;
+}
+.hold:hover{
+    -fx-background-color: grey;
+}
+.score{
+    -fx-background-color: black;
+    -fx-background-radius: 20;
+}
+.score:hover{
+    -fx-background-color: grey;
+}
+.next{
+    -fx-background-color: black;
+    -fx-background-radius: 20;
+}
+.next:hover{
+    -fx-background-color: grey;
+}
+.pause{
+    -fx-background-color: black;
+    -fx-background-radius: 20;
+}
+.pause:hover{
+    -fx-background-color: grey;
+}

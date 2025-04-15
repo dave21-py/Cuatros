@@ -47,6 +47,73 @@ public class GameWindow {
         tetrisBlock.setX(135);
         tetrisBlock.setY(225);
         gameArea.getChildren().add(tetrisBlock);
+        //Teris frame
+        ImageView frameOneBlock = new ImageView();
+        Image frameOneImage = new Image(getClass().getResource("/app/frame.png").toExternalForm());
+        frameOneBlock.setImage(frameOneImage);
+        frameOneBlock.setFitHeight(400);
+        frameOneBlock.setFitWidth(20);
+        frameOneBlock.setPreserveRatio(false);
+        frameOneBlock.setX(0);
+        frameOneBlock.setY(2);
+        gameArea.getChildren().add(frameOneBlock);
+
+        ImageView frameTwoBlock = new ImageView();
+        Image frameTwoImage = new Image(getClass().getResource("/app/frame.png").toExternalForm());
+        frameTwoBlock.setImage(frameTwoImage);
+        frameTwoBlock.setFitHeight(400);
+        frameTwoBlock.setFitWidth(20);
+        frameTwoBlock.setPreserveRatio(false);
+        frameTwoBlock.setX(0); //<---
+        frameTwoBlock.setY(182);
+        gameArea.getChildren().add(frameTwoBlock);
+
+        ImageView frameThreeBlock = new ImageView();
+        Image frameThreeImage = new Image(getClass().getResource("/app/frame3.png").toExternalForm());
+        frameThreeBlock.setImage(frameThreeImage);
+        frameThreeBlock.setFitHeight(19);
+        frameThreeBlock.setFitWidth(314);
+        frameThreeBlock.setPreserveRatio(false);
+        frameThreeBlock.setX(0);
+        frameThreeBlock.setY(0);
+        gameArea.getChildren().add(frameThreeBlock);
+
+        ImageView frameFourBlock = new ImageView();
+        Image frameFourImage = new Image(getClass().getResource("/app/frame.png").toExternalForm());
+        frameFourBlock.setImage(frameFourImage);
+        frameFourBlock.setFitHeight(400);
+        frameFourBlock.setFitWidth(20);
+        frameFourBlock.setPreserveRatio(false);
+        frameFourBlock.setX(294);
+        frameFourBlock.setY(0);
+        gameArea.getChildren().add(frameFourBlock);
+
+        ImageView frameFiveBlock = new ImageView();
+        Image frameFiveImage = new Image(getClass().getResource("/app/frame.png").toExternalForm());
+        frameFiveBlock.setImage(frameFiveImage);
+        frameFiveBlock.setFitHeight(400);
+        frameFiveBlock.setFitWidth(20);
+        frameFiveBlock.setPreserveRatio(false);
+        frameFiveBlock.setX(294);
+        frameFiveBlock.setY(182);
+        gameArea.getChildren().add(frameFiveBlock);
+
+        ImageView frameSixBlock = new ImageView();
+        Image frameSixImage = new Image(getClass().getResource("/app/frame3.png").toExternalForm());
+        frameSixBlock.setImage(frameSixImage);
+        frameSixBlock.setFitHeight(19);
+        frameSixBlock.setFitWidth(314);
+        frameSixBlock.setPreserveRatio(false);
+        frameSixBlock.setX(0);
+        frameSixBlock.setY(563);
+        gameArea.getChildren().add(frameSixBlock);
+
+        
+
+
+
+
+
     }
 
     @FXML 
@@ -70,7 +137,7 @@ public class GameWindow {
             e.printStackTrace();
         }
 
-        
+
                 
             }
         });
