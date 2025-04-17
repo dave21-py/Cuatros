@@ -21,7 +21,7 @@
 .score:hover{
     -fx-background-color: grey;
 }
-.next{
+.next{ /*Next*/
     -fx-background-color: black;
     -fx-background-radius: 20;
 }

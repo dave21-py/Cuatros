@@ -16,6 +16,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 
 
 
@@ -23,6 +25,8 @@ public class GameWindow {
 
     @FXML
     private Pane gameArea;
+    private ImageView tetrisBlock;
+    private Timeline timeline;
     
     @FXML
     public void initialize() {
@@ -38,15 +42,16 @@ public class GameWindow {
             }
         });
         //Teris block
-        ImageView tetrisBlock = new ImageView();
+        tetrisBlock = new ImageView();
         Image blockImage = new Image(getClass().getResource("/app/tetris_shape.png").toExternalForm());
         tetrisBlock.setImage(blockImage);
         tetrisBlock.setFitHeight(70);
         tetrisBlock.setFitWidth(70);
         tetrisBlock.setPreserveRatio(false);
         tetrisBlock.setX(135);
-        tetrisBlock.setY(225);
+        tetrisBlock.setY(-70);
         gameArea.getChildren().add(tetrisBlock);
+        startAnimation();
         //Teris frame
         ImageView frameOneBlock = new ImageView();
         Image frameOneImage = new Image(getClass().getResource("/app/frame.png").toExternalForm());
@@ -75,7 +80,7 @@ public class GameWindow {
         frameThreeBlock.setFitWidth(314);
         frameThreeBlock.setPreserveRatio(false);
         frameThreeBlock.setX(0);
-        frameThreeBlock.setY(0);
+        frameThreeBlock.setY(-10);
         gameArea.getChildren().add(frameThreeBlock);
 
         ImageView frameFourBlock = new ImageView();
@@ -105,7 +110,7 @@ public class GameWindow {
         frameSixBlock.setFitWidth(314);
         frameSixBlock.setPreserveRatio(false);
         frameSixBlock.setX(0);
-        frameSixBlock.setY(563);
+        frameSixBlock.setY(573);
         gameArea.getChildren().add(frameSixBlock);
 
         
@@ -116,6 +121,19 @@ public class GameWindow {
 
     }
 
+    private void startAnimation(){ //Animation for Falling down with 40ms timeframe
+        final double yPosition = 514;
+        timeline = new Timeline(new KeyFrame(Duration.millis(40), event-> {
+            tetrisBlock.setY(tetrisBlock.getY() + 5);
+            if(tetrisBlock.getY() >= yPosition){
+                tetrisBlock.setY(yPosition);
+                timeline.stop();
+            }
+        }));
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
+    }
+
     @FXML 
     public void onPauseClicked(ActionEvent event) throws IOException{
         var alert = new Alert(Alert.AlertType.NONE, "GAME PAUSED");
@@ -123,9 +141,16 @@ public class GameWindow {
         javafx.scene.control.ButtonType resumeButton   =  new javafx.scene.control.ButtonType("Resume");
         javafx.scene.control.ButtonType menuButton = new javafx.scene.control.ButtonType("Menu");
         alert.getButtonTypes().setAll(resumeButton, menuButton);
+
+        if(timeline != null){ //Pause
+            timeline.pause();
+        }
         alert.showAndWait().ifPresent(buttonType ->{
             if(buttonType == resumeButton){
                 System.out.println("Game Resumed");
+                if(timeline != null){ //Resume
+                    timeline.play();
+                }
             } else if (buttonType == menuButton) {
                 try {
             Parent mainRoot = FXMLLoader.load(getClass().getResource("/app/MainWindow.fxml"));
