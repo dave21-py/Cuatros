@@ -30,7 +30,7 @@ public class GameWindow {
     
     @FXML
     public void initialize() {
-        Media sound = new Media(getClass().getResource("hope.mp3").toExternalForm());
+        Media sound = new Media(getClass().getResource("mainwindow.mp3").toExternalForm());
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
 
@@ -122,9 +122,9 @@ public class GameWindow {
     }
 
     private void startAnimation(){ //Animation for Falling down with 40ms timeframe
-        final double yPosition = 514;
+        final double yPosition = 514; //Position to stop
         timeline = new Timeline(new KeyFrame(Duration.millis(40), event-> {
-            tetrisBlock.setY(tetrisBlock.getY() + 5);
+            tetrisBlock.setY(tetrisBlock.getY() + 5); //Moving 5pixels downn
             if(tetrisBlock.getY() >= yPosition){
                 tetrisBlock.setY(yPosition);
                 timeline.stop();

@@ -41,7 +41,7 @@ public class MainWindow {
 
     @FXML
     public void initialize() {
-        Media sound = new Media(getClass().getResource("hope.mp3").toExternalForm());
+        Media sound = new Media(getClass().getResource("mainwindow.mp3").toExternalForm());
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
 
