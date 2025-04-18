@@ -42,7 +42,7 @@ Cuatros is a block puzzle game where players shift and rotate falling four-squar
 |  Daniel Cornelius  |             | [Daniel](https://github.com/bjucps209/group-project-team-jd/wiki/Project-Journal#daniel-cornelius)|
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/rafaballerini/rafaballerini/37ac4b373d0ed9cd9e0a7089a4d0e8a26a2e2f7d/matrix.svg" alt="Matrix code rain" />
+  <img src="https://raw.githubusercontent.com/DenverCoder1/DenverCoder1/main/gameboy.gif" alt="Game Boy animation" />
 </div>
 
 # Contact
