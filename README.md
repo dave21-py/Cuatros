@@ -40,3 +40,10 @@ Cuatros is a block puzzle game where players shift and rotate falling four-squar
 |    John Tam        |             | [John](https://github.com/bjucps209/group-project-team-jd/wiki/Project-Journal#john-tam)|
 |   David Geddam     |             | [David](https://github.com/bjucps209/group-project-team-jd/wiki/Project-Journal#david-geddam)|
 |  Daniel Cornelius  |             | [Daniel](https://github.com/bjucps209/group-project-team-jd/wiki/Project-Journal#daniel-cornelius)|
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/rafaballerini/rafaballerini/37ac4b373d0ed9cd9e0a7089a4d0e8a26a2e2f7d/matrix.svg" alt="Matrix code rain" />
+</div>
+
+# Contact
+If you have any questions, please feel free to contact us.
