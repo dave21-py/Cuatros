@@ -41,9 +41,5 @@ Cuatros is a block puzzle game where players shift and rotate falling four-squar
 |   David Geddam     |             | [David](https://github.com/bjucps209/group-project-team-jd/wiki/Project-Journal#david-geddam)|
 |  Daniel Cornelius  |             | [Daniel](https://github.com/bjucps209/group-project-team-jd/wiki/Project-Journal#daniel-cornelius)|
 
-<div align="center">
-  <img src="https://raw.githubusercontent.com/DenverCoder1/DenverCoder1/main/gameboy.gif" alt="Game Boy animation" />
-</div>
-
 # Contact
 If you have any questions, please feel free to contact us.
