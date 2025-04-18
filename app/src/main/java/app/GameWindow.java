@@ -2,6 +2,8 @@ package app;
 
 import java.io.IOException;
 
+import app.model.Block;
+import app.model.Square;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +12,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.scene.control.Alert;
@@ -19,15 +23,15 @@ import javafx.scene.Scene;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 
-
-
 public class GameWindow {
+
+    private static final int CELL_SIZE = 30;
 
     @FXML
     private Pane gameArea;
     private ImageView tetrisBlock;
     private Timeline timeline;
-    
+
     @FXML
     public void initialize() {
         Media sound = new Media(getClass().getResource("mainwindow.mp3").toExternalForm());
@@ -41,7 +45,7 @@ public class GameWindow {
                 mediaPlayer.play();
             }
         });
-        //Teris block
+        // Teris block
         tetrisBlock = new ImageView();
         Image blockImage = new Image(getClass().getResource("/app/tetris_shape.png").toExternalForm());
         tetrisBlock.setImage(blockImage);
@@ -52,7 +56,7 @@ public class GameWindow {
         tetrisBlock.setY(-70);
         gameArea.getChildren().add(tetrisBlock);
         startAnimation();
-        //Teris frame
+        // Teris frame
         ImageView frameOneBlock = new ImageView();
         Image frameOneImage = new Image(getClass().getResource("/app/frame.png").toExternalForm());
         frameOneBlock.setImage(frameOneImage);
@@ -69,7 +73,7 @@ public class GameWindow {
         frameTwoBlock.setFitHeight(400);
         frameTwoBlock.setFitWidth(20);
         frameTwoBlock.setPreserveRatio(false);
-        frameTwoBlock.setX(0); //<---
+        frameTwoBlock.setX(0); // <---
         frameTwoBlock.setY(182);
         gameArea.getChildren().add(frameTwoBlock);
 
@@ -113,19 +117,13 @@ public class GameWindow {
         frameSixBlock.setY(573);
         gameArea.getChildren().add(frameSixBlock);
 
-        
-
-
-
-
-
     }
 
-    private void startAnimation(){ //Animation for Falling down with 40ms timeframe
-        final double yPosition = 514; //Position to stop
-        timeline = new Timeline(new KeyFrame(Duration.millis(40), event-> {
-            tetrisBlock.setY(tetrisBlock.getY() + 5); //Moving 5pixels downn
-            if(tetrisBlock.getY() >= yPosition){
+    private void startAnimation() { // Animation for Falling down with 40ms timeframe
+        final double yPosition = 514; // Position to stop
+        timeline = new Timeline(new KeyFrame(Duration.millis(40), event -> {
+            tetrisBlock.setY(tetrisBlock.getY() + 5); // Moving 5pixels downn
+            if (tetrisBlock.getY() >= yPosition) {
                 tetrisBlock.setY(yPosition);
                 timeline.stop();
             }
@@ -134,41 +132,62 @@ public class GameWindow {
         timeline.play();
     }
 
-    @FXML 
-    public void onPauseClicked(ActionEvent event) throws IOException{
+    @FXML
+    public void onPauseClicked(ActionEvent event) throws IOException {
         var alert = new Alert(Alert.AlertType.NONE, "GAME PAUSED");
         alert.setHeaderText(null);
-        javafx.scene.control.ButtonType resumeButton   =  new javafx.scene.control.ButtonType("Resume");
+        javafx.scene.control.ButtonType resumeButton = new javafx.scene.control.ButtonType("Resume");
         javafx.scene.control.ButtonType menuButton = new javafx.scene.control.ButtonType("Menu");
         alert.getButtonTypes().setAll(resumeButton, menuButton);
 
-        if(timeline != null){ //Pause
+        if (timeline != null) { // Pause
             timeline.pause();
         }
-        alert.showAndWait().ifPresent(buttonType ->{
-            if(buttonType == resumeButton){
+        alert.showAndWait().ifPresent(buttonType -> {
+            if (buttonType == resumeButton) {
                 System.out.println("Game Resumed");
-                if(timeline != null){ //Resume
+                if (timeline != null) { // Resume
                     timeline.play();
                 }
             } else if (buttonType == menuButton) {
                 try {
-            Parent mainRoot = FXMLLoader.load(getClass().getResource("/app/MainWindow.fxml"));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(mainRoot, 800, 600));
-            stage.setTitle("Cuatros");
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+                    Parent mainRoot = FXMLLoader.load(getClass().getResource("/app/MainWindow.fxml"));
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    stage.setScene(new Scene(mainRoot, 800, 600));
+                    stage.setTitle("Cuatros");
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
-
-                
             }
         });
     }
 
-    void setImage() {
-        
+    private Rectangle renderSquare(Square square) {
+        Rectangle rect = new Rectangle(CELL_SIZE, CELL_SIZE);
+        rect.setX(square.getX() * CELL_SIZE);
+        rect.setY(square.getY() * CELL_SIZE);
+        rect.setFill(addColor(square.getColorCode()));
+        rect.setStroke(Color.BLACK);
+        return rect;
     }
+
+    private Color addColor(char code) {
+        return switch (code) {
+            case 'Y' -> Color.YELLOW;
+            case 'R' -> Color.RED;
+            case 'G' -> Color.GREEN;
+            case 'B' -> Color.BLUE;
+            case 'O' -> Color.ORANGE;
+            case 'C' -> Color.CYAN;
+            case 'P' -> Color.PURPLE;
+            default -> Color.GRAY;
+        };
+    }
+
+    // Block block = board.getCurrentBlock();
+    // for (Square sq : block.getSquares()) {
+    // Rectangle r = renderSquare(sq);
+    // gamePane.getChildren().add(r);
 }
