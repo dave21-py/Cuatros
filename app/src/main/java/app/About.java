@@ -1,30 +1,20 @@
 package app;
 
+
 import java.io.IOException;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.Node;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import javafx.event.ActionEvent;
 
-
-public class TitleScreen{
-    @FXML
-    private MediaView mediaView;
-
-    @FXML
-    private Stage primaryStage;
-
-    public void setPrimaryStage(Stage primaryStage){
-        this.primaryStage = primaryStage;
-    }
+public class About {
 
     public void initialize(){
         // Audio
@@ -39,31 +29,14 @@ public class TitleScreen{
                 mediaPlayer.play();
             }
         });
-        // Video(480p)
-
-        Media video = new Media(getClass().getResource("title.mp4").toExternalForm());
-        MediaPlayer videoPlayer = new MediaPlayer(video);
-        mediaView.setMediaPlayer(videoPlayer);
-        videoPlayer.play();
-        videoPlayer.setOnEndOfMedia(() -> {
-            try{
-                Parent mainWindowRoot = FXMLLoader.load(getClass().getResource("/app/MainWindow.fxml"));
-                primaryStage.setScene(new Scene(mainWindowRoot, 800, 600));
-                primaryStage.setTitle("Cuatros");
-            } catch(Exception e){
-                e.printStackTrace();
-
-            }
-        });
     }
-        @FXML
-        public void onSkipClicked(ActionEvent event) throws IOException {
+    @FXML
+        public void onBackClicked(ActionEvent event) throws IOException {
             Parent mainRoot = FXMLLoader.load(getClass().getResource("/app/MainWindow.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(mainRoot, 800, 600));
             stage.setTitle("Cuatros");
             stage.show();
         }
+}
     
-
-    }

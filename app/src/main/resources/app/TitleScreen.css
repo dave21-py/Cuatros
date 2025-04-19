@@ -1,0 +1,9 @@
+.skipbutton{
+    -fx-text-fill: white;
+    -fx-background-color: black;
+    -fx-border-radius: 20px;
+}
+.skipbutton:hover{
+    -fx-text-fill:black;
+    -fx-background-color: greenyellow;
+}
