@@ -2,11 +2,16 @@ package app;
 
 import java.io.IOException;
 
-import app.model.Block;
 import app.model.Square;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -16,14 +21,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import javafx.scene.control.Alert;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 
 public class GameWindow {
+
+    @FXML
+    private MediaPlayer mediaPlayer;
 
     private static final int CELL_SIZE = 30;
 
@@ -34,16 +36,13 @@ public class GameWindow {
 
     @FXML
     public void initialize() {
-        Media sound = new Media(getClass().getResource("mainwindow.mp3").toExternalForm());
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        //Audio
+        Media sound = new Media(getClass().getResource("gamewindow.mp3").toExternalForm());
+        mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
 
-        mediaPlayer.setOnEndOfMedia(new Runnable() {
-            @Override
-            public void run() {
-                mediaPlayer.seek(Duration.ZERO);
-                mediaPlayer.play();
-            }
+        mediaPlayer.setOnEndOfMedia(()-> {
+            stopMedia();
         });
         // Teris block
         tetrisBlock = new ImageView();
@@ -159,9 +158,20 @@ public class GameWindow {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+                stopMedia();
 
             }
         });
+    
+    }
+
+    @FXML
+    public void stopMedia(){
+        if(mediaPlayer != null){
+            mediaPlayer.stop();
+            mediaPlayer.dispose();
+            mediaPlayer = null;
+        }
     }
 
     private Rectangle renderSquare(Square square) {

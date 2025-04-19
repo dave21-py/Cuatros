@@ -12,22 +12,20 @@ import javafx.scene.Scene;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 public class About {
 
+    @FXML
+    private MediaPlayer mediaPlayer;
+
     public void initialize(){
         // Audio
-        Media sound = new Media(getClass().getResource("title.mp3").toExternalForm());
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        Media sound = new Media(getClass().getResource("mainwindow.mp3").toExternalForm());
+        mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
 
-        mediaPlayer.setOnEndOfMedia(new Runnable() {
-            @Override
-            public void run() {
-                mediaPlayer.seek(Duration.ZERO);
-                mediaPlayer.play();
-            }
+        mediaPlayer.setOnEndOfMedia(()-> {
+            stopMedia();
         });
     }
     @FXML
@@ -37,6 +35,18 @@ public class About {
             stage.setScene(new Scene(mainRoot, 800, 600));
             stage.setTitle("Cuatros");
             stage.show();
+            stopMedia();
         }
-}
+
+        @FXML
+        public void stopMedia(){
+            if(mediaPlayer != null){
+                mediaPlayer.stop();
+                mediaPlayer.dispose();
+                mediaPlayer = null;
+            }
+        }
+
+    }
+
     

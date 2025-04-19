@@ -15,7 +15,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 public class MainWindow {
 
@@ -23,6 +22,9 @@ public class MainWindow {
     private ToggleGroup group;
 
     @FXML private VBox vbox;
+
+    @FXML
+    private MediaPlayer mediaPlayer;
 
     @FXML
     void onPlayClicked(ActionEvent event) {
@@ -35,21 +37,21 @@ public class MainWindow {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        stopMedia();
     }
 
     @FXML
     public void initialize() {
+        //Audio
         Media sound = new Media(getClass().getResource("mainwindow.mp3").toExternalForm());
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
 
-        mediaPlayer.setOnEndOfMedia(new Runnable() {
-            @Override
-            public void run() {
-                mediaPlayer.seek(Duration.ZERO);
-                mediaPlayer.play();
-            }
+        mediaPlayer.setOnEndOfMedia(() ->  {
+            stopMedia();
+    
         }); 
+
         ImageView imageView = new ImageView();
         Image image = new Image(getClass().getResource("title.png").toExternalForm());
         imageView.setImage(image);
@@ -69,6 +71,16 @@ public class MainWindow {
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+        stopMedia();
+    }
+
+    @FXML
+    public void stopMedia(){
+        if(mediaPlayer != null){
+            mediaPlayer.stop();
+            mediaPlayer.dispose();
+            mediaPlayer = null;
         }
     }
 }
