@@ -76,6 +76,71 @@ public class MainWindow {
     }
 
     @FXML
+    void onSettingsClicked(ActionEvent event) {
+        try {
+            Parent settingsRoot = FXMLLoader.load(getClass().getResource("/app/Settings.fxml"));
+            Scene settingsScene = new Scene(settingsRoot, 800, 600);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(settingsScene);
+            stage.setTitle("Settings");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        stopMedia();
+    }
+
+    @FXML
+    void onTutorialClicked(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/Tutorial.fxml"));
+            Parent tutorialRoot = loader.load();
+            Tutorial tutorialController = loader.getController();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            tutorialController.setPrimaryStage(stage);
+            Scene tutorialScene = new Scene(tutorialRoot, 800, 600);
+            stage.setScene(tutorialScene);
+            stage.setTitle("Welcome to CUATROS Tutorial");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        stopMedia();
+    }
+
+    @FXML
+    void onLeaderBoardClicked(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/Leaderboard.fxml"));
+            Parent leaderBoardRoot = loader.load();
+            LeaderBoard controller = loader.getController();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(leaderBoardRoot, 800, 600));
+            stage.setTitle("LeaderBoards");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        stopMedia();
+    }
+
+    @FXML
+    void onHelpClicked(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/Help.fxml"));
+            Parent helpRoot = loader.load();
+            Help controller = loader.getController();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(helpRoot, 800, 600));
+            stage.setTitle("Help");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        stopMedia();
+    }
+
+    @FXML
     public void stopMedia(){
         if(mediaPlayer != null){
             mediaPlayer.stop();

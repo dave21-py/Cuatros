@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.media.MediaView?>
+
+<StackPane fx:id="titleScreenRoot" fx:controller="app.Tutorial" xmlns:fx="http://javafx.com/fxml" stylesheets="@Tutorial.css" >
+<MediaView fx:id="mediaView" fitWidth="800" fitHeight="600" preserveRatio="false"/>
+
+<VBox spacing="10" alignment="BOTTOM_RIGHT" style="-fx-padding: 50 10 10 10"> <!--70 moves up-->
+<Button text="SKIP TUTORIAL" styleClass="skipbutton" onAction="#onSkipClicked" prefWidth="125" prefHeight="40" />
+</VBox>
+</StackPane>
