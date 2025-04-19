@@ -37,12 +37,35 @@ public class GameBoard {
 
     // block actions
     public void moveBlockLeft() {
+        for (Square square : currentBlock.getSquares()) {
+            int newX = square.getX() - 1;
+            
+            // check if beyond right edge
+            if (newX < 0 || grid[square.getY()][newX] != null) {
+                return;
+            }
+        }
+    
         currentBlock.move(-1, 0);
     }
 
     public void moveBlockRight() {
+        for (Square square : currentBlock.getSquares()) {
+            int newX = square.getX() + 1;
+    
+            // check if beyond right edge
+            if (newX >= cols) {
+                return; 
+            }
+    
+            // check if the next cell already filled
+            if (grid[square.getY()][newX] != null) {
+                return;
+            }
+        }
         currentBlock.move(1, 0);
     }
+    
 
     public void rotateBlock() {
         currentBlock.rotateClockwise();

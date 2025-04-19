@@ -42,9 +42,9 @@ public class GameWindow {
     @FXML
     public void initialize() {
         board = new GameBoard();
+        drawBoardBorders();
         renderBoard();
         startAnimation();
-        drawBoardBorders();
 
         Media sound = new Media(getClass().getResource("mainwindow.mp3").toExternalForm());
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
@@ -53,13 +53,40 @@ public class GameWindow {
         mediaPlayer.setOnEndOfMedia(()-> {
             stopMedia();
         });
+
+        // ensure gameArea can receive key pressed events
+        gameArea.setFocusTraversable(true);
+        gameArea.requestFocus();
+
+        gameArea.setOnKeyPressed(event -> {
+            switch (event.getCode()) {
+                case LEFT, A -> {
+                    board.moveBlockLeft();
+                    renderBoard();
+                }
+                case RIGHT, D -> {
+                    board.moveBlockRight();
+                    renderBoard();
+                }
+                case DOWN, S -> {
+                    board.dropBlock();
+                    renderBoard();
+                }
+                case UP, W -> {
+                    board.rotateBlock();
+                    renderBoard();
+                }
+            }
+        });
+        gameArea.setOnMouseClicked(e -> gameArea.requestFocus());
     }
 
+    // begin game timeline cycle
     private void startAnimation() {
         timeline = new Timeline(new KeyFrame(Duration.millis(500), event -> {
-            board.dropBlock(); // move the block down
+            board.dropBlock(); // move block down one
             renderBoard(); // re-render the entire board
-            // TODO: add collision logic later
+
         }));
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
@@ -146,7 +173,6 @@ public class GameWindow {
             }
         }
     }
-    
 
     private Rectangle renderSquare(Square square) {
         Rectangle rect = new Rectangle(CELL_SIZE, CELL_SIZE);
@@ -157,7 +183,6 @@ public class GameWindow {
         rect.setUserData("cell");
         return rect;
     }
-    
 
     private Color addColor(char code) {
         return switch (code) {
