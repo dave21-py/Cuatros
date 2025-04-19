@@ -2,7 +2,7 @@ package app;
 
 import java.io.IOException;
 
-import app.model.Square;
+import app.model.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -12,8 +12,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -29,107 +27,36 @@ public class GameWindow {
 
     private static final int CELL_SIZE = 30;
 
+    private GameBoard board;
+
     @FXML
     private Pane gameArea;
-    private ImageView tetrisBlock;
     private Timeline timeline;
 
     @FXML
     public void initialize() {
-        //Audio
-        Media sound = new Media(getClass().getResource("gamewindow.mp3").toExternalForm());
-        mediaPlayer = new MediaPlayer(sound);
+        board = new GameBoard();
+        renderBoard();
+        startAnimation();
+
+        Media sound = new Media(getClass().getResource("mainwindow.mp3").toExternalForm());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
 
         mediaPlayer.setOnEndOfMedia(()-> {
             stopMedia();
         });
-        // Teris block
-        tetrisBlock = new ImageView();
-        Image blockImage = new Image(getClass().getResource("/app/tetris_shape.png").toExternalForm());
-        tetrisBlock.setImage(blockImage);
-        tetrisBlock.setFitHeight(70);
-        tetrisBlock.setFitWidth(70);
-        tetrisBlock.setPreserveRatio(false);
-        tetrisBlock.setX(135);
-        tetrisBlock.setY(-70);
-        gameArea.getChildren().add(tetrisBlock);
-        startAnimation();
-        // Teris frame
-        ImageView frameOneBlock = new ImageView();
-        Image frameOneImage = new Image(getClass().getResource("/app/frame.png").toExternalForm());
-        frameOneBlock.setImage(frameOneImage);
-        frameOneBlock.setFitHeight(400);
-        frameOneBlock.setFitWidth(20);
-        frameOneBlock.setPreserveRatio(false);
-        frameOneBlock.setX(0);
-        frameOneBlock.setY(2);
-        gameArea.getChildren().add(frameOneBlock);
-
-        ImageView frameTwoBlock = new ImageView();
-        Image frameTwoImage = new Image(getClass().getResource("/app/frame.png").toExternalForm());
-        frameTwoBlock.setImage(frameTwoImage);
-        frameTwoBlock.setFitHeight(400);
-        frameTwoBlock.setFitWidth(20);
-        frameTwoBlock.setPreserveRatio(false);
-        frameTwoBlock.setX(0); // <---
-        frameTwoBlock.setY(182);
-        gameArea.getChildren().add(frameTwoBlock);
-
-        ImageView frameThreeBlock = new ImageView();
-        Image frameThreeImage = new Image(getClass().getResource("/app/frame3.png").toExternalForm());
-        frameThreeBlock.setImage(frameThreeImage);
-        frameThreeBlock.setFitHeight(19);
-        frameThreeBlock.setFitWidth(314);
-        frameThreeBlock.setPreserveRatio(false);
-        frameThreeBlock.setX(0);
-        frameThreeBlock.setY(-10);
-        gameArea.getChildren().add(frameThreeBlock);
-
-        ImageView frameFourBlock = new ImageView();
-        Image frameFourImage = new Image(getClass().getResource("/app/frame.png").toExternalForm());
-        frameFourBlock.setImage(frameFourImage);
-        frameFourBlock.setFitHeight(400);
-        frameFourBlock.setFitWidth(20);
-        frameFourBlock.setPreserveRatio(false);
-        frameFourBlock.setX(294);
-        frameFourBlock.setY(0);
-        gameArea.getChildren().add(frameFourBlock);
-
-        ImageView frameFiveBlock = new ImageView();
-        Image frameFiveImage = new Image(getClass().getResource("/app/frame.png").toExternalForm());
-        frameFiveBlock.setImage(frameFiveImage);
-        frameFiveBlock.setFitHeight(400);
-        frameFiveBlock.setFitWidth(20);
-        frameFiveBlock.setPreserveRatio(false);
-        frameFiveBlock.setX(294);
-        frameFiveBlock.setY(182);
-        gameArea.getChildren().add(frameFiveBlock);
-
-        ImageView frameSixBlock = new ImageView();
-        Image frameSixImage = new Image(getClass().getResource("/app/frame3.png").toExternalForm());
-        frameSixBlock.setImage(frameSixImage);
-        frameSixBlock.setFitHeight(19);
-        frameSixBlock.setFitWidth(314);
-        frameSixBlock.setPreserveRatio(false);
-        frameSixBlock.setX(0);
-        frameSixBlock.setY(573);
-        gameArea.getChildren().add(frameSixBlock);
-
     }
 
-    private void startAnimation() { // Animation for Falling down with 40ms timeframe
-        final double yPosition = 514; // Position to stop
-        timeline = new Timeline(new KeyFrame(Duration.millis(40), event -> {
-            tetrisBlock.setY(tetrisBlock.getY() + 5); // Moving 5pixels downn
-            if (tetrisBlock.getY() >= yPosition) {
-                tetrisBlock.setY(yPosition);
-                timeline.stop();
-            }
+    private void startAnimation() {
+        timeline = new Timeline(new KeyFrame(Duration.millis(500), event -> {
+            board.dropBlock(); // move the block down
+            renderBoard();     // re-render the entire board
         }));
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
     }
+    
 
     @FXML
     public void onPauseClicked(ActionEvent event) throws IOException {
@@ -174,6 +101,28 @@ public class GameWindow {
         }
     }
 
+    private void renderBoard() {
+        gameArea.getChildren().removeIf(node -> node instanceof Rectangle); // clear any old squares 
+    
+        // render squares on the board
+        Square[][] grid = board.getGrid();
+        for (int row = 0; row < grid.length; row++) {
+            for (int col = 0; col < grid[0].length; col++) {
+                Square square = grid[row][col];
+                if (square != null) {
+                    gameArea.getChildren().add(renderSquare(square));
+                }
+            }
+        }
+    
+        // ender the first active falling block
+        Block block = board.getCurrentBlock();
+        for (Square square : block.getSquares()) {
+            gameArea.getChildren().add(renderSquare(square));
+        }
+    }
+    
+
     private Rectangle renderSquare(Square square) {
         Rectangle rect = new Rectangle(CELL_SIZE, CELL_SIZE);
         rect.setX(square.getX() * CELL_SIZE);
@@ -195,9 +144,4 @@ public class GameWindow {
             default -> Color.GRAY;
         };
     }
-
-    // Block block = board.getCurrentBlock();
-    // for (Square sq : block.getSquares()) {
-    // Rectangle r = renderSquare(sq);
-    // gamePane.getChildren().add(r);
 }
