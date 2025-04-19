@@ -25,7 +25,13 @@ public class GameWindow {
     @FXML
     private MediaPlayer mediaPlayer;
 
-    private static final int CELL_SIZE = 30;
+    private static final int CELL_SIZE = 25;
+    private static final int GRID_ROWS = 20;
+    private static final int GRID_COLS = 10;
+    private static final int BORDER_THICKNESS = 1;
+
+    private static final int DISPLAY_ROWS = GRID_ROWS + 2 * BORDER_THICKNESS; // 22
+    private static final int DISPLAY_COLS = GRID_COLS + 2 * BORDER_THICKNESS; // 12
 
     private GameBoard board;
 
@@ -38,6 +44,7 @@ public class GameWindow {
         board = new GameBoard();
         renderBoard();
         startAnimation();
+        drawBoardBorders();
 
         Media sound = new Media(getClass().getResource("mainwindow.mp3").toExternalForm());
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
@@ -51,12 +58,12 @@ public class GameWindow {
     private void startAnimation() {
         timeline = new Timeline(new KeyFrame(Duration.millis(500), event -> {
             board.dropBlock(); // move the block down
-            renderBoard();     // re-render the entire board
+            renderBoard(); // re-render the entire board
+            // TODO: add collision logic later
         }));
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
     }
-    
 
     @FXML
     public void onPauseClicked(ActionEvent event) throws IOException {
@@ -101,9 +108,11 @@ public class GameWindow {
         }
     }
 
+    // render the 20 x 10 game board to the gameArea
     private void renderBoard() {
-        gameArea.getChildren().removeIf(node -> node instanceof Rectangle); // clear any old squares 
-    
+        // clear any old squares not tagged with cell (border squares)
+        gameArea.getChildren().removeIf(node -> node instanceof Rectangle && "cell".equals(node.getUserData()));
+
         // render squares on the board
         Square[][] grid = board.getGrid();
         for (int row = 0; row < grid.length; row++) {
@@ -114,23 +123,41 @@ public class GameWindow {
                 }
             }
         }
-    
+
         // ender the first active falling block
         Block block = board.getCurrentBlock();
         for (Square square : block.getSquares()) {
             gameArea.getChildren().add(renderSquare(square));
         }
     }
+
+    // render the borders of the board using Rectangle objects
+    private void drawBoardBorders() {
+        for (int row = 0; row < DISPLAY_ROWS; row++) {
+            for (int col = 0; col < DISPLAY_COLS; col++) {
+                if (row == 0 || row == DISPLAY_ROWS - 1 || col == 0 || col == DISPLAY_COLS - 1) {
+                    Rectangle border = new Rectangle(CELL_SIZE, CELL_SIZE);
+                    border.setX(col * CELL_SIZE);
+                    border.setY(row * CELL_SIZE);
+                    border.setFill(Color.GRAY);
+                    border.setStroke(Color.DARKGRAY);
+                    gameArea.getChildren().add(border);
+                }
+            }
+        }
+    }
     
 
     private Rectangle renderSquare(Square square) {
         Rectangle rect = new Rectangle(CELL_SIZE, CELL_SIZE);
-        rect.setX(square.getX() * CELL_SIZE);
-        rect.setY(square.getY() * CELL_SIZE);
+        rect.setX((square.getX() + BORDER_THICKNESS) * CELL_SIZE);
+        rect.setY((square.getY() + BORDER_THICKNESS) * CELL_SIZE);
         rect.setFill(addColor(square.getColorCode()));
         rect.setStroke(Color.BLACK);
+        rect.setUserData("cell");
         return rect;
     }
+    
 
     private Color addColor(char code) {
         return switch (code) {

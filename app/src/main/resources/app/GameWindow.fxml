@@ -5,7 +5,6 @@
 <?import javafx.scene.text.*?>
 
 
-
 <HBox fx:controller="app.GameWindow" xmlns:fx="http://javafx.com/fxml"  stylesheets="@GameWindow.css"
     spacing="40" prefHeight="600" prefWidth="800" alignment="CENTER">
 
@@ -20,7 +19,7 @@
         </VBox>
     </VBox>
 
-    <Pane fx:id="gameArea" prefHeight="500" prefWidth="320" style="-fx-background-color: black; -fx-border-color: white;" />
+    <Pane fx:id="gameArea" prefHeight="550" prefWidth="300" minHeight="550" minWidth="300" maxHeight="550" maxWidth="300"/>
 
 <VBox alignment="TOP_CENTER" spacing="60" prefWidth="200">
         <VBox alignment="CENTER" spacing="10">

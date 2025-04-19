@@ -27,19 +27,6 @@ public class GameBoard {
         spawnNewBlock();
     }
 
-    public void spawnNewBlock() {
-        // first block "O" block at top center
-        int center = cols / 2;
-        Square[] squares = new Square[] {
-                new Square(center, 0, 'Y'),
-                new Square(center + 1, 0, 'Y'),
-                new Square(center, 1, 'Y'),
-                new Square(center + 1, 1, 'Y')
-        };
-        Square pivot = squares[0]; // top-left of O block (no rotation effect)
-        currentBlock = new Block(squares, pivot);
-    }
-
     public Block getCurrentBlock() {
         return currentBlock;
     }
@@ -49,10 +36,6 @@ public class GameBoard {
     }
 
     // block actions
-    public void dropBlock() {
-        currentBlock.move(0, 1);
-    }
-
     public void moveBlockLeft() {
         currentBlock.move(-1, 0);
     }
@@ -65,5 +48,62 @@ public class GameBoard {
         currentBlock.rotateClockwise();
     }
 
-    // TODO: implement collision checks, line clearing, locking blocks
-}
+    public void dropBlock() {
+        if (canMoveDown()) {
+            currentBlock.move(0, 1);
+        } else {
+            lockBlock();       
+            spawnNewBlock();   // move on to next block
+        }
+    
+        notifyObservers();     // update the view
+    }
+    
+
+    public void spawnNewBlock() {
+        // first block "O" block at top center
+        int center = cols / 2;
+
+        // create surrounding squares 
+        Square[] squares = new Square[] {
+                new Square(center, 0, 'Y'),
+                new Square(center + 1, 0, 'Y'),
+                new Square(center, 1, 'Y'),
+                new Square(center + 1, 1, 'Y')
+        };
+        Square pivot = new Square(center, 0, 'Y'); // set to top-left of O block (no rotation effect)
+        currentBlock = new Block(squares, pivot);
+    }
+
+    // check if block should stop and spawn new block
+    public boolean canMoveDown() {
+        for (Square square : currentBlock.getSquares()) {
+            int newY = square.getY() + 1;
+    
+            // Check bottom of board
+            if (newY >= rows) {
+                return false;
+            }
+    
+            // Check collision with locked grid squares
+            if (grid[newY][square.getX()] != null) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    // keep block in place once in position
+    public void lockBlock() {
+        for (Square square : currentBlock.getSquares()) {
+            int x = square.getX();
+            int y = square.getY();
+    
+            if (y >= 0 && y < rows && x >= 0 && x < cols) {
+                grid[y][x] = new Square(x, y, square.getColorCode());
+            }
+        }
+    }
+    
+}    
+
