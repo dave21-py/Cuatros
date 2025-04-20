@@ -75,7 +75,7 @@ Click [this link](https://www.loom.com/share/7bd0ea2c24794fff97b0d08d0bfc6aed?si
 > + David Geddam [github.com](https://github.com/dave21-py)
 > + Daniel Cornelius [github.com](https://github.com/dcorn713)
 
-## Contact Us
+## Contact
 
 For any questions or concerns, please feel free to contact us
 + David Geddam [linkedin.com](https://www.linkedin.com/in/david-geddam/)
