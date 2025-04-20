@@ -12,23 +12,36 @@ width="400">
 
 Cuatros is a block puzzle game where players shift and rotate falling four-square shaped blocks to fill lines horizontally. As the lines of blocks are filled, the lines will be cleared, awarding the player points for each line cleared. As the game progresses, the blocks will fall at a higher rate and will require quicker decision making to survive. The game ends when the player's screen is filled to the top with no more space for another block to spawn. The score is calculated by how many blocks have been placed and the number of lines that have been cleared.
 
-## Story Points
-- Title Screen: 1 point
-- About Screen: 1 point
-- Scoring: 3 points
-- Difficulty Levels (Speed): 2 points
-- Sound Effects: 2 points
-- Help Screen: 1 point
-- Game Screen: 2 points
-- Game Play: 4 points
+## Story Points: Second Sprint Completion (13 Points)
+- Title Screen: 1 point  
+- About Screen: 1 point  
+- Help Screen: 1 point  
+- Game Music: 2 points  
+- Game Window: 1 point  
 
-## Additional features
-- Optional Cheat Mode: 3 points
-- Optional Game Levels (Points): 3 points
-- Optional Pause: 2 points
-- Optional Power-ups: 2 points
-- Optional Save/Load: 3 points
-- Optional Leaderboard: 2 points
+* Gameplay - Spawn Blocks: 1 point
+* Gameplay - Controls: 2 points
+* Gameplay - Rotate Block: 1 point
+* Gameplay - Collisions: 2 points
+* Gameplay - Pause Menu: 1 point
+
+## Final Sprint Targets (13 Points)
+- Scoring: 1 point
+- Difficulty Levels (Speed): 1 point
+- Leaderboard: 2 points
+- Sound Effects: 2 points
+
+* Gameplay - Randomize Block: 2 points
+* Gameplay - Show Next Blocks: 1 point
+* Gameplay - Line Clearing: 2 points
+* Gameplay - Hold Block: 2 points
+  
+### Additional features (11 Points)
+* Optional Cheat Mode: 3 points
+* Optional Game Levels: 3 points
+* Optional Power-ups: 2 points
+* Optional Save/Load: 3 points
+
 
 ## Expenses and Contributions
 
