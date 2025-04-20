@@ -56,7 +56,7 @@ The controls of this game are quite simple. You can navigate the current block b
 
 |      Name          | Total Hours | Journal |
 |--------------------|-------------|---------------              
-|    John Tam        |             | [John](https://github.com/bjucps209/group-project-team-jd/wiki/Project-Journal#john-tam)|
+|    John Tam        |      11     | [John](https://github.com/bjucps209/group-project-team-jd/wiki/Project-Journal#john-tam)|
 |   David Geddam     |             | [David](https://github.com/bjucps209/group-project-team-jd/wiki/Project-Journal#david-geddam)|
 |  Daniel Cornelius  |             | [Daniel](https://github.com/bjucps209/group-project-team-jd/wiki/Project-Journal#daniel-cornelius)|
 
