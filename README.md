@@ -53,6 +53,13 @@ The controls of this game are quite simple. You can navigate the current block b
 ## Game Preview (SECOND SPRINT)
 Click [this link](https://www.loom.com/share/7bd0ea2c24794fff97b0d08d0bfc6aed?sid=852407d6-2380-4e66-8276-b75fb81ea026) to see the a preview of the CUATROS run with the progress made so far.
 
+### CUATROS Title Screen
+<img width="789" alt="title screen preview" src="https://github.com/user-attachments/assets/13cbb713-13bb-4442-8268-c6c5e226212a" />
+
+### CUATROS Game Screen
+<img width="789" alt="game screen preview" src="https://github.com/user-attachments/assets/38eeb9bf-ac48-425f-8db6-363e1acb5c9d" />
+
+
 ## Expenses and Contributions
 
 
