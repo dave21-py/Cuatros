@@ -8,9 +8,17 @@ width="400">
   ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![JavaFX](https://img.shields.io/badge/javafx-%23FF0000.svg?style=for-the-badge&logo=javafx&logoColor=white) <img src="https://img.shields.io/badge/-HuggingFace-FDEE21?style=for-the-badge&logo=HuggingFace&logoColor=black" /> <img src="https://img.shields.io/badge/gradle-02303A?style=for-the-badge&logo=gradle&logoColor=white" /> <img src="https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white" /> <img src="https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white" />  
 
 
-## Overview
+## Instructions
 
 Cuatros is a block puzzle game where players shift and rotate falling four-square shaped blocks to fill lines horizontally. As the lines of blocks are filled, the lines will be cleared, awarding the player points for each line cleared. As the game progresses, the blocks will fall at a higher rate and will require quicker decision making to survive. The game ends when the player's screen is filled to the top with no more space for another block to spawn. The score is calculated by how many blocks have been placed and the number of lines that have been cleared.
+
+## Controls
+
+The controls of this game are quite simple. You can navigate the current block by either using the arrow keys or WASD.
+- LEFT ARROW / A - shift block left
+- RIGHT ARROW / D - shift block right
+- DOWN ARROW / W - move block down
+- UP ARROW / S - rotate block
 
 ## Story Points: Second Sprint Completion (13 Points)
 - Title Screen: 1 point  
