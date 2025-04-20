@@ -46,8 +46,8 @@ public class GameWindow {
         renderBoard();
         startAnimation();
 
-        Media sound = new Media(getClass().getResource("mainwindow.mp3").toExternalForm());
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        Media sound = new Media(getClass().getResource("gamewindow.mp3").toExternalForm());
+        mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
 
         mediaPlayer.setOnEndOfMedia(()-> {

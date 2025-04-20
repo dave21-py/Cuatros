@@ -8,6 +8,7 @@
 <VBox fx:id="vbox" fx:controller="app.MainWindow" xmlns:fx="http://javafx.com/fxml" stylesheets="@MainWindow.css"
     spacing="20" prefHeight="400" prefWidth="600" alignment="CENTER">
 
+
     <VBox alignment="CENTER" spacing="10">
     <Button styleClass="Button" text="Play ▶" prefWidth="200" onAction="#onPlayClicked"/>
     <Button styleClass="Button" text="Tutorial 🎓" prefWidth="200" onAction="#onTutorialClicked"/>

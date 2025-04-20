@@ -17,7 +17,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 public class MainWindow {
-
+    
     @FXML
     private ToggleGroup group;
 
