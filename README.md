@@ -66,7 +66,7 @@ Click [this link](https://www.loom.com/share/7bd0ea2c24794fff97b0d08d0bfc6aed?si
 |      Name          | Total Hours | Journal |
 |--------------------|-------------|---------------              
 |    John Tam        |      11     | [John](https://github.com/bjucps209/group-project-team-jd/wiki/Project-Journal#john-tam)|
-|   David Geddam     |             | [David](https://github.com/bjucps209/group-project-team-jd/wiki/Project-Journal#david-geddam)|
+|   David Geddam     |      12     | [David](https://github.com/bjucps209/group-project-team-jd/wiki/Project-Journal#david-geddam)|
 |  Daniel Cornelius  |             | [Daniel](https://github.com/bjucps209/group-project-team-jd/wiki/Project-Journal#daniel-cornelius)|
 
 ## Credits
