@@ -44,3 +44,19 @@
     -fx-padding: 10;
 
 }
+
+.Button2{
+    -fx-background-color: black;
+    -fx-text-fill: white;
+    -fx-border-color: cyan;
+    -fx-border-width: 3px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-cursor: hand;
+}
+.Button2:hover{
+    -fx-border-color: rgb(141, 8, 141);
+    -fx-background-color: cyan;
+    -fx-text-fill: black;
+    
+}

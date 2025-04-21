@@ -5,14 +5,22 @@
 
 <VBox fx:controller="app.Help" xmlns:fx="http://javafx.com/fxml" stylesheets="@Help.css"
  prefHeight="400" prefWidth="600" alignment="CENTER">
-    <VBox alignment="TOP_CENTER" >
+    <VBox alignment="CENTER" >
     <Label wrapText="true"
-    text="Help" style="-fx-font-size: 50px; -fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-text-fill: black;"/>
+    text="Controls" style="-fx-font-size: 50px; -fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-text-fill: black;"/>
     <Label wrapText="true"
-    text="Coming soon."
+    text="The controls of this game are quite simple. You can navigate the current block by either using the arrow keys or WASD."
     style="-fx-font-size: 20px; -fx-font-family: 'Arial'; -fx-text-fill: black; -fx-font-weight: bold;" />
+    <Label wrapText="true"
+    style="-fx-font-size: 20px; -fx-font-family: 'Arial'; -fx-text-fill: black; -fx-font-weight: bold;"
+    text="LEFT ARROW / A - shift block left\n
+    RIGHT ARROW / D - shift block right\n
+    DOWN ARROW / W - move block down\n
+    UP ARROW / S - rotate block" />
+    
     </VBox>
-    <HBox spacing="10" alignment="CENTER" style="-fx-padding: 40 10 10 10"> <!--50 moves up-->
+    <HBox spacing="10" alignment="CENTER" style="-fx-padding: 50 10 10 10"> <!--50 moves up-->
     <Button text="BACK" styleClass="backbutton" onAction="#onBackClicked" prefWidth="100" prefHeight="40" />
+    <Label text="© Project-JD" style="-fx-font-size: 25px; -fx-font-family: 'Arial'; -fx-text-fill: black; -fx-font-weight: bold;"/>
     </HBox>
     </VBox>

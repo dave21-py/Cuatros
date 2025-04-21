@@ -27,6 +27,7 @@
             <Pane prefHeight="250" prefWidth="120" style="-fx-border-color: white; -fx-border-radius: 20;" styleClass="next"/>
         </VBox>
         <VBox alignment="CENTER" spacing="10" VBox.vgrow="ALWAYS">
+        <Button fx:id="muteButton" text="🔇" prefWidth="90" onAction="#onMuteClicked" styleClass="Button2"/>
         <Button text="⏸" prefWidth="50" prefHeight="50" style="-fx-font-size: 20px" styleClass="pause" onAction="#onPauseClicked"/>
     </VBox>
     </VBox>

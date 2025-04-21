@@ -26,6 +26,7 @@
     </VBox>
     <Region prefWidth="550"/> 
     <VBox alignment="BOTTOM_RIGHT" spacing="10" >
+    <Button fx:id="muteButton" text="🔇" prefWidth="90" onAction="#onMuteClicked" styleClass="Button2"/>
     <Button styleClass="Button2" text="Settings ⚙️" prefWidth="120" onAction="#onSettingsClicked"/>
     </VBox>
     </HBox>

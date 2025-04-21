@@ -19,6 +19,6 @@
     -fx-border-color: rgb(141, 8, 141);
     /* -fx-background-color: linear-gradient(to right,
     cyan, blue, orange, yellow, greenyellow, indigo, red); */
-
-    -fx-text-fill: #fad819;
+    -fx-text-fill: black;;
+    -fx-background-color: cyan;
 }

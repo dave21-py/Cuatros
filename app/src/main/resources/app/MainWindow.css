@@ -15,9 +15,7 @@
 }
 .Button:hover{
     -fx-border-color: rgb(141, 8, 141);
-    -fx-background-color: linear-gradient(to right,
-    cyan, blue, orange, yellow, greenyellow, indigo, red);
-
+    -fx-background-color: yellow;
     -fx-text-fill: black;
     
 }
@@ -33,9 +31,7 @@
 }
 .Button2:hover{
     -fx-border-color: rgb(141, 8, 141);
-    -fx-background-color: linear-gradient(to right,
-    cyan, blue, orange, yellow, greenyellow, indigo, red);
-
+    -fx-background-color: cyan;
     -fx-text-fill: black;
     
 }

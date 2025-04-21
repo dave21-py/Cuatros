@@ -12,6 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -21,6 +22,11 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class GameWindow {
+
+    @FXML
+    private Button muteButton;
+
+    private boolean isMuted;
 
     @FXML
     private MediaPlayer mediaPlayer;
@@ -196,4 +202,21 @@ public class GameWindow {
             default -> Color.GRAY;
         };
     }
+
+    //Mute button
+    @FXML
+    void onMuteClicked(){
+        if(mediaPlayer != null){
+            if(isMuted == false){
+                mediaPlayer.setMute(true);
+                muteButton.setText("Unmute 🔈");
+                isMuted = true;
+
+            }else{
+            mediaPlayer.setMute(false);
+            muteButton.setText("Mute 🔇");
+            isMuted = false;
+        }
+    }
+}
 }

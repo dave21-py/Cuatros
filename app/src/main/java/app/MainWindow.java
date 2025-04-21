@@ -9,14 +9,18 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import javafx.scene.control.Button;
 
 public class MainWindow {
+
+    @FXML
+    private Button muteButton;
+
+    private boolean isMuted;
 
     @FXML
     private ToggleGroup group;
@@ -141,5 +145,22 @@ public class MainWindow {
             mediaPlayer = null;
         }
     }
+
+    //Mute button
+    @FXML
+    void onMuteClicked(){
+        if(mediaPlayer != null){
+            if(isMuted == false){
+                mediaPlayer.setMute(true);
+                muteButton.setText("Unmute 🔈");
+                isMuted = true;
+
+            }else{
+            mediaPlayer.setMute(false);
+            muteButton.setText("Mute 🔇");
+            isMuted = false;
+        }
+    }
+}
 }
 
