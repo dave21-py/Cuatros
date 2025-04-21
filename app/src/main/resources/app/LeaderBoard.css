@@ -7,11 +7,18 @@
 
 }
 .backbutton{
-    -fx-text-fill: white;
     -fx-background-color: black;
+    -fx-text-fill: white;
+    -fx-border-color: cyan;
+    -fx-border-width: 2px;
     -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-cursor: hand;
 }
 .backbutton:hover{
-    -fx-text-fill:black;
-    -fx-background-color: greenyellow;
+    -fx-border-color: rgb(141, 8, 141);
+    /* -fx-background-color: linear-gradient(to right,
+    cyan, blue, orange, yellow, greenyellow, indigo, red); */
+
+    -fx-text-fill: #fad819;
 }

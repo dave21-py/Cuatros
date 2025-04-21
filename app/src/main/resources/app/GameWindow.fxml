@@ -5,7 +5,7 @@
 <?import javafx.scene.text.*?>
 
 
-<HBox fx:controller="app.GameWindow" xmlns:fx="http://javafx.com/fxml"  stylesheets="@GameWindow.css"
+<HBox fx:id="hbox" fx:controller="app.GameWindow" xmlns:fx="http://javafx.com/fxml"  stylesheets="@GameWindow.css"
     spacing="40" prefHeight="600" prefWidth="800" alignment="CENTER">
 
     <VBox alignment="TOP_CENTER" spacing="60" prefWidth="200">

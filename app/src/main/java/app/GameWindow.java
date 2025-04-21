@@ -46,11 +46,11 @@ public class GameWindow {
         renderBoard();
         startAnimation();
 
-        Media sound = new Media(getClass().getResource("mainwindow.mp3").toExternalForm());
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        Media sound = new Media(getClass().getResource("gamewindow.mp3").toExternalForm());
+        mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
 
-        mediaPlayer.setOnEndOfMedia(()-> {
+        mediaPlayer.setOnEndOfMedia(() -> {
             stopMedia();
         });
 
@@ -58,6 +58,7 @@ public class GameWindow {
         gameArea.setFocusTraversable(true);
         gameArea.requestFocus();
 
+        // keyboard inputs 
         gameArea.setOnKeyPressed(event -> {
             switch (event.getCode()) {
                 case LEFT, A -> {
@@ -120,15 +121,14 @@ public class GameWindow {
                     e.printStackTrace();
                 }
                 stopMedia();
-
             }
         });
-    
+
     }
 
     @FXML
-    public void stopMedia(){
-        if(mediaPlayer != null){
+    public void stopMedia() {
+        if (mediaPlayer != null) {
             mediaPlayer.stop();
             mediaPlayer.dispose();
             mediaPlayer = null;
@@ -151,7 +151,7 @@ public class GameWindow {
             }
         }
 
-        // ender the first active falling block
+        // render the first active falling block
         Block block = board.getCurrentBlock();
         for (Square square : block.getSquares()) {
             gameArea.getChildren().add(renderSquare(square));

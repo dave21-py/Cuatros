@@ -39,7 +39,7 @@ public class Tutorial{
         
         // Video(480p)
 
-        Media video = new Media(getClass().getResource("title.mp4").toExternalForm());
+        Media video = new Media(getClass().getResource("tutorial.mp4").toExternalForm());
         videoPlayer = new MediaPlayer(video);
         mediaView.setMediaPlayer(videoPlayer);
         videoPlayer.play();
