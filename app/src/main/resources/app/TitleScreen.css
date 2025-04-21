@@ -4,6 +4,8 @@
     -fx-border-radius: 20px;
 }
 .skipbutton:hover{
-    -fx-text-fill:black;
-    -fx-background-color: greenyellow;
+    -fx-background-color: linear-gradient(to right,
+    cyan, blue, orange, yellow, greenyellow, indigo, red);
+
+    -fx-text-fill: black;
 }

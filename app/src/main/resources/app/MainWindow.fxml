@@ -8,23 +8,25 @@
 <VBox fx:id="vbox" fx:controller="app.MainWindow" xmlns:fx="http://javafx.com/fxml" stylesheets="@MainWindow.css"
     spacing="20" prefHeight="400" prefWidth="600" alignment="CENTER">
 
+    <Pane fx:id="logo" prefWidth="600" prefHeight="900" styleClass="logo-banner"/>
+
 
     <VBox alignment="CENTER" spacing="10">
-    <Button styleClass="Button" text="Play ▶" prefWidth="200" onAction="#onPlayClicked"/>
-    <Button styleClass="Button" text="Tutorial 🎓" prefWidth="200" onAction="#onTutorialClicked"/>
-    <Button styleClass="Button" text="Leaderboard 🏆" prefWidth="200" onAction="#onLeaderBoardClicked"/>
+    <Button styleClass="Button" text="Play ▶" prefWidth="120" prefHeight="250" onAction="#onPlayClicked"/>
+    <Button styleClass="Button" text="Tutorial 🎓" prefWidth="120" prefHeight="250" onAction="#onTutorialClicked"/>
+    <Button styleClass="Button" text="Leaderboard 🏆" prefWidth="120" prefHeight="250" onAction="#onLeaderBoardClicked"/>
     </VBox>
 
     <Region prefHeight="50"/>
 
     <HBox alignment="BOTTOM_CENTER" spacing="10" prefWidth="80">
     <VBox alignment="BOTTOM_LEFT" spacing="10" >
-    <Button styleClass="Button" text="Help ❔" prefWidth="100" onAction="#onHelpClicked"/>
-    <Button styleClass="Button" onAction="#onAboutClicked" text="About 📖" prefWidth="120"/>
+    <Button styleClass="Button2" text="Help ❔" prefWidth="90" onAction="#onHelpClicked"/>
+    <Button styleClass="Button2" onAction="#onAboutClicked" text="About 📖" prefWidth="100"/>
     </VBox>
     <Region prefWidth="550"/> 
     <VBox alignment="BOTTOM_RIGHT" spacing="10" >
-    <Button styleClass="Button" text="Settings ⚙️" prefWidth="125" onAction="#onSettingsClicked"/>
+    <Button styleClass="Button2" text="Settings ⚙️" prefWidth="120" onAction="#onSettingsClicked"/>
     </VBox>
     </HBox>
 

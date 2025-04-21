@@ -17,7 +17,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 public class MainWindow {
-    
+
     @FXML
     private ToggleGroup group;
 
@@ -50,14 +50,7 @@ public class MainWindow {
         mediaPlayer.setOnEndOfMedia(() ->  {
             stopMedia();
     
-        }); 
-
-        ImageView imageView = new ImageView();
-        Image image = new Image(getClass().getResource("title.png").toExternalForm());
-        imageView.setImage(image);
-        imageView.setFitHeight(300.0);
-        imageView.setFitWidth(600.0);
-        vbox.getChildren().add(0, imageView);
+        });
     }
 
     @FXML

@@ -7,16 +7,60 @@
 .Button {
     -fx-background-color: black;
     -fx-text-fill: white;
-    -fx-font-size: 20px;
-    -fx-background-radius: 20;
+    -fx-border-color: yellow;
+    -fx-border-width: 3px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
     -fx-cursor: hand;
 }
 .Button:hover{
+    -fx-border-color: rgb(141, 8, 141);
     -fx-background-color: linear-gradient(to right,
     cyan, blue, orange, yellow, greenyellow, indigo, red);
 
     -fx-text-fill: black;
+    
 }
 
+.Button2{
+    -fx-background-color: black;
+    -fx-text-fill: white;
+    -fx-border-color: cyan;
+    -fx-border-width: 3px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-cursor: hand;
+}
+.Button2:hover{
+    -fx-border-color: rgb(141, 8, 141);
+    -fx-background-color: linear-gradient(to right,
+    cyan, blue, orange, yellow, greenyellow, indigo, red);
+
+    -fx-text-fill: black;
+    
+}
+
+#vbox{
+    -fx-background-image: url("background.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+    -fx-background-size: cover;
+    -fx-padding: 10;
+
+}
+
+.logo-banner{
+    -fx-background-image: url("logo.png");
+    -fx-background-size: 100% 100%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-padding: 10;
+}
+.logo-banner:hover{
+    -fx-scale-x: 1.10;
+    -fx-scale-y: 1.10;
+    -fx-cursor: hand;
+
+}
 
 
