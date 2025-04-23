@@ -5,6 +5,8 @@
 } 
 
 .Button {
+    -fx-font-family: 'Courier New';
+    -fx-font-size: 19px;
     -fx-background-color: black;
     -fx-text-fill: white;
     -fx-border-color: yellow;
@@ -14,13 +16,15 @@
     -fx-cursor: hand;
 }
 .Button:hover{
-    -fx-border-color: rgb(141, 8, 141);
+    -fx-border-color: black;
     -fx-background-color: yellow;
     -fx-text-fill: black;
-    
-}
+    -fx-effect: dropshadow(gaussian,yellow, 25, 0.4, 0, 0);  /*gaussian(blur)*/
+} 
 
 .Button2{
+    -fx-font-family: 'Courier New';
+    -fx-font-size: 13px;
     -fx-background-color: black;
     -fx-text-fill: white;
     -fx-border-color: cyan;
@@ -30,9 +34,10 @@
     -fx-cursor: hand;
 }
 .Button2:hover{
-    -fx-border-color: rgb(141, 8, 141);
+    -fx-border-color: black;
     -fx-background-color: cyan;
     -fx-text-fill: black;
+    -fx-effect: dropshadow(gaussian, cyan, 20, 0.4, 0, 0);
     
 }
 

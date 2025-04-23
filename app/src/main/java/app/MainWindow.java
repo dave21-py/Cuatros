@@ -2,6 +2,8 @@ package app;
 
 import java.io.IOException;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
@@ -33,10 +36,13 @@ public class MainWindow {
     @FXML
     void onPlayClicked(ActionEvent event) {
         try {
-            Parent gameRoot = FXMLLoader.load(getClass().getResource("/app/GameWindow.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/LoadingScreen.fxml"));
+            Parent loadingRoot = loader.load();
+            LoadingScreen controller = loader.getController();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(gameRoot, 800, 600));
-            stage.setTitle("GameWindow");
+            controller.setPrimaryStage(stage);
+            stage.setScene(new Scene(loadingRoot, 800, 600));
+            stage.setTitle("Loading....");
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -55,7 +61,9 @@ public class MainWindow {
             stopMedia();
     
         });
+
     }
+
 
     @FXML
     void onAboutClicked(ActionEvent event) {
@@ -152,15 +160,18 @@ public class MainWindow {
         if(mediaPlayer != null){
             if(isMuted == false){
                 mediaPlayer.setMute(true);
-                muteButton.setText("Unmute 🔈");
+                muteButton.setText("🔈");
                 isMuted = true;
 
             }else{
             mediaPlayer.setMute(false);
-            muteButton.setText("Mute 🔇");
+            muteButton.setText("🔇");
             isMuted = false;
         }
-    }
+        }
 }
+
+    
+
 }
 

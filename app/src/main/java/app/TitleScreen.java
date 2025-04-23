@@ -11,9 +11,17 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
+import javafx.animation.FadeTransition;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.util.Duration;
+import javafx.scene.text.Text;
 
 
 public class TitleScreen{
+
+    @FXML
+    private Text jdText;
 
     @FXML
     private MediaPlayer mediaPlayer;
@@ -39,10 +47,21 @@ public class TitleScreen{
         
         // Video(480p)
 
-        Media video = new Media(getClass().getResource("title.mp4").toExternalForm());
+        Media video = new Media(getClass().getResource("project.mp4").toExternalForm());
         videoPlayer = new MediaPlayer(video);
         mediaView.setMediaPlayer(videoPlayer);
         videoPlayer.play();
+
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(4),e ->{
+            jdText.setVisible(true);
+        }));
+        timeline.play();
+
+        Timeline hideTimeline = new Timeline(new KeyFrame(Duration.seconds(5.5), e -> {
+            jdText.setVisible(false);
+        }));
+        hideTimeline.play();
+
 
         videoPlayer.setOnEndOfMedia(() -> {
             stopMedia();
@@ -72,11 +91,16 @@ public class TitleScreen{
         @FXML
         public void stopVideo(){
             try {
-                Parent mainWindowRoot = FXMLLoader.load(getClass().getResource("/app/MainWindow.fxml"));
-                Scene mainWindowScene = new Scene(mainWindowRoot, 800, 600);
-                primaryStage.setScene(mainWindowScene);
-                primaryStage.setTitle("Cuatros");
-                primaryStage.show();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/MainWindow.fxml"));
+                Parent root = loader.load();
+                Stage stage = this.primaryStage;
+                stage.setScene(new Scene(root, 800, 600));
+                stage.setTitle("Cuatros");
+                stage.show();
+                FadeTransition fadeIn = new FadeTransition(Duration.millis(1000), root);
+                fadeIn.setFromValue(0);   
+                fadeIn.setToValue(1);
+                fadeIn.play();
             } catch (IOException e) {
                 e.printStackTrace();
             }

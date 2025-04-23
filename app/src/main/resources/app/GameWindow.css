@@ -13,6 +13,7 @@
 }
 .hold:hover{
     -fx-background-color: grey;
+    -fx-effect: dropshadow(gaussian, cyan, 20, 0.4, 0, 0);
 }
 .score{
     -fx-background-color: black;
@@ -20,6 +21,7 @@
 }
 .score:hover{
     -fx-background-color: grey;
+    -fx-effect: dropshadow(gaussian, cyan, 20, 0.4, 0, 0);
 }
 .next{ /*Next*/
     -fx-background-color: black;
@@ -27,6 +29,7 @@
 }
 .next:hover{
     -fx-background-color: grey;
+    -fx-effect: dropshadow(gaussian, cyan, 20, 0.4, 0, 0);
 }
 .pause{
     -fx-background-color: black;
@@ -34,6 +37,7 @@
 }
 .pause:hover{
     -fx-background-color: grey;
+    -fx-effect: dropshadow(gaussian, cyan, 20, 0.4, 0, 0);
 }
 
 #hbox{
@@ -58,5 +62,6 @@
     -fx-border-color: rgb(141, 8, 141);
     -fx-background-color: cyan;
     -fx-text-fill: black;
+    -fx-effect: dropshadow(gaussian, cyan, 20, 0.4, 0, 0);
     
 }

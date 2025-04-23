@@ -209,12 +209,12 @@ public class GameWindow {
         if(mediaPlayer != null){
             if(isMuted == false){
                 mediaPlayer.setMute(true);
-                muteButton.setText("Unmute 🔈");
+                muteButton.setText("🔈");
                 isMuted = true;
 
             }else{
             mediaPlayer.setMute(false);
-            muteButton.setText("Mute 🔇");
+            muteButton.setText("🔇");
             isMuted = false;
         }
     }

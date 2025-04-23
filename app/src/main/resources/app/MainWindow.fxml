@@ -13,8 +13,8 @@
 
     <VBox alignment="CENTER" spacing="10">
     <Button styleClass="Button" text="Play ▶" prefWidth="120" prefHeight="250" onAction="#onPlayClicked"/>
-    <Button styleClass="Button" text="Tutorial 🎓" prefWidth="120" prefHeight="250" onAction="#onTutorialClicked"/>
-    <Button styleClass="Button" text="Leaderboard 🏆" prefWidth="120" prefHeight="250" onAction="#onLeaderBoardClicked"/>
+    <Button styleClass="Button" text="Tutorial 🎓" prefWidth="180" prefHeight="250" onAction="#onTutorialClicked"/>
+    <Button styleClass="Button" text="Leaderboard 🏆" prefWidth="200" prefHeight="250" onAction="#onLeaderBoardClicked"/>
     </VBox>
 
     <Region prefHeight="50"/>
