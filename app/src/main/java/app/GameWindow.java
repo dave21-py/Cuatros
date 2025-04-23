@@ -6,6 +6,7 @@ import app.model.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -13,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -59,33 +61,6 @@ public class GameWindow {
         mediaPlayer.setOnEndOfMedia(() -> {
             stopMedia();
         });
-
-        // ensure gameArea can receive key pressed events
-        gameArea.setFocusTraversable(true);
-        gameArea.requestFocus();
-
-        // keyboard inputs 
-        gameArea.setOnKeyPressed(event -> {
-            switch (event.getCode()) {
-                case LEFT, A -> {
-                    board.moveBlockLeft();
-                    renderBoard();
-                }
-                case RIGHT, D -> {
-                    board.moveBlockRight();
-                    renderBoard();
-                }
-                case DOWN, S -> {
-                    board.dropBlock();
-                    renderBoard();
-                }
-                case UP, W -> {
-                    board.rotateBlock();
-                    renderBoard();
-                }
-            }
-        });
-        gameArea.setOnMouseClicked(e -> gameArea.requestFocus());
     }
 
     // begin game timeline cycle
@@ -97,6 +72,36 @@ public class GameWindow {
         }));
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
+
+          // ensure gameArea can receive key pressed events
+        gameArea.setFocusTraversable(true);
+        gameArea.requestFocus();
+
+        gameArea.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                switch (event.getCode()) {
+                    case LEFT -> {
+                        board.moveBlockLeft();
+                        renderBoard();
+                    }
+                    case RIGHT -> {
+                        board.moveBlockRight();
+                        renderBoard();
+                    }
+                    case DOWN -> {
+                        board.dropBlock();
+                        renderBoard();
+                    }
+                    case UP -> {
+                        board.rotateBlock();
+                        renderBoard();
+                    }
+                }
+                gameArea.setOnMouseClicked(e -> gameArea.requestFocus());
+                event.consume();
+            }
+        });
     }
 
     @FXML
@@ -203,20 +208,20 @@ public class GameWindow {
         };
     }
 
-    //Mute button
+    // Mute button
     @FXML
-    void onMuteClicked(){
-        if(mediaPlayer != null){
-            if(isMuted == false){
+    void onMuteClicked() {
+        if (mediaPlayer != null) {
+            if (isMuted == false) {
                 mediaPlayer.setMute(true);
                 muteButton.setText("🔈");
                 isMuted = true;
 
-            }else{
-            mediaPlayer.setMute(false);
-            muteButton.setText("🔇");
-            isMuted = false;
+            } else {
+                mediaPlayer.setMute(false);
+                muteButton.setText("🔇");
+                isMuted = false;
+            }
         }
     }
-}
 }
