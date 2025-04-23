@@ -10,7 +10,7 @@
 <MediaView fx:id="mediaView" fitWidth="800" fitHeight="600" preserveRatio="false"/>
 
 <VBox alignment="CENTER" spacing="5">
-<Text fx:id="jdText" text="JD" visible="false" style="-fx-text-fill: white; -fx-font-size: 47px; -fx-font-weight: bold;"/>
+<Text fx:id="jdText" text="JD" visible="false" style=" -fx-font-size: 52px; -fx-font-weight: bold;" styleClass="jdtext"/>
 </VBox>
 
 <VBox spacing="10" alignment="BOTTOM_RIGHT" style="-fx-padding: 50 10 10 10"> <!--70 moves up-->

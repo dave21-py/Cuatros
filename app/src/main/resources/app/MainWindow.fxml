@@ -3,10 +3,15 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+<?import javafx.scene.media.MediaView?>
 
 
-<VBox fx:id="vbox" fx:controller="app.MainWindow" xmlns:fx="http://javafx.com/fxml" stylesheets="@MainWindow.css"
-    spacing="20" prefHeight="400" prefWidth="600" alignment="CENTER">
+<StackPane fx:id="mainWindowRoot" fx:controller="app.MainWindow" xmlns:fx="http://javafx.com/fxml" stylesheets="@MainWindow.css">
+
+<MediaView fx:id="mediaView" fitWidth="800" fitHeight="600" preserveRatio="false"/>
+
+
+<VBox fx:id="vbox" spacing="20" prefHeight="400" prefWidth="600" alignment="CENTER">
 
     <Pane fx:id="logo" prefWidth="600" prefHeight="900" styleClass="logo-banner"/>
 
@@ -32,4 +37,5 @@
     </HBox>
 
 </VBox>
+</StackPane>
     
