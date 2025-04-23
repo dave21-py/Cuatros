@@ -2,6 +2,7 @@ package app;
 
 import java.io.IOException;
 
+import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -16,6 +17,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import javafx.scene.control.Button;
 
 public class MainWindow {
@@ -47,6 +49,10 @@ public class MainWindow {
             stage.setScene(new Scene(loadingRoot, 800, 600));
             stage.setTitle("Loading....");
             stage.show();
+            FadeTransition fadeIn = new FadeTransition(Duration.millis(1000), loadingRoot);
+                fadeIn.setFromValue(0);   
+                fadeIn.setToValue(2);
+                fadeIn.play();
         } catch (IOException e) {
             e.printStackTrace();
         }

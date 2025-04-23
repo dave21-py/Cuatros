@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
@@ -30,6 +31,9 @@ public class GameWindow {
 
     @FXML
     private MediaPlayer mediaPlayer;
+
+    @FXML
+    private MediaView mediaView;
 
     private static final int CELL_SIZE = 25;
     private static final int GRID_ROWS = 20;
@@ -55,6 +59,14 @@ public class GameWindow {
         Media sound = new Media(getClass().getResource("gamewindow.mp3").toExternalForm());
         mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
+
+        Media video =  new Media(getClass().getResource("animation.mp4").toExternalForm());
+        MediaPlayer bPlayer = new MediaPlayer(video);
+        bPlayer.setCycleCount(MediaPlayer.INDEFINITE); 
+        bPlayer.setMute(true);
+        bPlayer.play();
+        mediaView.setMediaPlayer(bPlayer);
+
 
         mediaPlayer.setOnEndOfMedia(() -> {
             stopMedia();
