@@ -57,7 +57,7 @@ public class TitleScreen{
         }));
         timeline.play();
 
-        Timeline hideTimeline = new Timeline(new KeyFrame(Duration.seconds(5.5), e -> {
+        Timeline hideTimeline = new Timeline(new KeyFrame(Duration.seconds(5.8), e -> {
             jdText.setVisible(false);
         }));
         hideTimeline.play();
