@@ -62,7 +62,7 @@ public class MainWindow {
 
         Media video =  new Media(getClass().getResource("animation.mp4").toExternalForm());
         MediaPlayer bPlayer = new MediaPlayer(video);
-        bPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        bPlayer.setCycleCount(MediaPlayer.INDEFINITE); 
         bPlayer.setMute(true);
         bPlayer.play();
         mediaView.setMediaPlayer(bPlayer);
