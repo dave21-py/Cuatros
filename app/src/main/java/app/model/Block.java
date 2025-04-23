@@ -48,6 +48,7 @@ public class Block {
         };
     }
     
+    // block 1: o shape (square)
     public static Block createBlock1() {
         Square[] shape = new Square[] {
                 new Square(5, 0, 'Y'),
@@ -59,6 +60,7 @@ public class Block {
         return new Block(shape, pivot);
     }
 
+    // block 2: 4-long shape
     public static Block createBlock2() {
         Square[] shape = new Square[] {
                 new Square(5, 0, 'C'),
@@ -70,6 +72,7 @@ public class Block {
         return new Block(shape, pivot);
     }
 
+    // block 3: Z shape
     public static Block createBlock3() {
         Square[] shape = new Square[] {
                 new Square(5, 0, 'G'),
@@ -81,6 +84,7 @@ public class Block {
         return new Block(shape, pivot);
     }
 
+    // block 4: J shape
     public static Block createBlock4() {
         Square[] shape = new Square[] {
                 new Square(4, 0, 'B'),
@@ -92,6 +96,7 @@ public class Block {
         return new Block(shape, pivot);
     }
 
+    // block 5: L shape
     public static Block createBlock5() {
         Square[] shape = new Square[] {
                 new Square(4, 0, 'O'),
@@ -103,6 +108,7 @@ public class Block {
         return new Block(shape, pivot);
     }
 
+    // block 6: S shape
     public static Block createBlock6() {
         Square[] shape = new Square[] {
                 new Square(5, 0, 'R'),
@@ -113,7 +119,8 @@ public class Block {
         Square pivot = new Square(5, 0, 'R');
         return new Block(shape, pivot);
     }
-
+    
+    // block 7: T shape
     public static Block createBlock7() {
         Square[] shape = new Square[] {
                 new Square(4, 0, 'P'),
