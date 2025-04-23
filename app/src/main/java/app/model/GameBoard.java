@@ -75,7 +75,8 @@ public class GameBoard {
         if (canMoveDown()) {
             currentBlock.move(0, 1);
         } else {
-            lockBlock();       
+            lockBlock();
+            // check line cleared
             spawnNewBlock();   // move on to next block
         }
     
@@ -84,18 +85,8 @@ public class GameBoard {
     
 
     public void spawnNewBlock() {
-        // first block "O" block at top center
-        int center = cols / 2;
-
-        // create surrounding squares 
-        Square[] squares = new Square[] {
-                new Square(center, 0, 'Y'),
-                new Square(center + 1, 0, 'Y'),
-                new Square(center, 1, 'Y'),
-                new Square(center + 1, 1, 'Y')
-        };
-        Square pivot = new Square(center, 0, 'Y'); // set to top-left of O block (no rotation effect)
-        currentBlock = new Block(squares, pivot);
+        Block nextBlock = Block.generateBlock();
+        currentBlock = new Block(nextBlock.getSquares(), nextBlock.getPivot());
     }
 
     // check if block should stop and spawn new block
@@ -103,12 +94,12 @@ public class GameBoard {
         for (Square square : currentBlock.getSquares()) {
             int newY = square.getY() + 1;
     
-            // Check bottom of board
+            // check bottom of board
             if (newY >= rows) {
                 return false;
             }
     
-            // Check collision with locked grid squares
+            // check collision with locked grid squares
             if (grid[newY][square.getX()] != null) {
                 return false;
             }
@@ -125,8 +116,8 @@ public class GameBoard {
             if (y >= 0 && y < rows && x >= 0 && x < cols) {
                 grid[y][x] = new Square(x, y, square.getColorCode());
             }
+
         }
     }
-    
 }    
 
