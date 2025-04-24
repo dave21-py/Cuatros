@@ -1,0 +1,20 @@
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.media.MediaView?>
+
+<StackPane fx:id="difficultyRoot" fx:controller="app.Difficulty" xmlns:fx="http://javafx.com/fxml" stylesheets="@Difficulty.css">
+
+<MediaView fx:id="mediaView" fitWidth="800" fitHeight="600" preserveRatio="false"/>
+
+
+<VBox fx:id="vbox" spacing="20" prefHeight="400" prefWidth="600" alignment="CENTER">
+    <Label text="Select Difficulty" style="-fx-font-size: 50px; -fx-font-family: 'Courier New'; -fx-font-weight: bold; -fx-fill: white;"/>
+    <Region prefHeight="30"/>
+
+    <Button text="Easy" styleClass="easy" onAction="#onEasyClicked"/>
+    <Button text="Medium" styleClass="medium" onAction="#onMediumClicked"/>
+    <Button text="Hard" styleClass="hard" onAction="#onHardClicked"/>
+
+    </VBox>
+    </StackPane>

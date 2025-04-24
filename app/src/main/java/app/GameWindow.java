@@ -27,6 +27,16 @@ import javafx.util.Duration;
 public class GameWindow {
 
     @FXML
+    private Duration fallAnimation = Duration.millis(500);
+
+    public void setFallAnimation(Duration animation){
+        this.fallAnimation = animation;
+        if(board != null){
+            startAnimation();
+        }
+    }
+
+    @FXML
     private Button muteButton;
 
     private boolean isMuted;
@@ -77,7 +87,7 @@ public class GameWindow {
 
     // begin game timeline cycle
     private void startAnimation() {
-        timeline = new Timeline(new KeyFrame(Duration.millis(500), event -> {
+        timeline = new Timeline(new KeyFrame(fallAnimation, event -> {
             board.dropBlock(); // move block down one
             renderBoard(); // re-render the entire board
 

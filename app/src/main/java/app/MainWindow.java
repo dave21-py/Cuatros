@@ -39,9 +39,9 @@ public class MainWindow {
     @FXML
     void onPlayClicked(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/LoadingScreen.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/Difficulty.fxml"));
             Parent loadingRoot = loader.load();
-            LoadingScreen controller = loader.getController();
+            Difficulty controller = loader.getController();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             controller.setPrimaryStage(stage);
             stage.setScene(new Scene(loadingRoot, 800, 600));
