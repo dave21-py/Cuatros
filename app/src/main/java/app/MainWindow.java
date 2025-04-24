@@ -3,8 +3,6 @@ package app;
 import java.io.IOException;
 
 import javafx.animation.FadeTransition;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -72,7 +70,6 @@ public class MainWindow {
         bPlayer.setMute(true);
         bPlayer.play();
         mediaView.setMediaPlayer(bPlayer);
-
 
         mediaPlayer.setOnEndOfMedia(() ->  {
             stopMedia();
