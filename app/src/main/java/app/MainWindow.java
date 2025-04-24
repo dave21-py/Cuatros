@@ -91,6 +91,10 @@ public class MainWindow {
             stage.setScene(aboutScene);
             stage.setTitle("About");
             stage.show();
+            FadeTransition fadeIn = new FadeTransition(Duration.millis(1000), aboutRoot);
+                fadeIn.setFromValue(0);   
+                fadeIn.setToValue(2);
+                fadeIn.play();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -106,6 +110,10 @@ public class MainWindow {
             stage.setScene(settingsScene);
             stage.setTitle("Settings");
             stage.show();
+            FadeTransition fadeIn = new FadeTransition(Duration.millis(1000), settingsRoot);
+                fadeIn.setFromValue(0);   
+                fadeIn.setToValue(2);
+                fadeIn.play();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -124,6 +132,10 @@ public class MainWindow {
             stage.setScene(tutorialScene);
             stage.setTitle("Welcome to CUATROS Tutorial");
             stage.show();
+            FadeTransition fadeIn = new FadeTransition(Duration.millis(1000), tutorialRoot);
+                fadeIn.setFromValue(0);   
+                fadeIn.setToValue(2);
+                fadeIn.play();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -140,6 +152,10 @@ public class MainWindow {
             stage.setScene(new Scene(leaderBoardRoot, 800, 600));
             stage.setTitle("LeaderBoards");
             stage.show();
+            FadeTransition fadeIn = new FadeTransition(Duration.millis(1000), leaderBoardRoot);
+                fadeIn.setFromValue(0);   
+                fadeIn.setToValue(2);
+                fadeIn.play();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -156,6 +172,10 @@ public class MainWindow {
             stage.setScene(new Scene(helpRoot, 800, 600));
             stage.setTitle("Help");
             stage.show();
+            FadeTransition fadeIn = new FadeTransition(Duration.millis(1000), helpRoot);
+                fadeIn.setFromValue(0);   
+                fadeIn.setToValue(2);
+                fadeIn.play();
         } catch (IOException e) {
             e.printStackTrace();
         }

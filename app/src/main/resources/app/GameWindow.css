@@ -74,3 +74,6 @@
     -fx-padding: 10; */
 
 }
+#gameArea{
+    -fx-background-color: black;
+}
