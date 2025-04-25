@@ -87,6 +87,10 @@ public class GameWindow {
 
     // begin game timeline cycle
     private void startAnimation() {
+
+        if(timeline != null){ //Passes difficulty logic lol
+            timeline.stop();
+        }
         timeline = new Timeline(new KeyFrame(fallAnimation, event -> {
             board.dropBlock(); // move block down one
             renderBoard(); // re-render the entire board
