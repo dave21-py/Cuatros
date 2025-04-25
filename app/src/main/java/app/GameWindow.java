@@ -18,6 +18,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
@@ -26,12 +27,25 @@ import javafx.util.Duration;
 public class GameWindow {
 
     @FXML
+    private Duration fallAnimation = Duration.millis(500);
+
+    public void setFallAnimation(Duration animation){
+        this.fallAnimation = animation;
+        if(board != null){
+            startAnimation();
+        }
+    }
+
+    @FXML
     private Button muteButton;
 
     private boolean isMuted;
 
     @FXML
     private MediaPlayer mediaPlayer;
+
+    @FXML
+    private MediaView mediaView;
 
     private static final int CELL_SIZE = 25;
     private static final int GRID_ROWS = 20;
@@ -58,6 +72,14 @@ public class GameWindow {
         mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
 
+        Media video =  new Media(getClass().getResource("animation.mp4").toExternalForm());
+        MediaPlayer bPlayer = new MediaPlayer(video);
+        bPlayer.setCycleCount(MediaPlayer.INDEFINITE); 
+        bPlayer.setMute(true);
+        bPlayer.play();
+        mediaView.setMediaPlayer(bPlayer);
+
+
         mediaPlayer.setOnEndOfMedia(() -> {
             stopMedia();
         });
@@ -65,7 +87,11 @@ public class GameWindow {
 
     // begin game timeline cycle
     private void startAnimation() {
-        timeline = new Timeline(new KeyFrame(Duration.millis(500), event -> {
+
+        if(timeline != null){ //Passes difficulty logic lol
+            timeline.stop();
+        }
+        timeline = new Timeline(new KeyFrame(fallAnimation, event -> {
             board.dropBlock(); // move block down one
             renderBoard(); // re-render the entire board
 

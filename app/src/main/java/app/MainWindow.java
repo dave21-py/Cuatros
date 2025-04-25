@@ -2,8 +2,7 @@ package app;
 
 import java.io.IOException;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +15,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import javafx.scene.control.Button;
 
 public class MainWindow {
@@ -39,14 +39,18 @@ public class MainWindow {
     @FXML
     void onPlayClicked(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/LoadingScreen.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/Difficulty.fxml"));
             Parent loadingRoot = loader.load();
-            LoadingScreen controller = loader.getController();
+            Difficulty controller = loader.getController();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             controller.setPrimaryStage(stage);
             stage.setScene(new Scene(loadingRoot, 800, 600));
             stage.setTitle("Loading....");
             stage.show();
+            FadeTransition fadeIn = new FadeTransition(Duration.millis(1000), loadingRoot);
+                fadeIn.setFromValue(0);   
+                fadeIn.setToValue(2);
+                fadeIn.play();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -67,7 +71,6 @@ public class MainWindow {
         bPlayer.play();
         mediaView.setMediaPlayer(bPlayer);
 
-
         mediaPlayer.setOnEndOfMedia(() ->  {
             stopMedia();
     
@@ -85,6 +88,10 @@ public class MainWindow {
             stage.setScene(aboutScene);
             stage.setTitle("About");
             stage.show();
+            FadeTransition fadeIn = new FadeTransition(Duration.millis(1000), aboutRoot);
+                fadeIn.setFromValue(0);   
+                fadeIn.setToValue(2);
+                fadeIn.play();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -100,6 +107,10 @@ public class MainWindow {
             stage.setScene(settingsScene);
             stage.setTitle("Settings");
             stage.show();
+            FadeTransition fadeIn = new FadeTransition(Duration.millis(1000), settingsRoot);
+                fadeIn.setFromValue(0);   
+                fadeIn.setToValue(2);
+                fadeIn.play();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -118,6 +129,10 @@ public class MainWindow {
             stage.setScene(tutorialScene);
             stage.setTitle("Welcome to CUATROS Tutorial");
             stage.show();
+            FadeTransition fadeIn = new FadeTransition(Duration.millis(1000), tutorialRoot);
+                fadeIn.setFromValue(0);   
+                fadeIn.setToValue(2);
+                fadeIn.play();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -134,6 +149,10 @@ public class MainWindow {
             stage.setScene(new Scene(leaderBoardRoot, 800, 600));
             stage.setTitle("LeaderBoards");
             stage.show();
+            FadeTransition fadeIn = new FadeTransition(Duration.millis(1000), leaderBoardRoot);
+                fadeIn.setFromValue(0);   
+                fadeIn.setToValue(2);
+                fadeIn.play();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -150,6 +169,10 @@ public class MainWindow {
             stage.setScene(new Scene(helpRoot, 800, 600));
             stage.setTitle("Help");
             stage.show();
+            FadeTransition fadeIn = new FadeTransition(Duration.millis(1000), helpRoot);
+                fadeIn.setFromValue(0);   
+                fadeIn.setToValue(2);
+                fadeIn.play();
         } catch (IOException e) {
             e.printStackTrace();
         }

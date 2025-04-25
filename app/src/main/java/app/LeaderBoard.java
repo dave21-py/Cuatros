@@ -11,9 +11,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 
 public class LeaderBoard{
+
+    @FXML
+    private MediaView mediaView;
 
     @FXML
     private MediaPlayer mediaPlayer;
@@ -23,6 +27,15 @@ public class LeaderBoard{
         Media sound = new Media(getClass().getResource("mainwindow.mp3").toExternalForm());
         mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
+
+        Media video =  new Media(getClass().getResource("animation.mp4").toExternalForm());
+        MediaPlayer bPlayer = new MediaPlayer(video);
+        bPlayer.setCycleCount(MediaPlayer.INDEFINITE); 
+        bPlayer.setMute(true);
+        bPlayer.play();
+        mediaView.setMediaPlayer(bPlayer);
+
+
 
         mediaPlayer.setOnEndOfMedia(()-> {
             stopMedia();
