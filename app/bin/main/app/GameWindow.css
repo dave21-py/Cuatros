@@ -7,3 +7,61 @@
     -fx-text-fill: white;
 
 }
+.hold{
+    -fx-background-color: black;
+    -fx-background-radius: 20;
+}
+.hold:hover{
+    -fx-background-color: grey;
+    -fx-effect: dropshadow(gaussian, cyan, 20, 0.4, 0, 0);
+}
+.score{
+    -fx-background-color: black;
+    -fx-background-radius: 20;
+}
+.score:hover{
+    -fx-background-color: grey;
+    -fx-effect: dropshadow(gaussian, cyan, 20, 0.4, 0, 0);
+}
+.next{ /*Next*/
+    -fx-background-color: black;
+    -fx-background-radius: 20;
+}
+.next:hover{
+    -fx-background-color: grey;
+    -fx-effect: dropshadow(gaussian, cyan, 20, 0.4, 0, 0);
+}
+.pause{
+    -fx-background-color: black;
+    -fx-background-radius: 20;
+}
+.pause:hover{
+    -fx-background-color: grey;
+    -fx-effect: dropshadow(gaussian, cyan, 20, 0.4, 0, 0);
+}
+
+#hbox{
+    -fx-background-image: url("background2.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+    -fx-background-size: cover;
+    -fx-padding: 10;
+
+}
+
+.Button2{
+    -fx-background-color: black;
+    -fx-text-fill: white;
+    -fx-border-color: cyan;
+    -fx-border-width: 3px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-cursor: hand;
+}
+.Button2:hover{
+    -fx-border-color: rgb(141, 8, 141);
+    -fx-background-color: cyan;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow(gaussian, cyan, 20, 0.4, 0, 0);
+    
+}

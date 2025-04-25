@@ -1,0 +1,14 @@
+.skipbutton{
+    -fx-text-fill: white;
+    -fx-background-color: black;
+    -fx-border-radius: 20px;
+}
+.skipbutton:hover{
+    -fx-background-color: linear-gradient(to right,
+    cyan, blue, orange, yellow, greenyellow, indigo, red);
+
+    -fx-text-fill: black;
+}
+.jdtext{
+    -fx-tex-fill: white;
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.media.MediaView?>
+
+<StackPane fx:id="loadingScreenRoot" fx:controller="app.LoadingScreen" xmlns:fx="http://javafx.com/fxml" stylesheets="@LoadingScreen.css" >
+<MediaView fx:id="mediaView" fitWidth="800" fitHeight="600" preserveRatio="false"/>
+
+<!-- <VBox spacing="10" alignment="BOTTOM_RIGHT" style="-fx-padding: 50 10 10 10">
+<Button text="SKIP" styleClass="skipbutton" onAction="#onSkipClicked" prefWidth="100" prefHeight="40" />
+</VBox>  -->
+
+</StackPane>

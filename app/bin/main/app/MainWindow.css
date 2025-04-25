@@ -2,8 +2,67 @@
     -fx-padding: 10; /* Add a small padding around the window */
     padding: 10;     /* duplicated for compatibility */
     -fx-background-color: #080705;
-}
+} 
 
 .Button {
-    -fx-background-color: yellow;
+    -fx-font-family: 'Courier New';
+    -fx-font-size: 19px;
+    -fx-background-color: black;
+    -fx-text-fill: white;
+    -fx-border-color: yellow;
+    -fx-border-width: 3px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-cursor: hand;
 }
+.Button:hover{
+    -fx-border-color: black;
+    -fx-background-color: yellow;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow(gaussian,yellow, 25, 0.4, 0, 0);  /*gaussian(blur)*/
+} 
+
+.Button2{
+    -fx-font-family: 'Courier New';
+    -fx-font-size: 13px;
+    -fx-background-color: black;
+    -fx-text-fill: white;
+    -fx-border-color: cyan;
+    -fx-border-width: 3px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-cursor: hand;
+}
+.Button2:hover{
+    -fx-border-color: black;
+    -fx-background-color: cyan;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow(gaussian, cyan, 20, 0.4, 0, 0);
+    
+}
+
+#vbox{
+    -fx-padding: 10;
+    /* -fx-background-image: url("background.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+    -fx-background-size: cover;
+    -fx-padding: 10; */
+
+}
+
+.logo-banner{
+    -fx-background-image: url("logo.png");
+    -fx-background-size: 100% 100%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-padding: 10;
+}
+.logo-banner:hover{
+    -fx-scale-x: 1.10;
+    -fx-scale-y: 1.10;
+    -fx-cursor: hand;
+
+}
+
+
