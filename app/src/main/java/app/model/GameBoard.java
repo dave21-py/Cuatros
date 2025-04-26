@@ -12,6 +12,8 @@ public class GameBoard {
 
     private List<BoardObserver> observers = new ArrayList<>();
 
+    private boolean gameOver = false;
+
     public void addObserver(BoardObserver obs) {
         observers.add(obs);
     }
@@ -39,6 +41,10 @@ public class GameBoard {
 
     public Square[][] getGrid() {
         return grid;
+    }
+
+    public boolean checkGameOver(){
+        return gameOver;
     }
 
     // block actions
@@ -74,7 +80,9 @@ public class GameBoard {
     
 
     public void rotateBlock() {
-        currentBlock.rotateClockwise();
+        Block tempBlock = new Block();
+        tempBlock = currentBlock;
+        tempBlock.rotateClockwise();
     }
 
     public void dropBlock() {
@@ -91,6 +99,19 @@ public class GameBoard {
     
 
     public void spawnNewBlock() {
+        Block nextBlock = Block.generateBlock();
+
+        // check if next block collides
+        for (Square square: nextBlock.getSquares()){
+            int x = square.getX();
+            int y = square.getY();
+
+            // end game when new block cannot be spawned
+            if (x >= 0 && x < cols && y >= 0 && y < rows && grid[y][x] != null) {
+                gameOver = true;
+                return;
+            }
+        }
         currentBlock = new Block(nextBlock.getSquares(), nextBlock.getPivot());
         nextBlock = Block.generateBlock();
 
@@ -124,6 +145,7 @@ public class GameBoard {
     
             if (y >= 0 && y < rows && x >= 0 && x < cols) {
                 grid[y][x] = new Square(x, y, square.getColorCode());
+                System.out.println("new Square added at y=" + y + " x=" + x);
             }
 
         }

@@ -6,6 +6,7 @@ import app.model.*;
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -15,6 +16,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
@@ -30,9 +32,9 @@ public class GameWindow {
     @FXML
     private Duration fallAnimation = Duration.millis(500);
 
-    public void setFallAnimation(Duration animation){
+    public void setFallAnimation(Duration animation) {
         this.fallAnimation = animation;
-        if(board != null){
+        if (board != null) {
             startAnimation();
         }
     }
@@ -76,13 +78,12 @@ public class GameWindow {
         mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
 
-        Media video =  new Media(getClass().getResource("animation.mp4").toExternalForm());
+        Media video = new Media(getClass().getResource("animation.mp4").toExternalForm());
         MediaPlayer bPlayer = new MediaPlayer(video);
-        bPlayer.setCycleCount(MediaPlayer.INDEFINITE); 
+        bPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         bPlayer.setMute(true);
         bPlayer.play();
         mediaView.setMediaPlayer(bPlayer);
-
 
         mediaPlayer.setOnEndOfMedia(() -> {
             stopMedia();
@@ -92,18 +93,24 @@ public class GameWindow {
     // begin game timeline cycle
     private void startAnimation() {
 
-        if(timeline != null){ //Passes difficulty logic lol
+        if (timeline != null) { // Passes difficulty logic lol
             timeline.stop();
         }
         timeline = new Timeline(new KeyFrame(fallAnimation, event -> {
-            board.dropBlock(); // move block down one
-            renderBoard(); // re-render the entire board
+            if (!board.checkGameOver()) {
+                board.dropBlock(); // move block down one
+                renderBoard(); // re-render the entire board
+            } else {
+                board.dropBlock();
+                timeline.stop();
+                showGameOver();
+            }
 
         }));
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
 
-          // ensure gameArea can receive key pressed events
+        // ensure gameArea can receive key pressed events
         gameArea.setFocusTraversable(true);
         gameArea.requestFocus();
 
@@ -132,6 +139,35 @@ public class GameWindow {
                 event.consume();
             }
         });
+    }
+
+    // alert window to end game, prompt user to play again
+    private void showGameOver() {
+        Platform.runLater(() -> {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Game Over");
+            alert.setHeaderText("Game Over! You scored 100 points.");
+            alert.setContentText("Play again?");
+
+            ButtonType playAgainButton = new ButtonType("Play Again");
+            ButtonType exitButton = new ButtonType("Exit");
+
+            alert.getButtonTypes().setAll(playAgainButton, exitButton);
+
+            alert.showAndWait().ifPresent(response -> {
+                if (response == playAgainButton) {
+                    restartGame();
+                } else {
+                    Platform.exit();
+                }
+            });
+        });
+    }
+
+    private void restartGame() {
+        board = new GameBoard();
+        renderBoard();
+        startAnimation();
     }
 
     @FXML
