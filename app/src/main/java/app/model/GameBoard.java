@@ -8,6 +8,7 @@ public class GameBoard {
     private final int cols = 10;
     private Square[][] grid;
     private Block currentBlock;
+    private Block nextBlock; //next block
 
     private List<BoardObserver> observers = new ArrayList<>();
 
@@ -24,11 +25,16 @@ public class GameBoard {
     // constructor
     public GameBoard() {
         grid = new Square[rows][cols];
+        nextBlock = Block.generateBlock();
         spawnNewBlock();
     }
 
     public Block getCurrentBlock() {
         return currentBlock;
+    }
+
+    public Block getNextBlock(){
+        return nextBlock;
     }
 
     public Square[][] getGrid() {
@@ -85,9 +91,12 @@ public class GameBoard {
     
 
     public void spawnNewBlock() {
-        Block nextBlock = Block.generateBlock();
         currentBlock = new Block(nextBlock.getSquares(), nextBlock.getPivot());
-    }
+        nextBlock = Block.generateBlock();
+
+        // Block nextBlock = Block.generateBlock(); 
+        // currentBlock = new Block(nextBlock.getSquares(), nextBlock.getPivot());
+    } 
 
     // check if block should stop and spawn new block
     public boolean canMoveDown() {

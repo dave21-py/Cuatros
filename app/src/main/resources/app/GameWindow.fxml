@@ -15,11 +15,11 @@
 
     <VBox alignment="TOP_CENTER" spacing="60" prefWidth="200">
         <VBox alignment="CENTER" spacing="10">
-            <Label text="HOLD" style="-fx-font-size: 21px; -fx-font-family: 'Arial';" styleClass="label-white" />
+            <Label text="HOLD" style="-fx-font-size: 21px; -fx-font-family: 'Courier New';" styleClass="label-white" />
             <Pane prefHeight="120" prefWidth="120" style="-fx-border-color: white; -fx-border-radius: 20;" styleClass="hold"/>
         </VBox>
         <VBox alignment="CENTER" spacing="10" VBox.vgrow="ALWAYS">
-            <Label text="SCORE" style="-fx-font-size: 21px; -fx-font-family: 'Arial';" styleClass="label-white" prefWidth="90" />
+            <Label text="SCORE" style="-fx-font-size: 21px; -fx-font-family: 'Courier New';" styleClass="label-white" prefWidth="90" />
             <Pane prefHeight="120" prefWidth="120" style="-fx-border-color: white; -fx-border-radius: 20;" styleClass="score"/>
         </VBox>
     </VBox>
@@ -28,8 +28,8 @@
 
 <VBox alignment="TOP_CENTER" spacing="60" prefWidth="200">
         <VBox alignment="CENTER" spacing="10">
-            <Label text="NEXT" style="-fx-font-size: 21px; -fx-font-family: 'Arial';" styleClass="label-white" prefWidth="90" />
-            <Pane prefHeight="250" prefWidth="120" style="-fx-border-color: white; -fx-border-radius: 20;" styleClass="next"/>
+            <Label text="NEXT" style="-fx-font-size: 21px; -fx-font-family: 'Courier New';" styleClass="label-white" prefWidth="90" />
+            <Pane fx:id="nextPane" prefHeight="120" prefWidth="120" style="-fx-border-color: white; -fx-border-radius: 20;" styleClass="next"/>
         </VBox>
         <VBox alignment="CENTER" spacing="10" VBox.vgrow="ALWAYS">
         <Button fx:id="muteButton" text="🔇" prefWidth="90" onAction="#onMuteClicked" styleClass="Button2"/>

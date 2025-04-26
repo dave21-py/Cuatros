@@ -62,6 +62,9 @@ public class GameWindow {
     private Timeline timeline;
 
     @FXML
+    private Pane nextPane;
+
+    @FXML
     public void initialize() {
         board = new GameBoard();
         drawBoardBorders();
@@ -193,7 +196,26 @@ public class GameWindow {
         for (Square square : block.getSquares()) {
             gameArea.getChildren().add(renderSquare(square));
         }
+        renderNextBlock();
+
     }
+
+    private void renderNextBlock(){
+        nextPane.getChildren().clear();
+        Block next = board.getNextBlock();
+        if(next == null){
+            return;
+        }
+
+            for(Square square : next.getSquares()){
+                Rectangle rectangle = new Rectangle(CELL_SIZE -10, CELL_SIZE-10);
+                rectangle.setX((square.getX()-4) * (CELL_SIZE/ 1.6) + 66); // 20, 19, 
+                rectangle.setY((square.getY()-4) * (CELL_SIZE / 1.6) + 100);
+                rectangle.setFill(addColor(square.getColorCode()));
+                rectangle.setStroke(Color.BLACK);
+                nextPane.getChildren().add(rectangle);
+            }
+        }
 
     // render the borders of the board using Rectangle objects
     private void drawBoardBorders() {
