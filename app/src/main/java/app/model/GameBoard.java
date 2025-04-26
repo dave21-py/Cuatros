@@ -79,10 +79,41 @@ public class GameBoard {
     }
 
     public void rotateBlock() {
-        Block tempBlock = new Block();
-        tempBlock = currentBlock;
-        tempBlock.rotateClockwise();
+        if (canRotate(0, 0)) {
+            currentBlock.rotateClockwise();
+        } else if (canRotate(-1, 0)) {
+            currentBlock.move(-1, 0);
+            currentBlock.rotateClockwise();
+        } else if (canRotate(1, 0)) {
+            currentBlock.move(1, 0);
+            currentBlock.rotateClockwise();
+        } else {
+            // don't rotate if blocked
+        }
     }
+    
+    // test rotation based on coordinates given
+    private boolean canRotate(int dx, int dy) {
+        for (Square square : currentBlock.getSquares()) {
+            int relX = square.getX() - currentBlock.getPivot().getX();
+            int relY = square.getY() - currentBlock.getPivot().getY();
+
+            int newX = currentBlock.getPivot().getX() + relY + dx;
+            int newY = currentBlock.getPivot().getY() - relX + dy;
+    
+            // check if new position would be valid
+            if (newX < 0 || newX >= cols || newY < 0 || newY >= rows) {
+                return false;
+            }
+            // check around existing blocks
+            if (grid[newY][newX] != null) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    
 
     public void dropBlock() {
         if (canMoveDown()) {
