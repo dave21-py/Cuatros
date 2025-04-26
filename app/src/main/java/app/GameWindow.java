@@ -3,6 +3,7 @@ package app;
 import java.io.IOException;
 
 import app.model.*;
+import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -157,6 +158,10 @@ public class GameWindow {
                     stage.setScene(new Scene(mainRoot, 800, 600));
                     stage.setTitle("Cuatros");
                     stage.show();
+                    FadeTransition fadeIn = new FadeTransition(Duration.millis(1000), mainRoot);
+                    fadeIn.setFromValue(0);
+                    fadeIn.setToValue(2);
+                    fadeIn.play();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

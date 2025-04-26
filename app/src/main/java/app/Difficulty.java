@@ -3,6 +3,7 @@ package app;
 
 import java.io.IOException;
 
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -69,6 +70,11 @@ public class Difficulty {
             stage.setScene(new Scene(gameRoot, 800, 600));
             stage.setTitle("Cuatros");
             stage.show();
+            FadeTransition fadeIn = new FadeTransition(Duration.millis(1000), gameRoot);
+                fadeIn.setFromValue(0);   
+                fadeIn.setToValue(2);
+                fadeIn.play();
+
             stopMedia();
         }
     @FXML
@@ -81,6 +87,10 @@ public class Difficulty {
             stage.setScene(new Scene(gameRoot, 800, 600));
             stage.setTitle("Cuatros");
             stage.show();
+            FadeTransition fadeIn = new FadeTransition(Duration.millis(1000), gameRoot);
+                fadeIn.setFromValue(0);   
+                fadeIn.setToValue(2);
+                fadeIn.play();
             stopMedia();
         }
     @FXML
@@ -93,6 +103,10 @@ public class Difficulty {
             stage.setScene(new Scene(gameRoot, 800, 600));
             stage.setTitle("Cuatros");
             stage.show();
+            FadeTransition fadeIn = new FadeTransition(Duration.millis(1000), gameRoot);
+                fadeIn.setFromValue(0);   
+                fadeIn.setToValue(2);
+                fadeIn.play();
             stopMedia();
         }
     @FXML
@@ -102,6 +116,10 @@ public class Difficulty {
             stage.setScene(new Scene(mainRoot, 800, 600));
             stage.setTitle("Cuatros");
             stage.show();
+            FadeTransition fadeIn = new FadeTransition(Duration.millis(1000), mainRoot);
+                fadeIn.setFromValue(0);   
+                fadeIn.setToValue(2);
+                fadeIn.play();
             stopMedia();
         }
 
