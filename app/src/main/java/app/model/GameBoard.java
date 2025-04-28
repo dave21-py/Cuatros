@@ -12,9 +12,13 @@ public class GameBoard {
     private final int cols = 10;
     private Square[][] grid;
     private Block currentBlock;
-    private Block nextBlock; //next block
+    private Block nextBlock; // next block
+    private Block holdBlock = null; // hold block
+    private boolean holding = false; // if hold block pressed during current turn
 
     private List<BoardObserver> observers = new ArrayList<>();
+
+    private boolean gameOver = false;
 
     public void addObserver(BoardObserver obs) {
         observers.add(obs);
@@ -37,37 +41,45 @@ public class GameBoard {
         return currentBlock;
     }
 
-    public Block getNextBlock(){
+    public Block getNextBlock() {
         return nextBlock;
     }
 
+    public Block getHoldBlock() {
+        return holdBlock;
+    }    
+
     public Square[][] getGrid() {
         return grid;
+    }
+
+    public boolean checkGameOver() {
+        return gameOver;
     }
 
     // block actions
     public void moveBlockLeft() {
         for (Square square : currentBlock.getSquares()) {
             int newX = square.getX() - 1;
-            
+
             // check if beyond right edge
             if (newX < 0 || grid[square.getY()][newX] != null) {
                 return;
             }
         }
-    
+
         currentBlock.move(-1, 0);
     }
 
     public void moveBlockRight() {
         for (Square square : currentBlock.getSquares()) {
             int newX = square.getX() + 1;
-    
+
             // check if beyond right edge
             if (newX >= cols) {
-                return; 
+                return;
             }
-    
+
             // check if the next cell already filled
             if (grid[square.getY()][newX] != null) {
                 return;
@@ -75,11 +87,43 @@ public class GameBoard {
         }
         currentBlock.move(1, 0);
     }
-    
 
     public void rotateBlock() {
-        currentBlock.rotateClockwise();
+        if (canRotate(0, 0)) {
+            currentBlock.rotateClockwise();
+        } else if (canRotate(-1, 0)) {
+            currentBlock.move(-1, 0);
+            currentBlock.rotateClockwise();
+        } else if (canRotate(1, 0)) {
+            currentBlock.move(1, 0);
+            currentBlock.rotateClockwise();
+        } else {
+            // don't rotate if blocked
+        }
     }
+    
+    // test rotation based on coordinates given
+    private boolean canRotate(int dx, int dy) {
+        for (Square square : currentBlock.getSquares()) {
+            int relX = square.getX() - currentBlock.getPivot().getX();
+            int relY = square.getY() - currentBlock.getPivot().getY();
+
+            int newX = currentBlock.getPivot().getX() + relY + dx;
+            int newY = currentBlock.getPivot().getY() - relX + dy;
+    
+            // check if new position would be valid
+            if (newX < 0 || newX >= cols || newY < 0 || newY >= rows) {
+                return false;
+            }
+            // check around existing blocks
+            if (grid[newY][newX] != null) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    
 
     public void dropBlock() {
         if (canMoveDown()) {
@@ -87,31 +131,58 @@ public class GameBoard {
         } else {
             lockBlock();
             // check line cleared
-            spawnNewBlock();   // move on to next block
+            spawnNewBlock(); // move on to next block
         }
-    
-        notifyObservers();     // update the view
+
+        notifyObservers(); // update the view
     }
-    
 
     public void spawnNewBlock() {
+        // check if next block collides
+        for (Square square : nextBlock.getSquares()) {
+            int x = square.getX();
+            int y = square.getY();
+
+            // end game when new block cannot be spawned
+            if (x >= 0 && x < cols && y >= 0 && y < rows && grid[y][x] != null) {
+                gameOver = true;
+                return;
+            }
+        }
         currentBlock = new Block(nextBlock.getSquares(), nextBlock.getPivot());
         nextBlock = Block.generateBlock();
+    }
 
-        // Block nextBlock = Block.generateBlock(); 
-        // currentBlock = new Block(nextBlock.getSquares(), nextBlock.getPivot());
-    } 
+    public void holdCurrentBlock() {
+        if (holding) {
+            return; // cannot hold again until you lock a block
+        }
+    
+        if (holdBlock == null) {
+            holdBlock = currentBlock;
+            currentBlock = nextBlock;
+            nextBlock = Block.generateBlock(); // prepare next block
+        } else {
+            Block temp = currentBlock;
+            currentBlock = holdBlock;
+            holdBlock = temp;
+        }
+    
+        holding = true;
+        notifyObservers();
+    }
+    
 
     // check if block should stop and spawn new block
     public boolean canMoveDown() {
         for (Square square : currentBlock.getSquares()) {
             int newY = square.getY() + 1;
-    
+
             // check bottom of board
             if (newY >= rows) {
                 return false;
             }
-    
+
             // check collision with locked grid squares
             if (grid[newY][square.getX()] != null) {
                 return false;
@@ -120,17 +191,28 @@ public class GameBoard {
         return true;
     }
 
+    // continually move block down until locked in place
+    public void hardDrop() {
+        while (canMoveDown()) {
+            currentBlock.move(0, 1);
+        }
+        lockBlock();
+        spawnNewBlock();
+        notifyObservers(); // redraw board immediately
+    }
+    
+
     // keep block in place once in position
     public void lockBlock() {
         for (Square square : currentBlock.getSquares()) {
             int x = square.getX();
             int y = square.getY();
-    
+
             if (y >= 0 && y < rows && x >= 0 && x < cols) {
                 grid[y][x] = new Square(x, y, square.getColorCode());
             }
-
         }
+        holding = false; // allows holding after second block is locked
     }
 
     public void removeRowAndAddNewRow(Square[][] original, int row, Square[] newRow) {
@@ -175,4 +257,5 @@ public class GameBoard {
         }   
     }
 }    
+
 
