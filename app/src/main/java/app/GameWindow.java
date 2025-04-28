@@ -134,6 +134,10 @@ public class GameWindow {
                         board.rotateBlock();
                         renderBoard();
                     }
+                    case SPACE -> {
+                        board.hardDrop();
+                        renderBoard();
+                    }
                 }
                 gameArea.setOnMouseClicked(e -> gameArea.requestFocus());
                 event.consume();

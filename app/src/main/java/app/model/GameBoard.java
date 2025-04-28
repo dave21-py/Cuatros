@@ -161,6 +161,17 @@ public class GameBoard {
         return true;
     }
 
+    
+    public void hardDrop() {
+        while (canMoveDown()) {
+            currentBlock.move(0, 1);
+        }
+        lockBlock();
+        spawnNewBlock();
+        notifyObservers(); // redraw board immediately
+    }
+    
+
     // keep block in place once in position
     public void lockBlock() {
         for (Square square : currentBlock.getSquares()) {
@@ -169,7 +180,6 @@ public class GameBoard {
 
             if (y >= 0 && y < rows && x >= 0 && x < cols) {
                 grid[y][x] = new Square(x, y, square.getColorCode());
-                System.out.println("new Square added at y=" + y + " x=" + x);
             }
 
         }
