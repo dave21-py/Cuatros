@@ -29,6 +29,36 @@ import javafx.util.Duration;
 
 public class GameWindow {
 
+    private static final int CELL_SIZE = 25;
+    private static final int GRID_ROWS = 20;
+    private static final int GRID_COLS = 10;
+    private static final int BORDER_THICKNESS = 1;
+
+    private static final int DISPLAY_ROWS = GRID_ROWS + 2 * BORDER_THICKNESS; // 22
+    private static final int DISPLAY_COLS = GRID_COLS + 2 * BORDER_THICKNESS; // 12
+
+    private boolean isMuted;
+    private Timeline timeline;
+    private GameBoard board;
+
+    @FXML
+    private Button muteButton;
+
+    @FXML
+    private MediaPlayer mediaPlayer;
+
+    @FXML
+    private MediaView mediaView;
+
+    @FXML
+    private Pane gameArea;
+
+    @FXML
+    private Pane nextPane;
+
+    @FXML 
+    private Pane holdPane;
+
     @FXML
     private Duration fallAnimation = Duration.millis(500);
 
@@ -38,34 +68,6 @@ public class GameWindow {
             startAnimation();
         }
     }
-
-    @FXML
-    private Button muteButton;
-
-    private boolean isMuted;
-
-    @FXML
-    private MediaPlayer mediaPlayer;
-
-    @FXML
-    private MediaView mediaView;
-
-    private static final int CELL_SIZE = 25;
-    private static final int GRID_ROWS = 20;
-    private static final int GRID_COLS = 10;
-    private static final int BORDER_THICKNESS = 1;
-
-    private static final int DISPLAY_ROWS = GRID_ROWS + 2 * BORDER_THICKNESS; // 22
-    private static final int DISPLAY_COLS = GRID_COLS + 2 * BORDER_THICKNESS; // 12
-
-    private GameBoard board;
-
-    @FXML
-    private Pane gameArea;
-    private Timeline timeline;
-
-    @FXML
-    private Pane nextPane;
 
     @FXML
     public void initialize() {
@@ -137,6 +139,11 @@ public class GameWindow {
                     case SPACE -> {
                         board.hardDrop();
                         renderBoard();
+                    }
+                    case C -> {
+                        board.holdCurrentBlock();
+                        renderBoard();
+                        renderHoldBlock();
                     }
                 }
                 gameArea.setOnMouseClicked(e -> gameArea.requestFocus());
@@ -245,22 +252,39 @@ public class GameWindow {
 
     }
 
-    private void renderNextBlock(){
+    // preview next block spawned in pane
+    private void renderNextBlock() {
         nextPane.getChildren().clear();
         Block next = board.getNextBlock();
-        if(next == null){
+        if (next == null) {
             return;
         }
-
-            for(Square square : next.getSquares()){
-                Rectangle rectangle = new Rectangle(CELL_SIZE -10, CELL_SIZE-10);
-                rectangle.setX((square.getX()-4) * (CELL_SIZE/ 1.6) + 66); // 20, 19, 
-                rectangle.setY((square.getY()-4) * (CELL_SIZE / 1.6) + 100);
-                rectangle.setFill(addColor(square.getColorCode()));
-                rectangle.setStroke(Color.BLACK);
-                nextPane.getChildren().add(rectangle);
-            }
+        for (Square square : next.getSquares()) {
+            Rectangle rectangle = new Rectangle(CELL_SIZE - 10, CELL_SIZE - 10);
+            rectangle.setX((square.getX() - 4) * (CELL_SIZE / 1.6) + 66); // 20, 19,
+            rectangle.setY((square.getY() - 4) * (CELL_SIZE / 1.6) + 100);
+            rectangle.setFill(addColor(square.getColorCode()));
+            rectangle.setStroke(Color.BLACK);
+            nextPane.getChildren().add(rectangle);
         }
+    }
+
+    // render hold block in pane
+    private void renderHoldBlock() {
+        holdPane.getChildren().clear();
+        Block hold = board.getHoldBlock();
+        if (hold == null) {
+            return;
+        }
+        for (Square square : hold.getSquares()) {
+            Rectangle rectangle = new Rectangle(CELL_SIZE - 10, CELL_SIZE - 10);
+            rectangle.setX((square.getX() - 4) * (CELL_SIZE / 1.6) + 66);
+            rectangle.setY((square.getY() - 4) * (CELL_SIZE / 1.6) + 100);
+            rectangle.setFill(addColor(square.getColorCode()));
+            rectangle.setStroke(Color.BLACK);
+            holdPane.getChildren().add(rectangle);
+        }
+    }
 
     // render the borders of the board using Rectangle objects
     private void drawBoardBorders() {
@@ -278,6 +302,7 @@ public class GameWindow {
         }
     }
 
+    // render individual sqaures, "cell" refers to border
     private Rectangle renderSquare(Square square) {
         Rectangle rect = new Rectangle(CELL_SIZE, CELL_SIZE);
         rect.setX((square.getX() + BORDER_THICKNESS) * CELL_SIZE);
@@ -288,6 +313,7 @@ public class GameWindow {
         return rect;
     }
 
+    // add color to individual squares using the code char of Block
     private Color addColor(char code) {
         return switch (code) {
             case 'Y' -> Color.YELLOW;

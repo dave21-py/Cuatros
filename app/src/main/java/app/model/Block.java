@@ -23,7 +23,7 @@ public class Block {
 
     public Square getPivot() {
         return pivot;
-    }
+    }  
 
     public void setSquares(Square[] squares) {
         this.squares = squares;

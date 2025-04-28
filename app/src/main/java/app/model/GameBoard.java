@@ -9,6 +9,8 @@ public class GameBoard {
     private Square[][] grid;
     private Block currentBlock;
     private Block nextBlock; // next block
+    private Block holdBlock = null; // hold block
+    private boolean holding = false; // if hold block pressed during current turn
 
     private List<BoardObserver> observers = new ArrayList<>();
 
@@ -38,6 +40,10 @@ public class GameBoard {
     public Block getNextBlock() {
         return nextBlock;
     }
+
+    public Block getHoldBlock() {
+        return holdBlock;
+    }    
 
     public Square[][] getGrid() {
         return grid;
@@ -143,6 +149,26 @@ public class GameBoard {
         nextBlock = Block.generateBlock();
     }
 
+    public void holdCurrentBlock() {
+        if (holding) {
+            return; // cannot hold again until you lock a block
+        }
+    
+        if (holdBlock == null) {
+            holdBlock = currentBlock;
+            currentBlock = nextBlock;
+            nextBlock = Block.generateBlock(); // prepare next block
+        } else {
+            Block temp = currentBlock;
+            currentBlock = holdBlock;
+            holdBlock = temp;
+        }
+    
+        holding = true;
+        notifyObservers();
+    }
+    
+
     // check if block should stop and spawn new block
     public boolean canMoveDown() {
         for (Square square : currentBlock.getSquares()) {
@@ -161,7 +187,7 @@ public class GameBoard {
         return true;
     }
 
-    
+    // continually move block down until locked in place
     public void hardDrop() {
         while (canMoveDown()) {
             currentBlock.move(0, 1);
@@ -181,7 +207,7 @@ public class GameBoard {
             if (y >= 0 && y < rows && x >= 0 && x < cols) {
                 grid[y][x] = new Square(x, y, square.getColorCode());
             }
-
         }
+        holding = false; // allows holding after second block is locked
     }
 }
