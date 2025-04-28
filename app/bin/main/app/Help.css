@@ -1,11 +1,8 @@
-.root{
-    -fx-background-color: linear-gradient(to top right,
-    cyan, blue, orange, yellow, greenyellow, indigo, red);
-}
-.github{
-    -fx-background-color: white;
-
-}
+.root {
+    -fx-padding: 10; /* Add a small padding around the window */
+    padding: 10;     /* duplicated for compatibility */
+    -fx-background-color: #080705;
+} 
 .backbutton{
     -fx-background-color: black;
     -fx-text-fill: white;
@@ -21,4 +18,13 @@
     cyan, blue, orange, yellow, greenyellow, indigo, red); */
     -fx-text-fill: black;;
     -fx-background-color: cyan;
+}
+#vbox{
+    -fx-padding: 10;
+    /* -fx-background-image: url("background.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+    -fx-background-size: cover;
+    -fx-padding: 10; */
+
 }

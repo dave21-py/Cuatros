@@ -3,7 +3,11 @@ package app.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+
 public class GameBoard {
+    public DoubleProperty row = new SimpleDoubleProperty(-1);
     private final int rows = 20;
     private final int cols = 10;
     private Square[][] grid;
@@ -127,6 +131,48 @@ public class GameBoard {
             }
 
         }
+    }
+
+    public void removeRowAndAddNewRow(Square[][] original, int row, Square[] newRow) {
+        Square[][] newGrid = new Square[grid.length][grid.length];
+        int newRowIdx = 0;
+        for (int i = 0; i < row; i++) {
+            newGrid[newRowIdx++] = grid[i];
+        }
+        newGrid[newRowIdx++] = newRow;
+        for (int i = row; i < grid.length - 1; i++) {
+            newGrid[newRowIdx++] = grid[i + 1];
+        }
+        grid = newGrid;
+    }
+
+    public void removeGameBlocks() {
+        Square[] square = new Square[10];
+        for (int i = 0; i < grid.length; i++) {
+            boolean instances = true;
+            for (int j = 0; j < grid[i].length; j++) {
+                if (!(grid[i][j] instanceof Square)) {
+                    instances = false;
+
+                } 
+            }
+            if (instances == true) {
+                removeRowAndAddNewRow(grid, i, square);
+                moveBlocksDown(grid, row.doubleValue());
+                notifyObservers();
+                row.set(i);
+            } 
+        } 
+    }
+
+    public void moveBlocksDown(Square[][] gridBlocks, double row) {
+        for (Square[] array : gridBlocks) {
+            for (Square s : array) {
+                if (s!=null) {
+                    s.setY(s.getY() + 1);
+                }
+            }
+        }   
     }
 }    
 

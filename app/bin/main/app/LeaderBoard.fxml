@@ -3,18 +3,24 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+<?import javafx.scene.media.MediaView?>
 
 
-<VBox fx:controller="app.LeaderBoard" xmlns:fx="http://javafx.com/fxml" stylesheets="@LeaderBoard.css"
- prefHeight="400" prefWidth="600" alignment="CENTER">
+<StackPane fx:id="leaderboardRoot" fx:controller="app.LeaderBoard" xmlns:fx="http://javafx.com/fxml" stylesheets="@LeaderBoard.css">
+
+<MediaView fx:id="mediaView" fitWidth="800" fitHeight="600" preserveRatio="false"/>
+
+
+<VBox fx:id="vbox" spacing="10" prefHeight="400" prefWidth="600" alignment="CENTER">
     <VBox alignment="TOP_CENTER" >
     <Label wrapText="true"
-    text="Leaderboards" style="-fx-font-size: 50px; -fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-text-fill: black;"/>
+    text="Leaderboards" style="-fx-font-size: 50px; -fx-font-family: 'Courier New'; -fx-font-weight: bold; -fx-text-fill: white;"/>
     <Label wrapText="true"
     text="Leaderboards coming soon."
-    style="-fx-font-size: 20px; -fx-font-family: 'Arial'; -fx-text-fill: black; -fx-font-weight: bold;" />
+    style="-fx-font-size: 20px; -fx-font-family: 'Courier New'; -fx-text-fill: white; -fx-font-weight: bold;" />
     </VBox>
     <HBox spacing="10" alignment="CENTER" style="-fx-padding: 40 10 10 10"> <!--50 moves up-->
     <Button text="BACK" styleClass="backbutton" onAction="#onBackClicked" prefWidth="100" prefHeight="40" />
     </HBox>
     </VBox>
+    </StackPane>

@@ -1,0 +1,62 @@
+.root {
+    -fx-padding: 10; /* Add a small padding around the window */
+    padding: 10;     /* duplicated for compatibility */
+    -fx-background-color: #080705;
+}
+.easy{
+    -fx-background-color: black;
+    -fx-text-fill: white;
+    -fx-border-color: cyan;
+    -fx-border-width: 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-cursor: hand;
+}
+.easy:hover{
+    -fx-border-color: rgb(141, 8, 141);
+    /* -fx-background-color: linear-gradient(to right,
+    cyan, blue, orange, yellow, greenyellow, indigo, red); */
+    -fx-text-fill: black;;
+    -fx-background-color: cyan;
+}
+.medium{
+    -fx-background-color: black;
+    -fx-text-fill: white;
+    -fx-border-color: cyan;
+    -fx-border-width: 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-cursor: hand;
+}
+.medium:hover{
+    -fx-border-color: rgb(141, 8, 141);
+    /* -fx-background-color: linear-gradient(to right,
+    cyan, blue, orange, yellow, greenyellow, indigo, red); */
+    -fx-text-fill: black;;
+    -fx-background-color: cyan;
+}
+.hard{
+    -fx-background-color: black;
+    -fx-text-fill: white;
+    -fx-border-color: cyan;
+    -fx-border-width: 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-cursor: hand;
+}
+.hard:hover{
+    -fx-border-color: rgb(141, 8, 141);
+    /* -fx-background-color: linear-gradient(to right,
+    cyan, blue, orange, yellow, greenyellow, indigo, red); */
+    -fx-text-fill: black;;
+    -fx-background-color: cyan;
+}
+#vbox{
+    -fx-padding: 10;
+    /* -fx-background-image: url("background.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+    -fx-background-size: cover;
+    -fx-padding: 10; */
+
+}

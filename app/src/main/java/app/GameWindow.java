@@ -25,7 +25,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class GameWindow {
+public class GameWindow implements BoardObserver {
 
     @FXML
     private Duration fallAnimation = Duration.millis(500);
@@ -184,6 +184,27 @@ public class GameWindow {
     private void renderBoard() {
         // clear any old squares not tagged with cell (border squares)
         gameArea.getChildren().removeIf(node -> node instanceof Rectangle && "cell".equals(node.getUserData()));
+        board.removeGameBlocks();
+        // If a row is full with squares, that row will be deleted.
+        if (board.row.doubleValue() != -1) {
+            gameArea.getChildren().removeIf(node -> board.row.doubleValue() != 0);
+            for (Node node : gameArea.getChildren()) {
+                if ((node).layoutYProperty().doubleValue() > board.row.doubleValue()) {
+                    gameArea.getChildren().remove(node);
+                }
+            }
+            for (Square[] sq : board.getGrid()) {
+                for (Square s : sq) {
+                    if (s != null) {
+                        if (s.getY() > board.row.doubleValue()) {
+                            gameArea.getChildren().add(renderSquare(s));
+                        }
+                    }
+                }
+            }
+        }
+
+        drawBoardBorders();
 
         // render squares on the board
         Square[][] grid = board.getGrid();
@@ -201,8 +222,17 @@ public class GameWindow {
         for (Square square : block.getSquares()) {
             gameArea.getChildren().add(renderSquare(square));
         }
-        renderNextBlock();
+    }
 
+    @Override
+    public void onBoardChanged() {
+        for (Node node : gameArea.getChildren()) {
+            if (node.getLayoutY() == (board.row.doubleValue())) {
+                gameArea.getChildren().remove(node);
+            }
+        }
+        renderBoard();
+        startAnimation();
     }
 
     private void renderNextBlock(){

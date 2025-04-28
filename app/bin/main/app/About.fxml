@@ -3,19 +3,23 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+<?import javafx.scene.media.MediaView?>
 
+<StackPane fx:id="aboutRoot" fx:controller="app.About" xmlns:fx="http://javafx.com/fxml" stylesheets="@About.css">
 
-<VBox fx:controller="app.About" xmlns:fx="http://javafx.com/fxml" stylesheets="@About.css"
- prefHeight="400" prefWidth="600" alignment="CENTER">
+<MediaView fx:id="mediaView" fitWidth="800" fitHeight="600" preserveRatio="false"/>
+
+<VBox fx:id="vbox" spacing="20" prefHeight="400" prefWidth="600" alignment="CENTER">
     <VBox alignment="CENTER" >
     <Label wrapText="true"
-    text="About" style="-fx-font-size: 50px; -fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-text-fill: black;"/>
+    text="About" style="-fx-font-size: 50px; -fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-text-fill: white;"/>
     <Label wrapText="true"
     text="The game ends when the player's screen is filled to the top with no more space for another block to spawn. Cuatros is a block puzzle game where players shift and rotate falling four-square shaped blocks to fill lines horizontally. As the lines of blocks are filled, the lines will be cleared, awarding the player points for each line cleared. As the game progresses, the blocks will fall at a higher rate and will require quicker decision making to survive. The score is calculated by how many blocks have been placed and the number of lines that have been cleared."
-    style="-fx-font-size: 20px; -fx-font-family: 'Arial'; -fx-text-fill: black; -fx-font-weight: bold;" />
+    style="-fx-font-size: 20px; -fx-font-family: 'Courier New'; -fx-text-fill: white; -fx-font-weight: bold;" />
     </VBox>
     <HBox spacing="10" alignment="CENTER" style="-fx-padding: 50 10 10 10"> <!--50 moves up-->
     <Button text="BACK" styleClass="backbutton" onAction="#onBackClicked" prefWidth="100" prefHeight="40" />
-    <Label text="© Project-JD" style="-fx-font-size: 25px; -fx-font-family: 'Arial'; -fx-text-fill: black; -fx-font-weight: bold;"/>
+    <Label text="© Project-JD" style="-fx-font-size: 25px; -fx-font-family: 'Courier New'; -fx-text-fill: white; -fx-font-weight: bold;"/>
     </HBox>
     </VBox>
+    </StackPane>
