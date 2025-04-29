@@ -214,7 +214,7 @@ public class GameBoard {
         }
         return true;
     }
-    
+
     // continually move block down until locked in place
     public void hardDrop() {
         while (canMoveDown()) {
@@ -238,47 +238,41 @@ public class GameBoard {
         holding = false; // allows holding after second block is locked
     }
 
-    public void removeRowAndAddNewRow(Square[][] original, int row, Square[] newRow) {
-        Square[][] newGrid = new Square[grid.length][grid.length];
-        int newRowIdx = 0;
-        for (int i = 0; i < row; i++) {
-            newGrid[newRowIdx++] = grid[i];
-        }
-        newGrid[newRowIdx++] = newRow;
-        for (int i = row; i < grid.length - 1; i++) {
-            newGrid[newRowIdx++] = grid[i + 1];
-        }
-        grid = newGrid;
-    }
-
     public void removeGameBlocks() {
-        Square[] square = new Square[10];
-        for (int i = 0; i < grid.length; i++) {
-            boolean instances = true;
-            for (int j = 0; j < grid[i].length; j++) {
-                if (!(grid[i][j] instanceof Square)) {
-                    instances = false;
-
-                } 
-            }
-            if (instances == true) {
-                removeRowAndAddNewRow(grid, i, square);
-                moveBlocksDown(grid, row.doubleValue());
-                notifyObservers();
-                row.set(i);
-            } 
-        } 
-    }
-
-    public void moveBlocksDown(Square[][] gridBlocks, double row) {
-        for (Square[] array : gridBlocks) {
-            for (Square s : array) {
-                if (s!=null) {
-                    s.setY(s.getY() + 1);
+        for (int y = rows - 1; y >= 0; y--) {
+            boolean fullRow = true;
+            for (int x = 0; x < cols; x++) {
+                if (grid[y][x] == null) {
+                    fullRow = false;
+                    break;
                 }
             }
-        }   
+
+            if (fullRow) {
+                removeRow(y);
+                moveRowsDown(y);
+                y++; 
+            }
+        }
+        notifyObservers();
     }
-}    
 
+    private void removeRow(int y) {
+        for (int x = 0; x < cols; x++) {
+            grid[y][x] = null;
+        }
+    }    
 
+    private void moveRowsDown(int fromRow) {
+        for (int y = fromRow - 1; y >= 0; y--) {
+            for (int x = 0; x < cols; x++) {
+                if (grid[y][x] != null) {
+                    // move the square down
+                    grid[y + 1][x] = grid[y][x];
+                    grid[y + 1][x].setY(y + 1);
+                    grid[y][x] = null; // clear the old spot
+                }
+            }
+        }
+    }
+}
