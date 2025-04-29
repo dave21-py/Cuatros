@@ -31,7 +31,7 @@ public class Block {
 
     public void setPivot(Square pivot) {
         this.pivot = pivot;
-    }
+    }    
 
     public static Block generateBlock() {
         int nextCode = RANDOM.nextInt(7) + 1;

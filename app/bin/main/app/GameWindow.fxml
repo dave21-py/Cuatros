@@ -16,7 +16,7 @@
     <VBox alignment="TOP_CENTER" spacing="60" prefWidth="200">
         <VBox alignment="CENTER" spacing="10">
             <Label text="HOLD" style="-fx-font-size: 21px; -fx-font-family: 'Courier New';" styleClass="label-white" />
-            <Pane prefHeight="120" prefWidth="120" style="-fx-border-color: white; -fx-border-radius: 20;" styleClass="hold"/>
+            <Pane fx:id="holdPane" prefHeight="120" prefWidth="120" style="-fx-border-color: white; -fx-border-radius: 20;" styleClass="hold"/>
         </VBox>
         <VBox alignment="CENTER" spacing="10" VBox.vgrow="ALWAYS">
             <Label text="SCORE" style="-fx-font-size: 21px; -fx-font-family: 'Courier New';" styleClass="label-white" prefWidth="90" />

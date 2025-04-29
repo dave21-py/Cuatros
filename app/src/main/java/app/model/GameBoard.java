@@ -47,7 +47,7 @@ public class GameBoard {
 
     public Block getHoldBlock() {
         return holdBlock;
-    }    
+    }
 
     public Square[][] getGrid() {
         return grid;
@@ -101,7 +101,7 @@ public class GameBoard {
             // don't rotate if blocked
         }
     }
-    
+
     // test rotation based on coordinates given
     private boolean canRotate(int dx, int dy) {
         for (Square square : currentBlock.getSquares()) {
@@ -110,7 +110,7 @@ public class GameBoard {
 
             int newX = currentBlock.getPivot().getX() + relY + dx;
             int newY = currentBlock.getPivot().getY() - relX + dy;
-    
+
             // check if new position would be valid
             if (newX < 0 || newX >= cols || newY < 0 || newY >= rows) {
                 return false;
@@ -122,8 +122,6 @@ public class GameBoard {
         }
         return true;
     }
-    
-    
 
     public void dropBlock() {
         if (canMoveDown()) {
@@ -157,7 +155,7 @@ public class GameBoard {
         if (holding) {
             return; // cannot hold again until you lock a block
         }
-    
+
         if (holdBlock == null) {
             holdBlock = currentBlock;
             currentBlock = nextBlock;
@@ -167,11 +165,17 @@ public class GameBoard {
             currentBlock = holdBlock;
             holdBlock = temp;
         }
-    
+
+        resetPosition();
         holding = true;
         notifyObservers();
     }
-    
+
+    public void resetPosition() {
+        while (canMoveUp()) {
+            currentBlock.move(0, -1);
+        }
+    }
 
     // check if block should stop and spawn new block
     public boolean canMoveDown() {
@@ -191,6 +195,18 @@ public class GameBoard {
         return true;
     }
 
+    public boolean canMoveUp() {
+        for (Square square : currentBlock.getSquares()) {
+            int newY = square.getY() - 1;
+
+            // check top of board
+            if (newY <= rows) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     // continually move block down until locked in place
     public void hardDrop() {
         while (canMoveDown()) {
@@ -200,7 +216,6 @@ public class GameBoard {
         spawnNewBlock();
         notifyObservers(); // redraw board immediately
     }
-    
 
     // keep block in place once in position
     public void lockBlock() {
