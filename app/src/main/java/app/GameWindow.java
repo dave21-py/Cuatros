@@ -306,15 +306,26 @@ public class GameWindow implements BoardObserver {
         if (hold == null) {
             return;
         }
+        
+        double minX = Integer.MAX_VALUE;
+        double minY = Integer.MAX_VALUE;
+        
+        // set max values for the pane
+        for (Square square : hold.getSquares()) {
+            minX = Math.min(minX, square.getX());
+            minY = Math.min(minY, square.getY());
+        }
+    
         for (Square square : hold.getSquares()) {
             Rectangle rectangle = new Rectangle(CELL_SIZE - 10, CELL_SIZE - 10);
-            rectangle.setX((square.getX() - 4) * (CELL_SIZE / 1.6) + 66);
-            rectangle.setY((square.getY() - 4) * (CELL_SIZE / 1.6) + 100);
+            rectangle.setX((square.getX() - minX) * (CELL_SIZE / 1.6) + 75);
+            rectangle.setY((square.getY() - minY) * (CELL_SIZE / 1.6) + 40);
             rectangle.setFill(addColor(square.getColorCode()));
             rectangle.setStroke(Color.BLACK);
             holdPane.getChildren().add(rectangle);
         }
     }
+    
 
     // render the borders of the board using Rectangle objects
     private void drawBoardBorders() {

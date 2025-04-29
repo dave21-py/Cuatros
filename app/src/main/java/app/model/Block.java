@@ -142,16 +142,17 @@ public class Block {
         pivot.setY(pivot.getY() + dy);
     }
 
-    public void rotateClockwise() {
+    public void rotateCClockwise() {
         for (Square s : squares) {
             int relX = s.getX() - pivot.getX();
             int relY = s.getY() - pivot.getY();
-            // rotate 90 degrees clockwise
-            // (x, y) becomes (y, -x)
-            int newX = pivot.getX() + relY;
-            int newY = pivot.getY() - relX;
+            // rotate 90 degrees counter-clockwise
+            // (x, y) becomes (-y, x)
+            int newX = pivot.getX() - relY;
+            int newY = pivot.getY() + relX;
             s.setX(newX);
             s.setY(newY);
         }
-    }
+    }    
+    
 }

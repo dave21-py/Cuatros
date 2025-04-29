@@ -90,13 +90,13 @@ public class GameBoard {
 
     public void rotateBlock() {
         if (canRotate(0, 0)) {
-            currentBlock.rotateClockwise();
+            currentBlock.rotateCClockwise();
         } else if (canRotate(-1, 0)) {
             currentBlock.move(-1, 0);
-            currentBlock.rotateClockwise();
+            currentBlock.rotateCClockwise();
         } else if (canRotate(1, 0)) {
             currentBlock.move(1, 0);
-            currentBlock.rotateClockwise();
+            currentBlock.rotateCClockwise();
         } else {
             // don't rotate if blocked
         }
@@ -172,9 +172,29 @@ public class GameBoard {
     }
 
     public void resetPosition() {
-        while (canMoveUp()) {
-            currentBlock.move(0, -1);
+        int newY = Integer.MAX_VALUE;
+    
+        // find the smallest Y coordinate in the block
+        for (Square square : currentBlock.getSquares()) {
+            newY = Math.min(newY, square.getY());
         }
+    
+        // calculate how far to shift the block upward
+        int deltaY = -newY;
+        currentBlock.move(0, deltaY);
+    }
+
+    // check how far the block needs to reset to spawn position
+    public boolean canMoveUp() {
+        for (Square square : currentBlock.getSquares()) {
+            int newY = square.getY() - 1;
+
+            // check top of board
+            if (newY <= rows) {
+                return false;
+            }
+        }
+        return true;
     }
 
     // check if block should stop and spawn new block
