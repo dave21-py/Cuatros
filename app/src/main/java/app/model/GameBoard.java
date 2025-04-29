@@ -214,19 +214,7 @@ public class GameBoard {
         }
         return true;
     }
-
-    public boolean canMoveUp() {
-        for (Square square : currentBlock.getSquares()) {
-            int newY = square.getY() - 1;
-
-            // check top of board
-            if (newY <= rows) {
-                return false;
-            }
-        }
-        return true;
-    }
-
+    
     // continually move block down until locked in place
     public void hardDrop() {
         while (canMoveDown()) {

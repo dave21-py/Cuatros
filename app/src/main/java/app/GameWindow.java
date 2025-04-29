@@ -27,7 +27,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class GameWindow implements BoardObserver {
+public class GameWindow {
 
     private static final int CELL_SIZE = 25;
     private static final int GRID_ROWS = 20;
@@ -56,7 +56,7 @@ public class GameWindow implements BoardObserver {
     @FXML
     private Pane nextPane;
 
-    @FXML 
+    @FXML
     private Pane holdPane;
 
     @FXML
@@ -101,7 +101,10 @@ public class GameWindow implements BoardObserver {
         timeline = new Timeline(new KeyFrame(fallAnimation, event -> {
             if (!board.checkGameOver()) {
                 board.dropBlock(); // move block down one
+
+                board.removeGameBlocks(); // check row to clear lines after lock
                 renderBoard(); // re-render the entire board
+                renderNextBlock(); // render next block
             } else {
                 board.dropBlock();
                 timeline.stop();
@@ -138,12 +141,14 @@ public class GameWindow implements BoardObserver {
                     }
                     case SPACE -> {
                         board.hardDrop();
+                        board.removeGameBlocks();
                         renderBoard();
                     }
                     case C -> {
                         board.holdCurrentBlock();
                         renderBoard();
                         renderHoldBlock();
+                        renderNextBlock();
                     }
                 }
                 gameArea.setOnMouseClicked(e -> gameArea.requestFocus());
@@ -215,7 +220,6 @@ public class GameWindow implements BoardObserver {
                 stopMedia();
             }
         });
-
     }
 
     @FXML
@@ -231,27 +235,6 @@ public class GameWindow implements BoardObserver {
     private void renderBoard() {
         // clear any old squares not tagged with cell (border squares)
         gameArea.getChildren().removeIf(node -> node instanceof Rectangle && "cell".equals(node.getUserData()));
-        board.removeGameBlocks();
-        // If a row is full with squares, that row will be deleted.
-        if (board.row.doubleValue() != -1) {
-            gameArea.getChildren().removeIf(node -> board.row.doubleValue() != 0);
-            for (Node node : gameArea.getChildren()) {
-                if ((node).layoutYProperty().doubleValue() > board.row.doubleValue()) {
-                    gameArea.getChildren().remove(node);
-                }
-            }
-            for (Square[] sq : board.getGrid()) {
-                for (Square s : sq) {
-                    if (s != null) {
-                        if (s.getY() > board.row.doubleValue()) {
-                            gameArea.getChildren().add(renderSquare(s));
-                        }
-                    }
-                }
-            }
-        }
-
-        drawBoardBorders();
 
         // render squares on the board
         Square[][] grid = board.getGrid();
@@ -266,20 +249,11 @@ public class GameWindow implements BoardObserver {
 
         // render the first active falling block
         Block block = board.getCurrentBlock();
-        for (Square square : block.getSquares()) {
-            gameArea.getChildren().add(renderSquare(square));
-        }
-    }
-
-    @Override
-    public void onBoardChanged() {
-        for (Node node : gameArea.getChildren()) {
-            if (node.getLayoutY() == (board.row.doubleValue())) {
-                gameArea.getChildren().remove(node);
+        if (block != null) {
+            for (Square square : block.getSquares()) {
+                gameArea.getChildren().add(renderSquare(square));
             }
         }
-        renderBoard();
-        startAnimation();
     }
 
     // preview next block spawned in pane
