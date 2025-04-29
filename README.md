@@ -34,15 +34,15 @@ The controls of this game are quite simple. You can navigate the current block b
 * Gameplay - Pause Menu: 1 point
 
 ## Final Sprint Targets (13 Points)
-- Scoring: 1 point
-- Difficulty Levels (Speed): 1 point
-- Leaderboard: 2 points
+- Scoring: 1 point 
+- Difficulty Levels (Speed): 1 point COMPLETE
+- Leaderboard: 2 points 
 - Sound Effects: 2 points
 
-* Gameplay - Randomize Block: 2 points
-* Gameplay - Show Next Blocks: 1 point
-* Gameplay - Line Clearing: 2 points
-* Gameplay - Hold Block: 2 points
+* Gameplay - Randomize Block: 2 points COMPLETE
+* Gameplay - Show Next Blocks: 1 point COMPLETE
+* Gameplay - Line Clearing: 2 points COMPLETE
+* Gameplay - Hold Block: 2 points COMPLETE
   
 ### Additional features (11 Points)
 * Optional Cheat Mode: 3 points
@@ -66,9 +66,9 @@ Click [this link](https://www.loom.com/share/7bd0ea2c24794fff97b0d08d0bfc6aed?si
 
 |      Name          | Total Hours | Journal |
 |--------------------|-------------|---------------              
-|    John Tam        |      11     | [John](https://github.com/bjucps209/group-project-team-jd/wiki/Project-Journal#john-tam)|
+|    John Tam        |      24     | [John](https://github.com/bjucps209/group-project-team-jd/wiki/Project-Journal#john-tam)|
 |   David Geddam     |      19     | [David](https://github.com/bjucps209/group-project-team-jd/wiki/Project-Journal#david-geddam)|
-|  Daniel Cornelius  |      5.5    | [Daniel](https://github.com/bjucps209/group-project-team-jd/wiki/Project-Journal#daniel-cornelius)|
+|  Daniel Cornelius  |      16    | [Daniel](https://github.com/bjucps209/group-project-team-jd/wiki/Project-Journal#daniel-cornelius)|
 
 ## Credits
 
