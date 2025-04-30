@@ -1,11 +1,8 @@
 package app;
 
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
 
-import app.model.GameBoard;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -68,14 +65,6 @@ public class LeaderBoard{
                 mediaPlayer.stop();
                 mediaPlayer.dispose();
                 mediaPlayer = null;
-            }
-        }
-        public static void scoreFile() {
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter("LeaderBoard.txt"))) {
-                writer.write(GameBoard.scoreNumber.get());
-                System.out.println("Successfully wrote to the file.");
-            } catch (IOException e) {
-                System.out.println("Didn't work.");
             }
         }
     }

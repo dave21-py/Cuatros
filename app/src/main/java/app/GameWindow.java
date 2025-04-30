@@ -1,5 +1,7 @@
 package app;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 
 import app.model.*;
@@ -180,12 +182,17 @@ public class GameWindow {
 
     // alert window to end game, prompt user to play again
     private void showGameOver() {
-        LeaderBoard.scoreFile();
         Platform.runLater(() -> {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Game Over");
             alert.setHeaderText("Game Over! You scored " + board.scoreNumber.get() + " points.");
             alert.setContentText("Play again?");
+
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter("LeaderBoard.txt", true))) {
+                writer.newLine();
+                writer.write(GameBoard.scoreNumber.get());
+            } catch (IOException e) {
+            }
 
             ButtonType playAgainButton = new ButtonType("Play Again");
             ButtonType menuButton = new ButtonType("Back to Menu");
