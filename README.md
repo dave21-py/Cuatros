@@ -60,6 +60,12 @@ Click [this link](https://www.loom.com/share/7bd0ea2c24794fff97b0d08d0bfc6aed?si
 ### ✨ CUATROS Game Screen
 <img width="789" alt="game screen preview" src="https://github.com/user-attachments/assets/38eeb9bf-ac48-425f-8db6-363e1acb5c9d" />
 
+#### System Requirements
+
+> [!NOTE] 
+> Mac and Windows are both supported.
+
+
 ## Code
 
 ### 🛠️ Environment Setup
