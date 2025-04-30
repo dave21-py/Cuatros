@@ -1,7 +1,7 @@
 # CUATROS
 
 <p align="center">
-<img src="title.png"
+<img src="logo.png"
 width="400">
 </p>
 
