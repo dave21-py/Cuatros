@@ -60,6 +60,36 @@ Click [this link](https://www.loom.com/share/7bd0ea2c24794fff97b0d08d0bfc6aed?si
 ### ✨ CUATROS Game Screen
 <img width="789" alt="game screen preview" src="https://github.com/user-attachments/assets/38eeb9bf-ac48-425f-8db6-363e1acb5c9d" />
 
+## Code
+
+### 🛠️ Environment Setup
+
+```bash
+git clone https://github.com/bjucps209/group-project-team-jd.git
+```
+
+#### Gradle Setup
+
+```bash
+gradle init --type java-application --dsl groovy --package app --test-framework junit-jupiter --use-defaults --overwrite 
+```
+
+#### JavaFX Setup
+##### Add a line to app/build.gradle
+```bash
+plugins {
+    id 'application'
+    id 'jacoco'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
+}
+```
+#### Add a new block to the bottom of app/build.gradle:
+```bash
+javafx {
+    version = "23.0.1"
+    modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.media' ]
+}
+```
 
 ## 🎯 Expenses and Contributions
 
@@ -67,7 +97,7 @@ Click [this link](https://www.loom.com/share/7bd0ea2c24794fff97b0d08d0bfc6aed?si
 |      Name          | Total Hours | Journal |
 |--------------------|-------------|---------------              
 |    John Tam        |      24     | [John](https://github.com/bjucps209/group-project-team-jd/wiki/Project-Journal#john-tam)|
-|   David Geddam     |      19     | [David](https://github.com/bjucps209/group-project-team-jd/wiki/Project-Journal#david-geddam)|
+|   David Geddam     |      28     | [David](https://github.com/bjucps209/group-project-team-jd/wiki/Project-Journal#david-geddam)|
 |  Daniel Cornelius  |      16    | [Daniel](https://github.com/bjucps209/group-project-team-jd/wiki/Project-Journal#daniel-cornelius)|
 
 ## ✨ Credits
