@@ -7,10 +7,11 @@
 
 <MediaView fx:id="mediaView" fitWidth="800" fitHeight="600" preserveRatio="false"/>
 
+<HBox fx:id="hbox" spacing="40" prefHeight="600" prefWidth="800" alignment="CENTER">
 
 <VBox fx:id="vbox" spacing="20" prefHeight="400" prefWidth="600" alignment="CENTER">
     <VBox alignment="CENTER" spacing="10">
-    <Label text="Controls" style="-fx-font-size: 50px; -fx-font-family: 'Courier New'; -fx-font-weight: bold; -fx-fill: white;"/>
+    <Label text="Controls" style="-fx-font-size: 50px; -fx-font-family: 'Courier New'; -fx-font-weight: bold; -fx-text-fill: white;"/>
     <Text wrappingWidth="800" textAlignment="CENTER"
     style="-fx-font-size: 30px; -fx-font-family: 'Courier New'; -fx-fill: white; -fx-font-weight: bold;"
     text="The controls of this game are quite simple. You can navigate the current block by either using the arrow keys or WASD.&#10;
@@ -27,4 +28,5 @@
     <Label text="© Project-JD" style="-fx-font-size: 25px; -fx-font-family: 'Courier New'; -fx-text-fill: white; -fx-font-weight: bold;"/>
     </HBox>
     </VBox>
+    </HBox>
     </StackPane>

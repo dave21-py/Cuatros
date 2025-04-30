@@ -29,3 +29,11 @@
     -fx-padding: 10; */
 
 }
+#hbox{
+    -fx-background-image: url("background2.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+    -fx-background-size: cover;
+    -fx-padding: 10;
+
+}

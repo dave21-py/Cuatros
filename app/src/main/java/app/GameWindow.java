@@ -7,6 +7,8 @@ import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -17,6 +19,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
@@ -25,6 +28,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -67,6 +71,9 @@ public class GameWindow {
     private Pane holdPane;
 
     @FXML
+    private Pane leaderBoard;
+
+    @FXML
     private Duration fallAnimation = Duration.millis(500);
 
     public void setFallAnimation(Duration animation) {
@@ -97,6 +104,13 @@ public class GameWindow {
         mediaPlayer.setOnEndOfMedia(() -> {
             stopMedia();
         });
+
+        board.scores.textProperty().bind(board.scoreNumber);
+        board.scores.setFont(new Font("Arial", 30));
+        board.scores.setLayoutY(40);
+        board.scores.setLayoutX(80);
+        board.scores.setTextFill(Color.WHITE);
+        leaderBoard.getChildren().add(board.scores);
     }
 
     // begin game timeline cycle
@@ -166,10 +180,11 @@ public class GameWindow {
 
     // alert window to end game, prompt user to play again
     private void showGameOver() {
+        LeaderBoard.scoreFile();
         Platform.runLater(() -> {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Game Over");
-            alert.setHeaderText("Game Over! You scored 100 points.");
+            alert.setHeaderText("Game Over! You scored " + board.scoreNumber.get() + " points.");
             alert.setContentText("Play again?");
 
             ButtonType playAgainButton = new ButtonType("Play Again");
@@ -260,6 +275,7 @@ public class GameWindow {
     private void renderBoard() {
         // clear any old squares not tagged with cell (border squares)
         gameArea.getChildren().removeIf(node -> node instanceof Rectangle && "cell".equals(node.getUserData()));
+        board.setScore(board.score.get());
 
         // render squares on the board
         Square[][] grid = board.getGrid();
@@ -383,5 +399,6 @@ public class GameWindow {
                 isMuted = false;
             }
         }
+        
     }
 }
