@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
@@ -25,6 +26,8 @@ public class MainWindow {
 
     private boolean isMuted;
 
+    private final AudioClip clickSound = new AudioClip(getClass().getResource("sound-[AudioTrimmer.com].mp3").toExternalForm())
+;
     @FXML
     private ToggleGroup group;
 
@@ -35,6 +38,12 @@ public class MainWindow {
 
     @FXML
     private MediaView mediaView;
+
+    private void playClickSound(){
+        clickSound.play();
+    }
+
+
 
     @FXML
     void onPlayClicked(ActionEvent event) {
@@ -48,10 +57,11 @@ public class MainWindow {
             stage.setTitle("Loading....");
             stage.show();
             
-            Media sound = new Media(getClass().getResource("sound.mp3").toExternalForm());
-            MediaPlayer clickPlayer = new MediaPlayer(sound);
-            clickPlayer.play();
-            clickPlayer.setOnEndOfMedia(() -> clickPlayer.dispose()) ;
+            // Media sound = new Media(getClass().getResource("sound.mp3").toExternalForm());
+            // MediaPlayer clickPlayer = new MediaPlayer(sound);
+            // clickPlayer.play();
+            // clickPlayer.setOnEndOfMedia(() -> clickPlayer.dispose()) ;
+            playClickSound();
 
             FadeTransition fadeIn = new FadeTransition(Duration.millis(1000), loadingRoot);
                 fadeIn.setFromValue(0);   
@@ -94,10 +104,7 @@ public class MainWindow {
             stage.setScene(aboutScene);
             stage.setTitle("About");
             stage.show();
-            Media sound = new Media(getClass().getResource("sound.mp3").toExternalForm());
-            MediaPlayer clickPlayer = new MediaPlayer(sound);
-            clickPlayer.play();
-            clickPlayer.setOnEndOfMedia(() -> clickPlayer.dispose()) ;
+            playClickSound();
 
             FadeTransition fadeIn = new FadeTransition(Duration.millis(1000), aboutRoot);
                 fadeIn.setFromValue(0);   
@@ -118,10 +125,7 @@ public class MainWindow {
             stage.setScene(settingsScene);
             stage.setTitle("Settings");
             stage.show();
-            Media sound = new Media(getClass().getResource("sound.mp3").toExternalForm());
-            MediaPlayer clickPlayer = new MediaPlayer(sound);
-            clickPlayer.play();
-            clickPlayer.setOnEndOfMedia(() -> clickPlayer.dispose()) ;
+            playClickSound();
 
             FadeTransition fadeIn = new FadeTransition(Duration.millis(1000), settingsRoot);
                 fadeIn.setFromValue(0);   
@@ -145,10 +149,7 @@ public class MainWindow {
             stage.setScene(tutorialScene);
             stage.setTitle("Welcome to CUATROS Tutorial");
             stage.show();
-            Media sound = new Media(getClass().getResource("sound.mp3").toExternalForm());
-            MediaPlayer clickPlayer = new MediaPlayer(sound);
-            clickPlayer.play();
-            clickPlayer.setOnEndOfMedia(() -> clickPlayer.dispose()) ;
+            playClickSound();
 
             FadeTransition fadeIn = new FadeTransition(Duration.millis(1000), tutorialRoot);
                 fadeIn.setFromValue(0);   
@@ -170,11 +171,7 @@ public class MainWindow {
             stage.setScene(new Scene(leaderBoardRoot, 800, 600));
             stage.setTitle("LeaderBoards");
             stage.show();
-            Media sound = new Media(getClass().getResource("sound.mp3").toExternalForm());
-            MediaPlayer clickPlayer = new MediaPlayer(sound);
-            clickPlayer.play();
-            clickPlayer.setOnEndOfMedia(() -> clickPlayer.dispose()) ;
-
+            playClickSound();
             FadeTransition fadeIn = new FadeTransition(Duration.millis(1000), leaderBoardRoot);
                 fadeIn.setFromValue(0);   
                 fadeIn.setToValue(2);
@@ -195,11 +192,7 @@ public class MainWindow {
             stage.setScene(new Scene(helpRoot, 800, 600));
             stage.setTitle("Help");
             stage.show();
-            Media sound = new Media(getClass().getResource("sound.mp3").toExternalForm());
-            MediaPlayer clickPlayer = new MediaPlayer(sound);
-            clickPlayer.play();
-            clickPlayer.setOnEndOfMedia(() -> clickPlayer.dispose()) ;
-
+            playClickSound();
             FadeTransition fadeIn = new FadeTransition(Duration.millis(1000), helpRoot);
                 fadeIn.setFromValue(0);   
                 fadeIn.setToValue(2);
@@ -222,10 +215,7 @@ public class MainWindow {
     //Mute button
     @FXML
     void onMuteClicked(){
-        Media sound = new Media(getClass().getResource("sound.mp3").toExternalForm());
-            MediaPlayer clickPlayer = new MediaPlayer(sound);
-            clickPlayer.play();
-            clickPlayer.setOnEndOfMedia(() -> clickPlayer.dispose()) ;
+        playClickSound();
             
         if(mediaPlayer != null){
             if(isMuted == false){

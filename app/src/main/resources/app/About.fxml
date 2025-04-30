@@ -9,10 +9,12 @@
 
 <MediaView fx:id="mediaView" fitWidth="800" fitHeight="600" preserveRatio="false"/>
 
+<HBox fx:id="hbox" spacing="40" prefHeight="600" prefWidth="800" alignment="CENTER">
+
 <VBox fx:id="vbox" spacing="20" prefHeight="400" prefWidth="600" alignment="CENTER">
     <VBox alignment="CENTER" >
     <Label wrapText="true"
-    text="About" style="-fx-font-size: 50px; -fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-text-fill: white;"/>
+    text="About" style="-fx-font-size: 50px; -fx-font-family: 'Courier New'; -fx-font-weight: bold; -fx-text-fill: white;"/>
     <Label wrapText="true"
     text="The game ends when the player's screen is filled to the top with no more space for another block to spawn. Cuatros is a block puzzle game where players shift and rotate falling four-square shaped blocks to fill lines horizontally. As the lines of blocks are filled, the lines will be cleared, awarding the player points for each line cleared. As the game progresses, the blocks will fall at a higher rate and will require quicker decision making to survive. The score is calculated by how many blocks have been placed and the number of lines that have been cleared."
     style="-fx-font-size: 15px; -fx-font-family: 'Courier New'; -fx-text-fill: white; -fx-font-weight: bold;" />
@@ -27,4 +29,5 @@
     <Label text="© Project-JD" style="-fx-font-size: 25px; -fx-font-family: 'Courier New'; -fx-text-fill: white; -fx-font-weight: bold;"/>
     </HBox>
     </VBox>
+    </HBox>
     </StackPane>

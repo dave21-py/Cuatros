@@ -20,6 +20,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
+import javafx.scene.media.AudioClip;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.scene.paint.Color;
@@ -28,6 +29,12 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class GameWindow {
+
+    private final AudioClip clickSound = new AudioClip(getClass().getResource("sound-[AudioTrimmer.com].mp3").toExternalForm());
+
+    private void playClickSound(){
+        clickSound.play();
+    }
 
     private static final int CELL_SIZE = 25;
     private static final int GRID_ROWS = 20;
@@ -166,13 +173,27 @@ public class GameWindow {
             alert.setContentText("Play again?");
 
             ButtonType playAgainButton = new ButtonType("Play Again");
+            ButtonType menuButton = new ButtonType("Back to Menu");
             ButtonType exitButton = new ButtonType("Exit");
 
-            alert.getButtonTypes().setAll(playAgainButton, exitButton);
+            alert.getButtonTypes().setAll(playAgainButton, exitButton, menuButton);
 
             alert.showAndWait().ifPresent(response -> {
                 if (response == playAgainButton) {
                     restartGame();
+                } else if (response == menuButton){
+                    try {
+                        Parent mainRoot = FXMLLoader.load(getClass().getResource("/app/MainWindow.fxml"));
+                        Stage stage = (Stage) mediaView.getScene().getWindow();
+                        stage.setScene(new Scene(mainRoot, 800, 600));
+                        stage.setTitle("Cuatros");
+                        stage.show();
+                        stopMedia();
+                        playClickSound();
+                        
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 } else {
                     Platform.exit();
                 }
@@ -195,13 +216,16 @@ public class GameWindow {
         alert.getButtonTypes().setAll(resumeButton, menuButton);
 
         if (timeline != null) { // Pause
+            playClickSound();
             timeline.pause();
         }
         alert.showAndWait().ifPresent(buttonType -> {
             if (buttonType == resumeButton) {
                 System.out.println("Game Resumed");
                 if (timeline != null) { // Resume
+                    playClickSound();
                     timeline.play();
+
                 }
             } else if (buttonType == menuButton) {
                 try {
@@ -210,6 +234,7 @@ public class GameWindow {
                     stage.setScene(new Scene(mainRoot, 800, 600));
                     stage.setTitle("Cuatros");
                     stage.show();
+                    playClickSound();
                     FadeTransition fadeIn = new FadeTransition(Duration.millis(1000), mainRoot);
                     fadeIn.setFromValue(0);
                     fadeIn.setToValue(2);
@@ -345,6 +370,7 @@ public class GameWindow {
     // Mute button
     @FXML
     void onMuteClicked() {
+        playClickSound();
         if (mediaPlayer != null) {
             if (isMuted == false) {
                 mediaPlayer.setMute(true);

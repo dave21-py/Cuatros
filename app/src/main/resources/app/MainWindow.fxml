@@ -19,7 +19,7 @@
     <VBox alignment="CENTER" spacing="10">
     <Button styleClass="Button" text="Play ▶" prefWidth="120" prefHeight="250" onAction="#onPlayClicked"/>
     <Button styleClass="Button" text="Tutorial 🎓" prefWidth="180" prefHeight="250" onAction="#onTutorialClicked"/>
-    <Button styleClass="Button" text="Leaderboard 🏆" prefWidth="200" prefHeight="250" onAction="#onLeaderBoardClicked"/>
+    <Button styleClass="Button" text="Leaderboard 🏆" prefWidth="210" prefHeight="250" onAction="#onLeaderBoardClicked"/>
     </VBox>
 
     <Region prefHeight="50"/>
@@ -32,7 +32,7 @@
     <Region prefWidth="550"/> 
     <VBox alignment="BOTTOM_RIGHT" spacing="10" >
     <Button fx:id="muteButton" text="🔇" prefWidth="90" onAction="#onMuteClicked" styleClass="Button2"/>
-    <Button styleClass="Button2" text="Settings ⚙️" prefWidth="120" onAction="#onSettingsClicked"/>
+    <Button styleClass="Button2" text="Settings ⚙️" prefWidth="130" onAction="#onSettingsClicked"/>
     </VBox>
     </HBox>
 

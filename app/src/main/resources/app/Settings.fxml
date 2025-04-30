@@ -11,6 +11,8 @@
 <MediaView fx:id="mediaView" fitWidth="800" fitHeight="600" preserveRatio="false"/>
 
 
+<HBox fx:id="hbox" spacing="40" prefHeight="600" prefWidth="800" alignment="CENTER">
+
 <VBox fx:id="vbox" spacing="10" prefHeight="400" prefWidth="600" alignment="CENTER">
     <VBox alignment="TOP_CENTER" >
     <Label wrapText="true"
@@ -23,4 +25,5 @@
     <Button text="BACK" styleClass="backbutton" onAction="#onBackClicked" prefWidth="100" prefHeight="40" />
     </HBox>
     </VBox>
+    </HBox>
     </StackPane>

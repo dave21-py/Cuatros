@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
@@ -14,6 +15,8 @@ import javafx.stage.Stage;
 
 
 public class Tutorial{
+
+    private final AudioClip clickSound = new AudioClip(getClass().getResource("sound-[AudioTrimmer.com].mp3").toExternalForm());
 
     @FXML
     private MediaPlayer mediaPlayer;
@@ -29,6 +32,10 @@ public class Tutorial{
 
     public void setPrimaryStage(Stage primaryStage){
         this.primaryStage = primaryStage;
+    }
+
+    private void playClickSound(){
+        clickSound.play();
     }
 
     public void initialize(){
@@ -53,6 +60,7 @@ public class Tutorial{
         public void onSkipClicked(ActionEvent event) throws IOException {
             stopMedia();
             stopVideo();
+            playClickSound();
         }
 
         @FXML

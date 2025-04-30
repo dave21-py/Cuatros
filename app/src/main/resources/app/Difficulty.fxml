@@ -9,12 +9,13 @@
 
 
 <VBox fx:id="vbox" spacing="20" prefHeight="400" prefWidth="600" alignment="CENTER">
-    <Label text="Select Difficulty" style="-fx-font-size: 50px; -fx-font-family: 'Courier New'; -fx-font-weight: bold; -fx-fill: white;"/>
+    <Label text="Select Difficulty" style="-fx-font-size: 50px; -fx-font-family: 'Courier New'; -fx-font-weight: bold; -fx-text-fill: white;"/>
     <Region prefHeight="30"/>
 
     <Button text="Easy" styleClass="easy" onAction="#onEasyClicked"/>
     <Button text="Medium" styleClass="medium" onAction="#onMediumClicked"/>
     <Button text="Hard" styleClass="hard" onAction="#onHardClicked"/>
+    <Button text="Back to Menu" styleClass="back" onAction="#onBackClicked"/>
 
     </VBox>
     </StackPane>

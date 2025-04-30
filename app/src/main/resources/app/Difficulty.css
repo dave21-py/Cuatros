@@ -51,6 +51,22 @@
     -fx-text-fill: black;;
     -fx-background-color: cyan;
 }
+.back{
+    -fx-background-color: black;
+    -fx-text-fill: white;
+    -fx-border-color: cyan;
+    -fx-border-width: 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-cursor: hand;
+}
+.back:hover{
+    -fx-border-color: rgb(141, 8, 141);
+    /* -fx-background-color: linear-gradient(to right,
+    cyan, blue, orange, yellow, greenyellow, indigo, red); */
+    -fx-text-fill: black;;
+    -fx-background-color: cyan;
+}
 #vbox{
     -fx-padding: 10;
     /* -fx-background-image: url("background.png");
