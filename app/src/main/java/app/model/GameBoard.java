@@ -3,15 +3,14 @@ package app.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.scene.control.Label;
 
 public class GameBoard {
-    public DoubleProperty row = new SimpleDoubleProperty(-1);
-    public StringProperty score = new SimpleStringProperty();
+    private final IntegerProperty score = new SimpleIntegerProperty(0);
+
     private final int rows = 20;
     private final int cols = 10;
     private Square[][] grid;
@@ -23,8 +22,6 @@ public class GameBoard {
     private List<BoardObserver> observers = new ArrayList<>();
 
     private boolean gameOver = false;
-
-    public Label scores = new Label("0");
 
     public static StringProperty scoreNumber = new SimpleStringProperty();
 
@@ -41,7 +38,6 @@ public class GameBoard {
     // constructor
     public GameBoard() {
         grid = new Square[rows][cols];
-        score.set("0");
         nextBlock = Block.generateBlock();
         spawnNewBlock();
     }
@@ -244,11 +240,14 @@ public class GameBoard {
                 grid[y][x] = new Square(x, y, square.getColorCode());
             }
         }
-        score.set(String.valueOf(Integer.parseInt(score.getValue()) + 4));
+        addScore(50); // +50 per placed block
+
         holding = false; // allows holding after second block is locked
     }
 
     public void removeGameBlocks() {
+        int rowsCleared = 0; // tracks row cleared this turn
+
         for (int y = rows - 1; y >= 0; y--) {
             boolean fullRow = true;
             for (int x = 0; x < cols; x++) {
@@ -262,16 +261,30 @@ public class GameBoard {
                 removeRow(y);
                 moveRowsDown(y);
                 y++; 
+                rowsCleared++;
             }
         }
+
+        if (rowsCleared > 0) {
+            addScore(checkRowsCleared(rowsCleared));
+        }
         notifyObservers();
+    }
+
+    private int checkRowsCleared(int rows) {
+        return switch (rows) {
+            case 1 -> 200;
+            case 2 -> 300;
+            case 3 -> 500;
+            case 4 -> 1000;
+            default -> 100;
+        };
     }
 
     private void removeRow(int y) {
         for (int x = 0; x < cols; x++) {
             grid[y][x] = null;
         }
-        score.set(String.valueOf(Integer.parseInt(score.getValue()) + 100));
     }    
 
     private void moveRowsDown(int fromRow) {
@@ -286,11 +299,17 @@ public class GameBoard {
             }
         }
     }
-    public void setScore(String number) {
-        scoreNumber.set(number);
-    }
 
-    public StringProperty score() {
-        return scoreNumber;
+    public IntegerProperty scoreProperty() {
+        return score;
     }
+    
+    public int getScore() {
+        return score.get();
+    }
+    
+    public void addScore(int points) {
+        score.set(score.get() + points);
+    }
+    
 }

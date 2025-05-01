@@ -3,14 +3,13 @@ package app;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Optional;
 
 import app.model.*;
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -22,6 +21,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
@@ -36,9 +36,10 @@ import javafx.util.Duration;
 
 public class GameWindow {
 
-    private final AudioClip clickSound = new AudioClip(getClass().getResource("sound-[AudioTrimmer.com].mp3").toExternalForm());
+    private final AudioClip clickSound = new AudioClip(
+            getClass().getResource("sound-[AudioTrimmer.com].mp3").toExternalForm());
 
-    private void playClickSound(){
+    private void playClickSound() {
         clickSound.play();
     }
 
@@ -53,6 +54,7 @@ public class GameWindow {
     private boolean isMuted;
     private Timeline timeline;
     private GameBoard board;
+    private Label lblScore;
 
     @FXML
     private Button muteButton;
@@ -107,12 +109,13 @@ public class GameWindow {
             stopMedia();
         });
 
-        board.scores.textProperty().bind(board.scoreNumber);
-        board.scores.setFont(new Font("Arial", 30));
-        board.scores.setLayoutY(40);
-        board.scores.setLayoutX(80);
-        board.scores.setTextFill(Color.WHITE);
-        leaderBoard.getChildren().add(board.scores);
+        lblScore = new Label();
+        lblScore.textProperty().bind(board.scoreProperty().asString("%d"));
+        lblScore.setFont(new Font("Arial", 30));
+        lblScore.setLayoutY(40);
+        lblScore.setLayoutX(60);
+        lblScore.setTextFill(Color.WHITE);
+        leaderBoard.getChildren().add(lblScore);
     }
 
     // begin game timeline cycle
@@ -184,26 +187,36 @@ public class GameWindow {
     private void showGameOver() {
         Platform.runLater(() -> {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+
+            TextInputDialog initialsDialog = new TextInputDialog();
+            initialsDialog.setTitle("Enter Initials");
+            initialsDialog.setHeaderText("Game Over! You scored " + board.getScore() + " points.");
+            initialsDialog.setContentText("Enter your initials (max 3 letters):");
+
+            Optional<String> result = initialsDialog.showAndWait();
+            String initials = result.orElse("???").toUpperCase().replaceAll("[^A-Z]", "").substring(0,
+                    Math.min(3, result.orElse("???").length()));
+
             alert.setTitle("Game Over");
-            alert.setHeaderText("Game Over! You scored " + board.scoreNumber.get() + " points.");
+            alert.setHeaderText("Game Over! You scored " + board.getScore() + " points.");
             alert.setContentText("Play again?");
 
             try (BufferedWriter writer = new BufferedWriter(new FileWriter("LeaderBoard.txt", true))) {
+                writer.write(initials + "," + board.getScore());
                 writer.newLine();
-                writer.write(GameBoard.scoreNumber.get());
             } catch (IOException e) {
-            }
+                e.printStackTrace();
+            }            
 
             ButtonType playAgainButton = new ButtonType("Play Again");
             ButtonType menuButton = new ButtonType("Back to Menu");
-            ButtonType exitButton = new ButtonType("Exit");
 
-            alert.getButtonTypes().setAll(playAgainButton, exitButton, menuButton);
+            alert.getButtonTypes().setAll(playAgainButton, menuButton);
 
             alert.showAndWait().ifPresent(response -> {
                 if (response == playAgainButton) {
                     restartGame();
-                } else if (response == menuButton){
+                } else if (response == menuButton) {
                     try {
                         Parent mainRoot = FXMLLoader.load(getClass().getResource("/app/MainWindow.fxml"));
                         Stage stage = (Stage) mediaView.getScene().getWindow();
@@ -212,7 +225,7 @@ public class GameWindow {
                         stage.show();
                         stopMedia();
                         playClickSound();
-                        
+
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -282,7 +295,6 @@ public class GameWindow {
     private void renderBoard() {
         // clear any old squares not tagged with cell (border squares)
         gameArea.getChildren().removeIf(node -> node instanceof Rectangle && "cell".equals(node.getUserData()));
-        board.setScore(board.score.get());
 
         // render squares on the board
         Square[][] grid = board.getGrid();
@@ -328,16 +340,16 @@ public class GameWindow {
         if (hold == null) {
             return;
         }
-        
+
         double minX = Integer.MAX_VALUE;
         double minY = Integer.MAX_VALUE;
-        
+
         // set max values for the pane
         for (Square square : hold.getSquares()) {
             minX = Math.min(minX, square.getX());
             minY = Math.min(minY, square.getY());
         }
-    
+
         for (Square square : hold.getSquares()) {
             Rectangle rectangle = new Rectangle(CELL_SIZE - 10, CELL_SIZE - 10);
             rectangle.setX((square.getX() - minX) * (CELL_SIZE / 1.6) + 75);
@@ -347,7 +359,6 @@ public class GameWindow {
             holdPane.getChildren().add(rectangle);
         }
     }
-    
 
     // render the borders of the board using Rectangle objects
     private void drawBoardBorders() {
@@ -406,6 +417,6 @@ public class GameWindow {
                 isMuted = false;
             }
         }
-        
+
     }
 }
