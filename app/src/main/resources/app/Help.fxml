@@ -13,14 +13,17 @@
     <VBox alignment="CENTER" spacing="10">
     <Label text="Controls" style="-fx-font-size: 50px; -fx-font-family: 'Courier New'; -fx-font-weight: bold; -fx-text-fill: white;"/>
     <Text wrappingWidth="800" textAlignment="CENTER"
-    style="-fx-font-size: 30px; -fx-font-family: 'Courier New'; -fx-fill: white; -fx-font-weight: bold;"
+    style="-fx-font-size: 20px; -fx-font-family: 'Courier New'; -fx-fill: white; -fx-font-weight: bold;"
     text="The controls of this game are quite simple. You can navigate the current block by either using the arrow keys or WASD.&#10;
     LEFT ARROW / A - shift block left&#10;
     RIGHT ARROW / D - shift block right&#10;
     DOWN ARROW / W - move block down&#10;
-    UP ARROW / S - rotate block&#10;"/>
+    UP ARROW / S - rotate block&#10;
+    C - change block&#10;
+    SPACEBAR - drop block instantly&#10;"/>
+    
 
-    <Text text="Now your ready go Play!" style="-fx-font-size: 30px; -fx-font-family: 'Courier New'; -fx-font-weight: bold; -fx-fill: white;"/>
+    <Text text="Now you're all set. Go Play!" style="-fx-font-size: 30px; -fx-font-family: 'Courier New'; -fx-font-weight: bold; -fx-fill: white;"/>
     
     </VBox>
     <HBox spacing="10" alignment="CENTER" style="-fx-padding: 50 10 10 10"> <!--50 moves up-->

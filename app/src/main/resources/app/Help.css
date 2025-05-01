@@ -18,6 +18,8 @@
     cyan, blue, orange, yellow, greenyellow, indigo, red); */
     -fx-text-fill: black;;
     -fx-background-color: cyan;
+    -fx-scale-x: 1.18;
+    -fx-scale-y: 1.18;
 }
 #vbox{
     -fx-padding: 10;

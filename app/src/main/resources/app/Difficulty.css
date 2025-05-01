@@ -18,6 +18,8 @@
     cyan, blue, orange, yellow, greenyellow, indigo, red); */
     -fx-text-fill: black;;
     -fx-background-color: cyan;
+    -fx-scale-x: 1.2;
+    -fx-scale-y: 1.2;
 }
 .medium{
     -fx-background-color: black;
@@ -34,6 +36,8 @@
     cyan, blue, orange, yellow, greenyellow, indigo, red); */
     -fx-text-fill: black;;
     -fx-background-color: cyan;
+    -fx-scale-x: 1.2;
+    -fx-scale-y: 1.2;
 }
 .hard{
     -fx-background-color: black;
@@ -43,6 +47,7 @@
     -fx-border-radius: 20px;
     -fx-background-radius: 20px;
     -fx-cursor: hand;
+    
 }
 .hard:hover{
     -fx-border-color: rgb(141, 8, 141);
@@ -50,6 +55,8 @@
     cyan, blue, orange, yellow, greenyellow, indigo, red); */
     -fx-text-fill: black;;
     -fx-background-color: cyan;
+    -fx-scale-x: 1.2;
+    -fx-scale-y: 1.2;
 }
 .back{
     -fx-background-color: black;
@@ -66,6 +73,8 @@
     cyan, blue, orange, yellow, greenyellow, indigo, red); */
     -fx-text-fill: black;;
     -fx-background-color: cyan;
+    -fx-scale-x: 1.18;
+    -fx-scale-y: 1.18;
 }
 #vbox{
     -fx-padding: 10;
