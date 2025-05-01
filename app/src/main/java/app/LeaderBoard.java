@@ -104,7 +104,7 @@ public class LeaderBoard{
             int rank = 1;
             for (ScoreEntry entry : entries.subList(0, Math.min(3, entries.size()))) {
                 Label scoreLabel = new Label(rank + ". " + entry.getInitials() + " - " + entry.getScore());
-                scoreLabel.setStyle("-fx-font-size: 18px; -fx-text-fill: white; -fx-font-family: 'Courier New';");
+                scoreLabel.setStyle("-fx-font-size: 30px; -fx-font-family: 'Courier New'; -fx-font-weight: bold; -fx-text-fill: white;");
                 vbox.getChildren().add(scoreLabel);
                 rank++;
             }
