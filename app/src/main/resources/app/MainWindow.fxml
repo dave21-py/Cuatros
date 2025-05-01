@@ -32,10 +32,12 @@
     <Region prefWidth="550"/> 
     <VBox alignment="BOTTOM_RIGHT" spacing="10" >
     <Button fx:id="muteButton" text="🔇" prefWidth="90" onAction="#onMuteClicked" styleClass="Button2"/>
-    <Button styleClass="Button2" text="Settings ⚙️" prefWidth="130" onAction="#onSettingsClicked"/>
     </VBox>
     </HBox>
 
 </VBox>
+<Text fx:id="tipText" text="🧠 Tip: Blocks fall faster in Hard Mode!" style="-fx-font-size: 17px; -fx-fill: white;" StackPane.alignment="BOTTOM_CENTER" translateY="-80" />
+<Label fx:id="bottomText" text="Built by John, David, and Daniel· Powered by JavaFX" StackPane.alignment="BOTTOM_CENTER" translateY="3" style="-fx-font-size: 17px; -fx-font-family: 'Courier New'; -fx-text-fill: white;"/>
+<Label fx:id="bottomText" text="CUATROS v1.2 - Updated April 2025" StackPane.alignment="BOTTOM_CENTER" translateY="-18" style="-fx-font-size: 17px; -fx-font-family: 'Courier New'; -fx-text-fill: white;"/>  
 </StackPane>
     

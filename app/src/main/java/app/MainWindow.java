@@ -3,6 +3,8 @@ package app;
 import java.io.IOException;
 
 import javafx.animation.FadeTransition;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,10 +18,14 @@ import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class MainWindow {
+
+    @FXML
+    private Text tipText;
 
     @FXML
     private Button muteButton;
@@ -42,6 +48,21 @@ public class MainWindow {
     private void playClickSound(){
         clickSound.play();
     }
+
+    private final String[] tips={
+        "🧠 Tip: Blocks fall faster in Hard Mode!",
+        "🧠 Tip: If you are a beginner, select Easy Mode and practise!",
+        "🧠 Tip: Press spacebar to drop the block at the instant!",
+        "🧠 Tip: Complete and fill a row to clear and gain extra points!",
+        "🧠 Tip: You can mute the background music!",
+        "🧠 Tip: You can preview the next and upcoming block falling from the Next Pane!",
+        "🧠 Tip: Press C for changing the block you want to prefer!",
+        "🧠 Tip: Bonus: You can also preview the block from the Hold Pane!",
+        "🧠 Tip: Play during a short break after a study session to release stress!",
+        "🧠 Tip: Hold down arrow keys for faster control of movement of blocks!"
+    };
+
+    private int currentTip = 0; //Initial value
 
 
 
@@ -75,6 +96,13 @@ public class MainWindow {
 
     @FXML
     public void initialize() {
+        //Tips
+        Timeline tipTimeLine = new Timeline(new KeyFrame(Duration.seconds(4), e-> {
+            currentTip = (currentTip + 1) % tips.length;
+            tipText.setText(tips[currentTip]);
+        }));
+        tipTimeLine.setCycleCount(Timeline.INDEFINITE);
+        tipTimeLine.play();
         //Audio
         Media sound = new Media(getClass().getResource("mainwindow.mp3").toExternalForm());
         mediaPlayer = new MediaPlayer(sound);
@@ -136,7 +164,6 @@ public class MainWindow {
         }
         stopMedia();
     }
-
     @FXML
     void onTutorialClicked(ActionEvent event) {
         try {

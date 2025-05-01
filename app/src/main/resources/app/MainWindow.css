@@ -13,13 +13,15 @@
     -fx-border-width: 3px;
     -fx-border-radius: 20px;
     -fx-background-radius: 20px;
-    -fx-cursor: hand;
 }
 .Button:hover{
     -fx-border-color: black;
     -fx-background-color: yellow;
     -fx-text-fill: black;
-    -fx-effect: dropshadow(gaussian,yellow, 25, 0.4, 0, 0);  /*gaussian(blur)*/
+    -fx-effect: dropshadow(gaussian,yellow, 25, 0.5, 0, 0);  /*gaussian(blur)*/
+    -fx-cursor: hand;
+    -fx-scale-x: 1.18;
+    -fx-scale-y: 1.18;
 } 
 
 .Button2{
@@ -38,6 +40,8 @@
     -fx-background-color: cyan;
     -fx-text-fill: black;
     -fx-effect: dropshadow(gaussian, cyan, 20, 0.4, 0, 0);
+    -fx-scale-x: 1.18;
+    -fx-scale-y: 1.18;
     
 }
 
@@ -62,6 +66,10 @@
     -fx-scale-x: 1.10;
     -fx-scale-y: 1.10;
     -fx-cursor: hand;
+
+}
+#bottomText{
+    
 
 }
 

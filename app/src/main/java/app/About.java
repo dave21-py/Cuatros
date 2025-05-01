@@ -15,6 +15,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 
+
 public class About {
 
     @FXML
@@ -46,6 +47,7 @@ public class About {
             stopMedia();
         });
     }
+
     @FXML
         public void onBackClicked(ActionEvent event) throws IOException {
             Parent mainRoot = FXMLLoader.load(getClass().getResource("/app/MainWindow.fxml"));
