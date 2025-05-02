@@ -57,7 +57,7 @@ Click [this link](https://www.loom.com/share/7bd0ea2c24794fff97b0d08d0bfc6aed?si
 
 <p align="center">
 <video width="600" controls>
-<source src="recording.mp4" type="video/mp4">
+<source src="app/updatedtutorial.mp4" type="video/mp4">
 </video>
 </p>
 
