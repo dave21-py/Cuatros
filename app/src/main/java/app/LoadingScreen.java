@@ -43,7 +43,7 @@ public class LoadingScreen{
 
     public void initialize(){
         // Audio
-        Media sound = new Media(getClass().getResource("mainwindow.mp3").toExternalForm());
+        Media sound = new Media(getClass().getResource("timer.mp3").toExternalForm());
         mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
         
