@@ -59,21 +59,20 @@ Click [this link](https://www.loom.com/share/7bd0ea2c24794fff97b0d08d0bfc6aed?si
 ### ✨ CUATROS Title Screen
 
 <p align="center">
-<img src="logo.png"
+<img src="titlescreen.png"
 width="400">
 </p>
 
 ### ✨ CUATROS Game Screen
 
 <p align="center">
-<img src="logo.png"
+<img src="gamescreen.png"
 width="400">
 </p>
 
 #### System Requirements
 
 > Both MacOS and Windows supported.
-> [!NOTE] 
 > Better optimized for MacOS.
 
 
@@ -90,7 +89,7 @@ git clone https://github.com/bjucps209/group-project-team-jd.git
 ```bash
 gradle init --type java-application --dsl groovy --package app --test-framework junit-jupiter --use-defaults --overwrite 
 ```
-### Gradle commands
+#### Gradle commands
 
 ```bash
 gradle clean build
