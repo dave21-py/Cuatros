@@ -24,6 +24,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.MediaPlayer;
@@ -34,7 +35,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class GameWindow implements BoardObserver{
+public class GameWindow implements BoardObserver {
 
     private final AudioClip clickSound = new AudioClip(
             getClass().getResource("sound-[AudioTrimmer.com].mp3").toExternalForm());
@@ -44,27 +45,25 @@ public class GameWindow implements BoardObserver{
     }
 
     private final AudioClip dropSound = new AudioClip(
-        getClass().getResource("drop.mp3").toExternalForm());
-    
-    private void playDropSound(){
+            getClass().getResource("drop.mp3").toExternalForm());
+
+    private void playDropSound() {
         dropSound.play();
     }
 
     private final AudioClip bombSound = new AudioClip(
-        getClass().getResource("bomb.mp3").toExternalForm());
-    
-    private void playBombSound(){
+            getClass().getResource("bomb.mp3").toExternalForm());
+
+    private void playBombSound() {
         bombSound.play();
     }
 
     private final AudioClip gameOverSound = new AudioClip(
-        getClass().getResource("gameover.mp3").toExternalForm());
-    
-    private void playGameOverSound(){
+            getClass().getResource("gameover.mp3").toExternalForm());
+
+    private void playGameOverSound() {
         gameOverSound.play();
     }
-
-
 
     private static final int CELL_SIZE = 25;
     private static final int GRID_ROWS = 20;
@@ -77,7 +76,9 @@ public class GameWindow implements BoardObserver{
     private boolean isMuted;
     private Timeline timeline;
     private GameBoard board;
-    private Label lblScore;
+    private Label lblScore, lblLevel;
+
+    private double scoreMultiplier = 1.0; 
 
     @FXML
     private Button muteButton;
@@ -101,6 +102,9 @@ public class GameWindow implements BoardObserver{
     private Pane leaderBoard;
 
     @FXML
+    private VBox scoreBox;
+
+    @FXML
     private Duration fallAnimation = Duration.millis(500);
 
     public void setFallAnimation(Duration animation) {
@@ -108,11 +112,14 @@ public class GameWindow implements BoardObserver{
         if (board != null) {
             startAnimation();
         }
+        System.out.println("New fall speed: " + fallAnimation.toMillis() + "ms");
     }
 
     @FXML
     public void initialize() {
         board = new GameBoard();
+        board.setScoreMultiplier(Difficulty.scoreMultiplier);
+
         board.addObserver(this);
         drawBoardBorders();
         renderBoard();
@@ -133,13 +140,8 @@ public class GameWindow implements BoardObserver{
             stopMedia();
         });
 
-        lblScore = new Label();
-        lblScore.textProperty().bind(board.scoreProperty().asString("%d"));
-        lblScore.setFont(new Font("Arial", 30));
-        lblScore.setLayoutY(40);
-        lblScore.setLayoutX(60);
-        lblScore.setTextFill(Color.WHITE);
-        leaderBoard.getChildren().add(lblScore);
+        initScoreLabels();
+
     }
 
     // begin game timeline cycle
@@ -148,6 +150,7 @@ public class GameWindow implements BoardObserver{
         if (timeline != null) { // Passes difficulty logic lol
             timeline.stop();
         }
+        timeline = null;
         timeline = new Timeline(new KeyFrame(fallAnimation, event -> {
             if (!board.checkGameOver()) {
                 board.dropBlock(); // move block down one
@@ -211,7 +214,7 @@ public class GameWindow implements BoardObserver{
     private void showGameOver() {
         Platform.runLater(() -> {
             stopMedia();
-            if(!isMuted){
+            if (!isMuted) {
                 playGameOverSound();
             }
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -234,7 +237,7 @@ public class GameWindow implements BoardObserver{
                 writer.newLine();
             } catch (IOException e) {
                 e.printStackTrace();
-            }            
+            }
 
             ButtonType playAgainButton = new ButtonType("Play Again");
             ButtonType menuButton = new ButtonType("Back to Menu");
@@ -429,6 +432,28 @@ public class GameWindow implements BoardObserver{
         };
     }
 
+    private void initScoreLabels() {
+        lblScore = new Label();
+        lblScore.textProperty().bind(board.scoreProperty().asString("Score: %d"));
+        lblScore.setFont(new Font("Courier New", 18));
+        lblScore.setTextFill(Color.WHITE);
+
+        lblLevel = new Label();
+        lblLevel.textProperty().bind(board.levelProperty().asString("Level: %d"));
+        lblLevel.setFont(new Font("Courier New", 16));
+        lblLevel.setTextFill(Color.WHITE);
+
+        scoreBox.getChildren().addAll(lblScore, lblLevel);
+    }
+
+    public void setScoreMultiplier(double multiplier) {
+        if (board != null) {
+            board.setScoreMultiplier(multiplier);
+        } else {
+            this.scoreMultiplier = multiplier; 
+        }
+    }    
+
     // Mute button
     @FXML
     void onMuteClicked() {
@@ -449,22 +474,30 @@ public class GameWindow implements BoardObserver{
     }
 
     @Override
-    public void onBlockLocked(){
-        if(!isMuted){
+    public void onBlockLocked() {
+        if (!isMuted) {
             playDropSound();
         }
     }
 
     @Override
-    public void onBoardChanged(){
+    public void onBoardChanged() {
 
     }
 
     @Override
-    public void onLineCleared(){
-        if(!isMuted){
+    public void onLineCleared() {
+        if (!isMuted) {
             playBombSound();
         }
-
     }
+
+    @Override
+    public void onLevelUp(int newLevel) {
+        double base = Difficulty.baseFallSpeed.toMillis();
+        double newDelay = Math.max(100, base - (newLevel - 1) * 50);
+        System.out.println("New fall speed: " + newDelay + "ms");
+        setFallAnimation(Duration.millis(newDelay)); 
+    }
+
 }

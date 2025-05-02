@@ -25,6 +25,11 @@ public class GameBoard {
 
     public static StringProperty scoreNumber = new SimpleStringProperty();
 
+    private final IntegerProperty level = new SimpleIntegerProperty(1);
+    private int linesClearedTotal = 0;
+
+    private double scoreMultiplier = 1.0;
+
     public void addObserver(BoardObserver obs) {
         observers.add(obs);
     }
@@ -40,6 +45,14 @@ public class GameBoard {
         grid = new Square[rows][cols];
         nextBlock = Block.generateBlock();
         spawnNewBlock();
+    }
+
+    public IntegerProperty levelProperty() {
+        return level;
+    }
+
+    public int getLevel() {
+        return level.get();
     }
 
     public Block getCurrentBlock() {
@@ -270,6 +283,8 @@ public class GameBoard {
         }
 
         if (rowsCleared > 0) {
+            linesClearedTotal += rowsCleared;
+            checkLevelUp(); 
             addScore(checkRowsCleared(rowsCleared));
             for(BoardObserver ob: observers){
                 ob.onLineCleared();
@@ -277,6 +292,17 @@ public class GameBoard {
         }
         notifyObservers();
     }
+
+    private void checkLevelUp() {
+        int newLevel = (linesClearedTotal / 5) + 1;
+        int currentLevel = level.get();
+        if (newLevel > currentLevel) {
+            level.set(newLevel); // update bound property
+            for (BoardObserver ob : observers) {
+                ob.onLevelUp(newLevel);  // now safe
+            }
+        }
+    }       
 
     private int checkRowsCleared(int rows) {
         return switch (rows) {
@@ -315,8 +341,13 @@ public class GameBoard {
         return score.get();
     }
     
-    public void addScore(int points) {
-        score.set(score.get() + points);
+    public void addScore(int basePoints) {
+        int adjusted = (int)(basePoints * scoreMultiplier);
+        score.set(score.get() + adjusted);
+    }    
+
+    public void setScoreMultiplier(double multiplier) {
+        this.scoreMultiplier = multiplier;
     }
     
 }

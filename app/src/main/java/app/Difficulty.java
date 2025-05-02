@@ -34,7 +34,8 @@ public class Difficulty {
     @FXML
     private static final Duration hardLevel = Duration.millis(200);
 
-
+    public static Duration baseFallSpeed = Duration.millis(500); 
+    public static double scoreMultiplier = 1.0;
 
     @FXML
     private MediaView mediaView;
@@ -69,10 +70,12 @@ public class Difficulty {
 
     @FXML
         public void onEasyClicked(ActionEvent event) throws IOException {
+            Difficulty.baseFallSpeed = Duration.millis(1000);
+            Difficulty.scoreMultiplier = 1.0;
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/LoadingScreen.fxml"));
             Parent loadingRoot = loader.load();
             LoadingScreen controller = loader.getController();
-            controller.setFallAnimation(Duration.millis(1000));    
+            controller.setFallAnimation(Duration.millis(1000));   
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             controller.setPrimaryStage(stage);
             stage.setScene(new Scene(loadingRoot, 800, 600));
@@ -88,6 +91,8 @@ public class Difficulty {
         }
     @FXML
         public void onMediumClicked(ActionEvent event) throws IOException {
+            Difficulty.baseFallSpeed = Duration.millis(500);
+            Difficulty.scoreMultiplier = 1.5;
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/LoadingScreen.fxml"));
             Parent loadingRoot = loader.load();
             LoadingScreen controller = loader.getController();
@@ -106,6 +111,8 @@ public class Difficulty {
         }
     @FXML
         public void onHardClicked(ActionEvent event) throws IOException {
+            Difficulty.scoreMultiplier = 2.0;
+            Difficulty.baseFallSpeed = Duration.millis(200);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/LoadingScreen.fxml"));
             Parent loadingRoot = loader.load();
             LoadingScreen controller = loader.getController();

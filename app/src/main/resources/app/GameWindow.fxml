@@ -20,7 +20,10 @@
         </VBox>
         <VBox alignment="CENTER" spacing="10" VBox.vgrow="ALWAYS">
             <Label text="SCORE" style="-fx-font-size: 21px; -fx-font-family: 'Courier New';" styleClass="label-white" prefWidth="90" />
-            <Pane fx:id="leaderBoard" prefHeight="120" prefWidth="120" style="-fx-border-color: white; -fx-border-radius: 20;" styleClass="score"/>
+            <Pane fx:id="leaderBoard" prefHeight="120" prefWidth="120" style="-fx-border-color: white; -fx-border-radius: 20;" styleClass="score">
+        <VBox fx:id="scoreBox" alignment="CENTER" spacing="5" layoutX="20" layoutY="0" prefWidth="120" prefHeight="120"/>
+</Pane>
+
         </VBox>
     </VBox>
 
