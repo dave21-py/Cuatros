@@ -78,7 +78,7 @@ public class GameWindow implements BoardObserver {
     private GameBoard board;
     private Label lblScore, lblLevel;
 
-    private double scoreMultiplier = 1.0; 
+    private double scoreMultiplier = 1.0;
 
     @FXML
     private Button muteButton;
@@ -225,8 +225,11 @@ public class GameWindow implements BoardObserver {
             initialsDialog.setContentText("Enter your initials (max 3 letters):");
 
             Optional<String> result = initialsDialog.showAndWait();
-            String initials = result.orElse("???").toUpperCase().replaceAll("[^A-Z]", "").substring(0,
-                    Math.min(3, result.orElse("???").length()));
+            String input = result.orElse("").toUpperCase().replaceAll("[^A-Z]", "");
+            if (input.isEmpty()) {
+                input = "ABC";
+            }
+            String initials = input.substring(0, Math.min(3, input.length()));
 
             alert.setTitle("Game Over");
             alert.setHeaderText("Game Over! You scored " + board.getScore() + " points.");
@@ -450,9 +453,9 @@ public class GameWindow implements BoardObserver {
         if (board != null) {
             board.setScoreMultiplier(multiplier);
         } else {
-            this.scoreMultiplier = multiplier; 
+            this.scoreMultiplier = multiplier;
         }
-    }    
+    }
 
     // Mute button
     @FXML
@@ -497,7 +500,7 @@ public class GameWindow implements BoardObserver {
         double base = Difficulty.baseFallSpeed.toMillis();
         double newDelay = Math.max(100, base - (newLevel - 1) * 50);
         System.out.println("New fall speed: " + newDelay + "ms");
-        setFallAnimation(Duration.millis(newDelay)); 
+        setFallAnimation(Duration.millis(newDelay));
     }
 
 }
