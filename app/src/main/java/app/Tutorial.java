@@ -40,13 +40,13 @@ public class Tutorial{
 
     public void initialize(){
         // Audio
-        Media sound = new Media(getClass().getResource("mainwindow.mp3").toExternalForm());
+        Media sound = new Media(getClass().getResource("tutorial.mp3").toExternalForm());
         mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
         
         // Video(480p)
 
-        Media video = new Media(getClass().getResource("tutorial.mp4").toExternalForm());
+        Media video = new Media(getClass().getResource("updatedtutorial.mp4").toExternalForm());
         videoPlayer = new MediaPlayer(video);
         mediaView.setMediaPlayer(videoPlayer);
         videoPlayer.play();
