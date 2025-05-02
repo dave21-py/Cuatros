@@ -34,7 +34,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class GameWindow {
+public class GameWindow implements BoardObserver{
 
     private final AudioClip clickSound = new AudioClip(
             getClass().getResource("sound-[AudioTrimmer.com].mp3").toExternalForm());
@@ -42,6 +42,29 @@ public class GameWindow {
     private void playClickSound() {
         clickSound.play();
     }
+
+    private final AudioClip dropSound = new AudioClip(
+        getClass().getResource("drop.mp3").toExternalForm());
+    
+    private void playDropSound(){
+        dropSound.play();
+    }
+
+    private final AudioClip bombSound = new AudioClip(
+        getClass().getResource("bomb.mp3").toExternalForm());
+    
+    private void playBombSound(){
+        bombSound.play();
+    }
+
+    private final AudioClip gameOverSound = new AudioClip(
+        getClass().getResource("gameover.mp3").toExternalForm());
+    
+    private void playGameOverSound(){
+        gameOverSound.play();
+    }
+
+
 
     private static final int CELL_SIZE = 25;
     private static final int GRID_ROWS = 20;
@@ -90,6 +113,7 @@ public class GameWindow {
     @FXML
     public void initialize() {
         board = new GameBoard();
+        board.addObserver(this);
         drawBoardBorders();
         renderBoard();
         startAnimation();
@@ -186,6 +210,10 @@ public class GameWindow {
     // alert window to end game, prompt user to play again
     private void showGameOver() {
         Platform.runLater(() -> {
+            stopMedia();
+            if(!isMuted){
+                playGameOverSound();
+            }
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 
             TextInputDialog initialsDialog = new TextInputDialog();
@@ -416,6 +444,26 @@ public class GameWindow {
                 muteButton.setText("🔇");
                 isMuted = false;
             }
+        }
+
+    }
+
+    @Override
+    public void onBlockLocked(){
+        if(!isMuted){
+            playDropSound();
+        }
+    }
+
+    @Override
+    public void onBoardChanged(){
+
+    }
+
+    @Override
+    public void onLineCleared(){
+        if(!isMuted){
+            playBombSound();
         }
 
     }

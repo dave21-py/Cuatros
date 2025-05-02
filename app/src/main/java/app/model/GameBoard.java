@@ -243,6 +243,10 @@ public class GameBoard {
         addScore(50); // +50 per placed block
 
         holding = false; // allows holding after second block is locked
+
+        for(BoardObserver o : observers){
+            o.onBlockLocked();
+        }
     }
 
     public void removeGameBlocks() {
@@ -267,6 +271,9 @@ public class GameBoard {
 
         if (rowsCleared > 0) {
             addScore(checkRowsCleared(rowsCleared));
+            for(BoardObserver ob: observers){
+                ob.onLineCleared();
+            }
         }
         notifyObservers();
     }

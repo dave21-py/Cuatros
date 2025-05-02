@@ -31,7 +31,7 @@
 
 }
 #hbox{
-    -fx-background-image: url("background2.png");
+    -fx-background-image: url("help.png");
     -fx-background-repeat: no-repeat;
     -fx-background-position: center center;
     -fx-background-size: cover;

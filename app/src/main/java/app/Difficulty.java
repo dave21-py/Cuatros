@@ -69,16 +69,17 @@ public class Difficulty {
 
     @FXML
         public void onEasyClicked(ActionEvent event) throws IOException {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/GameWindow.fxml"));
-            Parent gameRoot = loader.load();
-            GameWindow controller = loader.getController();
-            controller.setFallAnimation(easyLevel);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/LoadingScreen.fxml"));
+            Parent loadingRoot = loader.load();
+            LoadingScreen controller = loader.getController();
+            controller.setFallAnimation(Duration.millis(1000));    
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(gameRoot, 800, 600));
+            controller.setPrimaryStage(stage);
+            stage.setScene(new Scene(loadingRoot, 800, 600));
             stage.setTitle("Cuatros");
             stage.show();
             playClickSound();
-            FadeTransition fadeIn = new FadeTransition(Duration.millis(1000), gameRoot);
+            FadeTransition fadeIn = new FadeTransition(Duration.millis(1000), loadingRoot);
                 fadeIn.setFromValue(0);   
                 fadeIn.setToValue(2);
                 fadeIn.play();
@@ -87,16 +88,17 @@ public class Difficulty {
         }
     @FXML
         public void onMediumClicked(ActionEvent event) throws IOException {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/GameWindow.fxml"));
-            Parent gameRoot = loader.load();
-            GameWindow controller = loader.getController();
-            controller.setFallAnimation(mediumLevel);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/LoadingScreen.fxml"));
+            Parent loadingRoot = loader.load();
+            LoadingScreen controller = loader.getController();
+            controller.setFallAnimation(Duration.millis(500));    
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(gameRoot, 800, 600));
+            controller.setPrimaryStage(stage);
+            stage.setScene(new Scene(loadingRoot, 800, 600));
             stage.setTitle("Cuatros");
             stage.show();
             playClickSound();
-            FadeTransition fadeIn = new FadeTransition(Duration.millis(1000), gameRoot);
+            FadeTransition fadeIn = new FadeTransition(Duration.millis(1000), loadingRoot);
                 fadeIn.setFromValue(0);   
                 fadeIn.setToValue(2);
                 fadeIn.play();
@@ -104,16 +106,17 @@ public class Difficulty {
         }
     @FXML
         public void onHardClicked(ActionEvent event) throws IOException {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/GameWindow.fxml"));
-            Parent gameRoot = loader.load();
-            GameWindow controller = loader.getController();
-            controller.setFallAnimation(hardLevel);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/LoadingScreen.fxml"));
+            Parent loadingRoot = loader.load();
+            LoadingScreen controller = loader.getController();
+            controller.setFallAnimation(Duration.millis(200));    
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(gameRoot, 800, 600));
+            controller.setPrimaryStage(stage);
+            stage.setScene(new Scene(loadingRoot, 800, 600));
             stage.setTitle("Cuatros");
             stage.show();
             playClickSound();
-            FadeTransition fadeIn = new FadeTransition(Duration.millis(1000), gameRoot);
+            FadeTransition fadeIn = new FadeTransition(Duration.millis(1000), loadingRoot);
                 fadeIn.setFromValue(0);   
                 fadeIn.setToValue(2);
                 fadeIn.play();

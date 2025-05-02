@@ -18,6 +18,7 @@
     cyan, blue, orange, yellow, greenyellow, indigo, red); */
     -fx-text-fill: black;;
     -fx-background-color: cyan;
+    -fx-effect: dropshadow(gaussian, cyan, 20, 0.4, 0, 0);
     -fx-scale-x: 1.2;
     -fx-scale-y: 1.2;
 }
@@ -36,6 +37,7 @@
     cyan, blue, orange, yellow, greenyellow, indigo, red); */
     -fx-text-fill: black;;
     -fx-background-color: cyan;
+    -fx-effect: dropshadow(gaussian, cyan, 20, 0.4, 0, 0);
     -fx-scale-x: 1.2;
     -fx-scale-y: 1.2;
 }
@@ -55,6 +57,7 @@
     cyan, blue, orange, yellow, greenyellow, indigo, red); */
     -fx-text-fill: black;;
     -fx-background-color: cyan;
+    -fx-effect: dropshadow(gaussian, cyan, 20, 0.4, 0, 0);
     -fx-scale-x: 1.2;
     -fx-scale-y: 1.2;
 }
@@ -73,6 +76,7 @@
     cyan, blue, orange, yellow, greenyellow, indigo, red); */
     -fx-text-fill: black;;
     -fx-background-color: cyan;
+    -fx-effect: dropshadow(gaussian, cyan, 20, 0.4, 0, 0);
     -fx-scale-x: 1.18;
     -fx-scale-y: 1.18;
 }

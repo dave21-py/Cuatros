@@ -2,6 +2,8 @@ package app;
 
 import java.io.IOException;
 
+import com.sun.javafx.font.FallbackResource;
+
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,6 +34,13 @@ public class LoadingScreen{
         this.primaryStage = stage;
     }
 
+    @FXML
+    private Duration fallSpeed;
+
+    public void setFallAnimation(Duration speed){
+        this.fallSpeed = speed;
+    }
+
     public void initialize(){
         // Audio
         Media sound = new Media(getClass().getResource("mainwindow.mp3").toExternalForm());
@@ -40,7 +49,7 @@ public class LoadingScreen{
         
         // Video(480p)
 
-        Media video = new Media(getClass().getResource("loading.mp4").toExternalForm());
+        Media video = new Media(getClass().getResource("cuatrosloading.mp4").toExternalForm());
         videoPlayer = new MediaPlayer(video);
         mediaView.setMediaPlayer(videoPlayer);
         videoPlayer.setMute(true);
@@ -69,7 +78,11 @@ public class LoadingScreen{
         @FXML
         public void stopVideo(){
             try {
-                Parent gameWindowRoot = FXMLLoader.load(getClass().getResource("/app/GameWindow.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/GameWindow.fxml"));
+                Parent gameWindowRoot = loader.load();
+                GameWindow controller = loader.getController();
+                controller.setFallAnimation(fallSpeed);
+
                 Scene gameWindowScene = new Scene(gameWindowRoot, 800, 600);
                 gameWindowRoot.setOpacity(0);
                 primaryStage.setScene(gameWindowScene);
