@@ -36,10 +36,10 @@ The controls of this game are quite simple. You can navigate the current block b
 * Gameplay - Pause Menu: 1 point
 
 ## 🎯 Final Sprint Targets (13 Points)
-- Scoring: 1 point 
+- Scoring: 1 point COMPLETE
 - Difficulty Levels (Speed): 1 point COMPLETE
-- Leaderboard: 2 points 
-- Sound Effects: 2 points
+- Leaderboard: 2 points COMPLETE
+- Sound Effects: 2 points COMPLETE
 
 * Gameplay - Randomize Block: 2 points COMPLETE
 * Gameplay - Show Next Blocks: 1 point COMPLETE
@@ -47,13 +47,19 @@ The controls of this game are quite simple. You can navigate the current block b
 * Gameplay - Hold Block: 2 points COMPLETE
   
 ### Additional features (11 Points)
-* Optional Cheat Mode: 3 points
-* Optional Game Levels: 3 points
+* Optional Cheat Mode: 3 points PARTIALLY(NEXT BLOCK)
+* Optional Game Levels: 3 points COMPLETE
 * Optional Power-ups: 2 points
-* Optional Save/Load: 3 points
+* Optional Save/Load: 3 points PARTIALLY COMPLETE
 
-## 👀 Game Preview (SECOND SPRINT)
+## 👀 Game Demo (FINAL SPRINT)
 Click [this link](https://www.loom.com/share/7bd0ea2c24794fff97b0d08d0bfc6aed?sid=852407d6-2380-4e66-8276-b75fb81ea026) to see the a preview of the CUATROS run with the progress made so far.
+
+<p align="center">
+<video width="600" controls>
+<source src="recording.mp4" type="video/mp4">
+</video>
+</p>
 
 
 ### ✨ CUATROS Title Screen
