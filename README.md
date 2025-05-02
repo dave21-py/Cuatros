@@ -141,7 +141,7 @@ javafx {
 |--------------------|-------------|---------------              
 |    John Tam        |      35     | [John](https://github.com/bjucps209/group-project-team-jd/wiki/Project-Journal#john-tam)|
 |   David Geddam     |      40     | [David](https://github.com/bjucps209/group-project-team-jd/wiki/Project-Journal#david-geddam)|
-|  Daniel Cornelius  |      16     | [Daniel](https://github.com/bjucps209/group-project-team-jd/wiki/Project-Journal#daniel-cornelius)|
+|  Daniel Cornelius  |     30.5    | [Daniel](https://github.com/bjucps209/group-project-team-jd/wiki/Project-Journal#daniel-cornelius)|
 
 ## ✨ Credits
 
