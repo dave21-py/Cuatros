@@ -66,6 +66,12 @@ The controls of this game are quite simple. You can navigate the current block b
 - Gameplay - Line Clearing: 2 points
 - Gameplay - Hold Block: 2 points
 
+## Uncompleted Points
+- Optional Cheat Mode: 3 points
+- Optional Game Levels: 3 points
+- Optional Power-ups: 2 points
+- Optional Save/Load: 3 points
+- Optional Game Modes: 4 points
 
 ## 👀 Game Demo (FINAL SPRINT)
 
