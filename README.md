@@ -56,7 +56,6 @@ The controls of this game are quite simple. You can navigate the current block b
 - Difficulty Levels (Speed): 2 points
 - Leaderboard: 2 points
 - Sound Effects: 2 points
-
 - Gameplay - Spawn Blocks: 1 point
 - Gameplay - Controls: 2 points
 - Gameplay - Rotate Block: 1 point
