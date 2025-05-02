@@ -75,7 +75,7 @@ The controls of this game are quite simple. You can navigate the current block b
 
 ## 👀 Game Demo (FINAL SPRINT)
 
-🎬 [Watch the demo](updatedtutorial.mp4)
+🎬 [Watch the demo](CuatrosGame.mp4)
 
 
 
