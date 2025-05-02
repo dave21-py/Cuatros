@@ -56,9 +56,8 @@ The controls of this game are quite simple. You can navigate the current block b
 Click [this link](https://www.loom.com/share/7bd0ea2c24794fff97b0d08d0bfc6aed?sid=852407d6-2380-4e66-8276-b75fb81ea026) to see the a preview of the CUATROS run with the progress made so far.
 
 <p align="center">
-<video width="600" controls>
-<source src="app/updatedtutorial.mp4" type="video/mp4">
-</video>
+<img src="logo.png"
+width="400">
 </p>
 
 
