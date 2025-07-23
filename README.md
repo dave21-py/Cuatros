@@ -104,6 +104,39 @@ cd group-project-team-jd
 .\gradlew.bat clean run
 ```
 
+#### Gradle Setup
+
+```bash
+gradle init --type java-application --dsl groovy --package app --test-framework junit-jupiter --use-defaults --overwrite 
+```
+#### Gradle commands
+
+```bash
+gradle clean build
+```
+
+```bash
+gradle run
+```
+
+#### JavaFX Setup
+##### Add a line to app/build.gradle
+```bash
+plugins {
+    id 'application'
+    id 'jacoco'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
+}
+```
+#### Add a new block to the bottom of app/build.gradle:
+```bash
+javafx {
+    version = "23.0.1"
+    modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.media' ]
+}
+```
+
+
 ## 🎯 Expenses and Contributions
 
 
