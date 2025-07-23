@@ -1,7 +1,6 @@
 <p align="center">
   <!-- Replace with your own logo path if you like -->
   <img width="160px" src="logo.png" alt="CUATROS logo" />
-  <h2 align="center">CUATROS</h2>
   <p align="center">A fast‑paced, four‑square block puzzle built with JavaFX.</p>
 </p>
 
@@ -24,14 +23,12 @@
 ---
 
 ## ❔ Overview
-*(unchanged)*
 
 Cuatros is a block puzzle game where players shift and rotate falling four‑square‑shaped blocks to fill lines horizontally. As the lines of blocks are filled, the lines will be cleared, awarding the player points for each line cleared. As the game progresses, the blocks will fall at a higher rate and will require quicker decision making to survive. The game ends when the player's screen is filled to the top with no more space for another block to spawn. The score is calculated by how many blocks have been placed and the number of lines that have been cleared.
 
 ---
 
 ## 🎮 Controls
-*(unchanged)*
 
 - **LEFT ARROW / A** – shift block left  
 - **RIGHT ARROW / D** – shift block right  
@@ -43,7 +40,6 @@ Cuatros is a block puzzle game where players shift and rotate falling four‑squ
 ---
 
 ## ✨ Story Points: Second Sprint Completion (13 Points)
-*(list preserved as‑is)*
 
 - Title Screen: 1 point  
 - About Screen: 1 point  
@@ -60,7 +56,6 @@ Cuatros is a block puzzle game where players shift and rotate falling four‑squ
 ---
 
 ## 🎯 Final Sprint Targets (13 Points)
-*(list preserved as‑is)*
 
 - Scoring: 1 point **COMPLETE**  
 - Difficulty Levels (Speed): 1 point **COMPLETE**  
@@ -71,18 +66,6 @@ Cuatros is a block puzzle game where players shift and rotate falling four‑squ
 * Gameplay – Show Next Blocks: 1 point **COMPLETE**  
 * Gameplay – Line Clearing: 2 points **COMPLETE**  
 * Gameplay – Hold Block: 2 points **COMPLETE**  
-
----
-
-## 🏁 Final Sprint: Total Points Completed (27)
-*(list preserved as‑is)*
-
-*(content omitted for brevity—same as your original)*
-
----
-
-## Uncompleted Points
-*(unchanged – optional backlog)*
 
 ---
 
@@ -119,6 +102,7 @@ cd group-project-team-jd
 
 #    Windows PowerShell
 .\gradlew.bat clean run
+```
 
 ## 🎯 Expenses and Contributions
 
