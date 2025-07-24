@@ -1,6 +1,6 @@
 <p align="center">
   <!-- Replace with your own logo path if you like -->
-  <img width="160px" src="logo.png" alt="CUATROS logo" />
+  <img width="300px" src="logo.png" alt="CUATROS logo" />
   <p align="center">A fast‑paced, four‑square block puzzle built with JavaFX.</p>
 </p>
 
